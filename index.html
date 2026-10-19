@@ -1,0 +1,3363 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İdarəetmə Paneli</title>
+    <!-- FontAwesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Xarici CSS faylı -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo-area">
+                <img src="logo.png" alt="Loqo" class="sidebar-logo-img">
+            </div>
+        </div>
+        <div class="navbar-right">
+            <select class="lang-select" id="langSelect" name="language">
+                <option value="az">AZ</option>
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+            </select>
+            <button class="nav-icon-btn">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge">3</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+
+        <!-- SIDEBAR (Menyu Bar) -->
+        <nav class="sidebar" id="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">NS</div>
+                <div class="user-info">
+                    <h4 id="userName">Name Surname</h4>
+                    <p>İstifadəçi kodu: <span id="userCode">00000000000</span></p>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="javascript:void(0);" onclick="showContent('esas-sehife')">
+                        <span class="menu-title-area">
+                            <i class="fa-solid fa-house"></i> Əsas səhifə
+                        </span>
+                    </a>
+                </li>
+
+                <!-- Dövlət Məşğulluq Agentliyi -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" onclick="toggleSubmenu(this)">
+                        <span class="menu-title-area">
+                            <i class="fas fa-chart-pie"></i> Dövlət Məşğulluq Agentliyi
+                        </span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('struktur')">
+                                <i class="fas fa-bezier-curve"></i>
+                                <span>Struktur</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('umumi-baxis')">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Ümumi baxış (Hesabat)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('qeydiyyat')">
+                                <i class="fas fa-file-lines"></i>
+                                <span>Qeydiyyat (İşsiz və işaxtaranlar)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('isle-temin')">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>İşlə təmin olunma</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('ozunumesgulluq')">
+                                <i class="fas fa-file-shield"></i>
+                                <span>Özünüməşğulluq proqramı</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('ictimai-isler')">
+                                <i class="fas fa-file-waveform"></i>
+                                <span>Haqqı ödənilən ictimai işlər</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('pese-kurslari')">
+                                <i class="fas fa-file-pen"></i>
+                                <span>Peşə hazırlığı kursları</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('peseyonumlu-meslehet')">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Peşəyönümlü məsləhət xidməti</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('sigorta')">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>İşsizlikdən sığorta</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('maliyelesdirilme')">
+                                <i class="fas fa-file-arrow-down"></i>
+                                <span>Əməkhaqqının birgə maliyyələşdirilməsi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('yarmarka')">
+                                <i class="fas fa-file-circle-check"></i>
+                                <span>Əmək yarmarkası</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="showContent('vakansiya')">
+                                <i class="fas fa-file-excel"></i>
+                                <span>Vakansiya Bankı</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+        <main class="content">
+
+            <!-- Əsas səhifə -->
+            <!-- ƏSAS SƏHİFƏ BÖLMƏSİ -->
+            <div id="esas-sehife" class="content-section active">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">ƏSAS SƏHİFƏ</h1>
+                    <p class="page-subtitle">Dövlət Məşğulluq Agentliyinin İdarəetmə Panelinə xoş gəlmisiniz</p>
+                </div>
+
+                <!-- Sayt Haqqında Ümumi Məlumat Kartı -->
+                <div class="card about-site-card" style="margin-bottom: 25px;">
+                    <div class="about-content">
+                        <h2><i class="fa-solid fa-circle-info" style="color: #2b5256;"></i> Sayt Haqqında Ümumi Məlumat
+                        </h2>
+                        <p>
+                            Bu idarəetmə paneli Dövlət Məşğulluq Agentliyinin fəaliyyət istiqamətləri üzrə statistika,
+                            qeydiyyatda olan işsiz və işaxtaran şəxslər, işlə təmin olunma göstəriciləri, eləcə də digər
+                            sosial proqramlar barədə məlumatların izlənilməsi, təhlil edilməsi və operativ idarə
+                            olunması
+                            üçün nəzərdə tutulmuş interaktiv hesabat sistemidir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rəhbər Şəxslərin Qeydləri / Notes Bölməsi -->
+                <div class="card notes-section-card">
+                    <div class="notes-header">
+                        <h3><i class="fa-solid fa-pen-to-square" style="color: #2b5256;"></i> Rəhbər Şəxslərin Qeydləri
+                            və Elanlar</h3>
+                        <p class="notes-desc">Bu bölmədə rəhbərlik tərəfindən vacib qeydlər, tapşırıqlar və ya elanlar
+                            yazılaraq yadda saxlanıla bilər.</p>
+                    </div>
+
+                    <!-- Yeni Qeyd Əlavə Etmə Formu -->
+                    <div class="add-note-box">
+                        <input type="text" id="noteTitleInput" class="dashboard-input" placeholder="Qeydin başlığı...">
+                        <textarea id="noteDescInput" class="dashboard-textarea"
+                            placeholder="Qeydin məzmununu bura daxil edin..."></textarea>
+                        <button type="button" class="btn-save-note" onclick="addNewNote()">
+                            <i class="fa-solid fa-plus"></i> Qeyd Əlavə Et
+                        </button>
+                    </div>
+
+                    <!-- Qeydlərin Siyahısı (Dinamik olaraq gələcək və ya yazılacaq) -->
+                    <div class="notes-grid" id="notesContainer">
+                        <!-- Nümunə Qeyd 1 -->
+                        <div class="note-card">
+                            <div class="note-card-header">
+                                <h4>İclas Tapşırıqları</h4>
+                                <span class="note-date">17.10.2026</span>
+                            </div>
+                            <p>Rayon sektorları üzrə aylıq hesabatların vaxtında təhvil verilməsinə nəzarət edilsin.</p>
+                            <button class="btn-delete-note" onclick="this.parentElement.remove()"><i
+                                    class="fa-solid fa-trash"></i></button>
+                        </div>
+
+                        <!-- Nümunə Qeyd 2 -->
+                        <div class="note-card">
+                            <div class="note-card-header">
+                                <h4>Yeni Proqram</h4>
+                                <span class="note-date">16.10.2026</span>
+                            </div>
+                            <p>Özünüməşğulluq proqramı çərçivəsində aktivlərin paylanması prosesi sürətləndirilsin.</p>
+                            <button class="btn-delete-note" onclick="this.parentElement.remove()"><i
+                                    class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Ümumi baxış (İnteraktiv Hesabat) - İlkin aktiv bölmə -->
+            <div id="umumi-baxis" class="content-section active">
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Dövlət Məşğulluq Agentliyinin fəaliyyətinə dair göstəricilər</p>
+                </div>
+
+                <!-- Filtrlər (Backend üçün id və name atributları) -->
+                <form id="filterForm" class="filter-bar" onsubmit="return false;">
+                    <div class="filter-item">
+                        <label for="filterYear">İL</label>
+                        <select class="dashboard-select" id="filterYear" name="year" onchange="applyFilters()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterMonth">AY</label>
+                        <select class="dashboard-select" id="filterMonth" name="month" onchange="applyFilters()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterRegion">Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="filterRegion" name="region" onchange="applyFilters()">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                            <option value="Şərur">Şərur rayonu</option>
+                            <option value="Babək">Babək rayonu</option>
+                            <option value="Ordubad">Ordubad rayonu</option>
+                            <option value="Culfa">Culfa rayonu</option>
+                            <option value="Şahbuz">Şahbuz rayonu</option>
+                            <option value="Kəngərli">Kəngərli rayonu</option>
+                            <option value="Sədərək">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- Statistik Kartlar Grid (3x3) - Hover Popover ilə -->
+                <div class="stats-grid" id="statsContainer">
+
+                    <!-- Kart 1 -->
+                    <div class="stat-card" data-id="isle-temin">
+                        <div class="stat-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">İşlə təmin olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">2634</b> nəfər</span>
+                        </div>
+                        <!-- Hover Popup Detalları -->
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span class="val-kisi">1500</span></div>
+                                <div><b>Qadın</b> – <span class="val-qadin">1100</span></div>
+                            </div>
+                            <div class="popover-group">
+                                <div><b>Dövlət sektoru üzrə</b> – <span class="val-dovlet">1500</span></div>
+                                <div><b>Özəl sektor üzrə</b> – <span class="val-ozel">1100</span></div>
+                            </div>
+                            <div class="popover-group">
+                                <div><b>İşsiz</b> – <span class="val-issiz">1400</span></div>
+                                <div><b>İşaxtaran</b> – <span class="val-isaxtaran">400</span></div>
+                                <div><b>İşaxtaran (tpo)</b> – <span class="val-isaxtaran-tpo">800</span></div>
+                            </div>
+                            <div class="popover-group">
+                                <div><b>Ali təhsilli</b> – <span class="val-ali">500</span></div>
+                                <div><b>Orta ixtisas təhsilli</b> – <span class="val-ortaixtisas">200</span></div>
+                                <div><b>Orta təhsilli</b> – <span class="val-orta">1900</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 2 -->
+                    <div class="stat-card" data-id="ozunumesgulluq">
+                        <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Özünüməşğulluq proqramına cəlb olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">986</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span>550</span></div>
+                                <div><b>Qadın</b> – <span>436</span></div>
+                            </div>
+                            <div class="popover-group">
+                                <div><b>İşsiz</b> – <span>700</span></div>
+                                <div><b>İşaxtaran</b> – <span>286</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 3 -->
+                    <div class="stat-card" data-id="ictimai-isler">
+                        <div class="stat-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Haqqı ödənilən ictimai işlərə cəlb olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">853</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span>450</span></div>
+                                <div><b>Qadın</b> – <span>403</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 4 -->
+                    <div class="stat-card" data-id="pese-kurslari">
+                        <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Peşə hazırlığı kurslarına cəlb olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">2600</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span>1200</span></div>
+                                <div><b>Qadın</b> – <span>1400</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 5 -->
+                    <div class="stat-card" data-id="peseyonumlu-meslehet">
+                        <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Peşəyönümlü məsləhət xidmətlərinə cəlb olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">2600</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Məktəbli</b> – <span>1800</span></div>
+                                <div><b>Digər</b> – <span>800</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 6 -->
+                    <div class="stat-card" data-id="sigorta">
+                        <div class="stat-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">İşsizlikdən sığorta ödənişi təyin edilmişdir</span>
+                            <span class="stat-value"><b class="count-val">2600</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span>1500</span></div>
+                                <div><b>Qadın</b> – <span>1100</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 7 -->
+                    <div class="stat-card" data-id="maliyelesdirilme">
+                        <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Əməkhaqqının birgə maliyyələşdirilməsi ilə işlə təmin
+                                olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">74</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Özəl sektor</b> – <span>74</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 8 -->
+                    <div class="stat-card" data-id="yarmarka">
+                        <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Əmək yarmarkasında işlə təmin olunmuşdur</span>
+                            <span class="stat-value"><b class="count-val">82</b> nəfər</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Kişi</b> – <span>42</span></div>
+                                <div><b>Qadın</b> – <span>40</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kart 9 -->
+                    <div class="stat-card" data-id="vakansiya">
+                        <div class="stat-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-title">Vakansiya bankı</span>
+                            <span class="stat-value"><b class="count-val">3543</b> Vakansiya</span>
+                        </div>
+                        <div class="stat-popover">
+                            <div class="popover-title">Onlardan,</div>
+                            <div class="popover-group">
+                                <div><b>Dövlət sektoru</b> – <span>2000</span></div>
+                                <div><b>Özəl sektor</b> – <span>1543</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- QEYDİYYAT (İŞSİZ VƏ İŞAXTARANLAR) BÖLMƏSİ - YENİLƏNDİ VƏ ŞƏRHLƏNDİ -->
+            <div id="qeydiyyat" class="content-section">
+
+                <!-- Bölmənin başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">İşsiz və işaxtaran kimi müraciət etmiş şəxslərin qeydiyyatına dair
+                        göstəricilər</p>
+                </div>
+
+                <!-- Filtrləmə paneli (İl, Ay, Rayon) -->
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <label>İL</label>
+                        <select class="dashboard-select" id="regYearFilter">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>AY</label>
+                        <select class="dashboard-select" id="regMonthFilter">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="regRegionFilter">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                            <option value="Şərur">Şərur rayonu</option>
+                            <option value="Babək">Babək rayonu</option>
+                            <option value="Ordubad">Ordubad rayonu</option>
+                            <option value="Culfa">Culfa rayonu</option>
+                            <option value="Şahbuz">Şahbuz rayonu</option>
+                            <option value="Kəngərli">Kəngərli rayonu</option>
+                            <option value="Sədərək">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Üst hissədə yerləşən iki əsas rəqəm kartı -->
+                <div class="reg-top-cards">
+                    <div class="stat-card reg-main-card">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Dövrün sonuna qeydiyyatda qalan</span>
+                            <span class="stat-value-lg">25273</span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card reg-main-card">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Onlardan işsiz</span>
+                            <span class="stat-value-lg">16703</span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Əmək qabiliyyətli əhali və işsizlik statusu cədvəli -->
+                <div class="card reg-table-container">
+                    <table class="reg-info-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Əmək qabiliyyətli əhali (01.01.2026)</th>
+                                <th colspan="2">İşsizlik statusu olan (30.09.2026)</th>
+                            </tr>
+                            <tr>
+                                <th>Say</th>
+                                <th>Nisbət (əhali sayına)</th>
+                                <th>Say</th>
+                                <th>Nisbət</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>330 700</b></td>
+                                <td><b>70%</b></td>
+                                <td><b>16 703</b></td>
+                                <td><b>5,05%</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Qrafiklərin yerləşdiyi 2x2 grid sistemi -->
+                <div class="reg-charts-grid">
+
+                    <!-- 1. Qeydiyyat rayonu üzrə sütunlu diaqram kartı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Qeydiyyat rayonu</h3>
+                        <div class="chart-mockup-area">
+                            <div class="bar-chart-container">
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 70%;"></div>
+                                        <div class="bar-orange" style="height: 40%;"></div>
+                                    </div><span>Naxçıvan</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 90%;"></div>
+                                        <div class="bar-orange" style="height: 60%;"></div>
+                                    </div><span>Şərur</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 80%;"></div>
+                                        <div class="bar-orange" style="height: 50%;"></div>
+                                    </div><span>Babək</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 45%;"></div>
+                                        <div class="bar-orange" style="height: 30%;"></div>
+                                    </div><span>Ordubad</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 55%;"></div>
+                                        <div class="bar-orange" style="height: 35%;"></div>
+                                    </div><span>Culfa</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 25%;"></div>
+                                        <div class="bar-orange" style="height: 20%;"></div>
+                                    </div><span>Şahbuz</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 50%;"></div>
+                                        <div class="bar-orange" style="height: 35%;"></div>
+                                    </div><span>Kəngərli</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bars">
+                                        <div class="bar-teal" style="height: 30%;"></div>
+                                        <div class="bar-orange" style="height: 18%;"></div>
+                                    </div><span>Sədərək</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Məşğulluq statusu üzrə dairəvi diaqram kartı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Məşğulluq statusu</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup">
+                                <div class="pie-slice-1"></div>
+                                <div class="pie-slice-2"></div>
+                                <div class="pie-slice-3"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> İşsiz</div>
+                                <div class="legend-item"><span class="dot orange"></span> İşaxtaran</div>
+                                <div class="legend-item"><span class="dot blue"></span> İşaxtaran (torpaq payı olan)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Təhsil səviyyəsi üzrə qrafik kartı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Təhsil səviyyəsi üzrə</h3>
+                        <div class="horizontal-bars">
+                            <div class="h-bar-row">
+                                <span class="h-label">Ali təhsil</span>
+                                <div class="h-bars">
+                                    <div class="bar-teal" style="width: 80%;"></div>
+                                    <div class="bar-orange" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <div class="h-bar-row">
+                                <span class="h-label">Orta ixtisas təhsili</span>
+                                <div class="h-bars">
+                                    <div class="bar-teal" style="width: 45%;"></div>
+                                    <div class="bar-orange" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div class="h-bar-row">
+                                <span class="h-label">Orta təhsil</span>
+                                <div class="h-bars">
+                                    <div class="bar-teal" style="width: 95%;"></div>
+                                    <div class="bar-orange" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Gender üzrə qrafik kartı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie"></div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> Kişi - <b>1500</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b>1100</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ==========================================================
+     İŞLƏ TƏMİN OLUNMA BÖLMƏSİ (BACKEND VƏ INTERAKTİV TAB/HOVER İLƏ)
+     ========================================================== -->
+            <div id="isle-temin" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">İşlə təmin edilmiş şəxslərə dair göstəricilər</p>
+                </div>
+
+                <!-- Filtrləmə Paneli (SQL-dən parametri tutmaq üçün id və name atributları) -->
+                <form id="employmentFilterForm" class="filter-bar" onsubmit="return false;">
+                    <div class="filter-item">
+                        <label for="empYearFilter">İL</label>
+                        <select class="dashboard-select" id="empYearFilter" name="year"
+                            onchange="fetchEmploymentData()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="empMonthFilter">AY</label>
+                        <select class="dashboard-select" id="empMonthFilter" name="month"
+                            onchange="fetchEmploymentData()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="empRegionFilter">Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="empRegionFilter" name="region"
+                            onchange="fetchEmploymentData()">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                            <option value="Şərur">Şərur rayonu</option>
+                            <option value="Babək">Babək rayonu</option>
+                            <option value="Ordubad">Ordubad rayonu</option>
+                            <option value="Culfa">Culfa rayonu</option>
+                            <option value="Şahbuz">Şahbuz rayonu</option>
+                            <option value="Kəngərli">Kəngərli rayonu</option>
+                            <option value="Sədərək">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- 
+      ƏSAS TAB KARTLARI 
+      [NOT]: Bu kartlara kliklədikdə 'selectEmpTab()' işə düşür və alt qrafikləri həmin filterə uyğun dinamik yeniləyir.
+    -->
+                <div class="emp-top-cards">
+
+                    <!-- Tab 1: Ümumi İşlə Təmin Olunanlar -->
+                    <div class="emp-card-group">
+                        <span class="emp-group-label">Dövr ərzində,</span>
+                        <div class="stat-card emp-card main-emp-card active-tab" data-tab="all"
+                            onclick="selectEmpTab(this, 'all')">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">İşlə təmin olunan şəxslər</span>
+                                <span class="stat-value-lg"><b id="val-total-emp">2 634</b></span>
+                                <span class="stat-unit">nəfər</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2, 3, 4: Alt Proqramlar -->
+                    <div class="emp-card-group flex-3">
+                        <span class="emp-group-label">Onlardan,</span>
+                        <div class="emp-sub-grid">
+
+                            <!-- HÖİİ -->
+                            <div class="stat-card emp-card" data-tab="hoii" onclick="selectEmpTab(this, 'hoii')">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm">HÖİİ üzrə</span>
+                                    <span class="stat-value-md"><b id="val-hoii-emp">883</b></span>
+                                    <span class="stat-unit">nəfər</span>
+                                </div>
+                            </div>
+
+                            <!-- Əmək yarmarkası -->
+                            <div class="stat-card emp-card" data-tab="yarmarka"
+                                onclick="selectEmpTab(this, 'yarmarka')">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm">Əmək yarmarkası</span>
+                                    <span class="stat-value-md"><b id="val-yarmarka-emp">82</b></span>
+                                    <span class="stat-unit">nəfər</span>
+                                </div>
+                            </div>
+
+                            <!-- ƏBM -->
+                            <div class="stat-card emp-card" data-tab="ebm" onclick="selectEmpTab(this, 'ebm')">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm">ƏBM çərçivəsində</span>
+                                    <span class="stat-value-md"><b id="val-ebm-emp">74</b></span>
+                                    <span class="stat-unit">nəfər</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 1. HİSSƏ: QEYDİYYAT VƏ İŞ YERİNİN FAKTİKİ ÜNVANLARI QRAFİKLƏRİ -->
+                <div class="reg-charts-grid" style="margin-bottom: 25px;">
+
+                    <!-- Şəxsin qeydiyyat ünvanı üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Şəxsin qeydiyyat ünvanı üzrə</h3>
+                        <div class="chart-bar-single-container" id="regAddressBarChart">
+
+                            <!-- 
+                  [NOT FOR BACKEND]: Hər 'single-bar-group' sütunu hover ediləndə '.bar-hover-popover' pəncərəsində 
+                  Dövlət və Özəl sektor parçalanması görünür. Backend-dən gələn data-dovlet və data-ozel dəyərləri bura yazılır.
+                -->
+                            <div class="single-bar-group" data-region="Naxçıvan" data-dovlet="320" data-ozel="224">
+                                <span class="bar-val">544</span>
+                                <div class="bar-teal" style="height: 90px;"></div>
+                                <span>Naxçıvan</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>320</span></div>
+                                    <div><b>Özəl:</b> <span>224</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şərur" data-dovlet="300" data-ozel="229">
+                                <span class="bar-val">529</span>
+                                <div class="bar-teal" style="height: 87px;"></div>
+                                <span>Şərur</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>300</span></div>
+                                    <div><b>Özəl:</b> <span>229</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Babək" data-dovlet="310" data-ozel="215">
+                                <span class="bar-val">525</span>
+                                <div class="bar-teal" style="height: 85px;"></div>
+                                <span>Babək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>310</span></div>
+                                    <div><b>Özəl:</b> <span>215</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Ordubad" data-dovlet="160" data-ozel="116">
+                                <span class="bar-val">276</span>
+                                <div class="bar-teal" style="height: 45px;"></div>
+                                <span>Ordubad</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>160</span></div>
+                                    <div><b>Özəl:</b> <span>116</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Culfa" data-dovlet="135" data-ozel="100">
+                                <span class="bar-val">235</span>
+                                <div class="bar-teal" style="height: 38px;"></div>
+                                <span>Culfa</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>135</span></div>
+                                    <div><b>Özəl:</b> <span>100</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şahbuz" data-dovlet="110" data-ozel="84">
+                                <span class="bar-val">194</span>
+                                <div class="bar-teal" style="height: 32px;"></div>
+                                <span>Şahbuz</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>110</span></div>
+                                    <div><b>Özəl:</b> <span>84</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Kəngərli" data-dovlet="120" data-ozel="79">
+                                <span class="bar-val">199</span>
+                                <div class="bar-teal" style="height: 33px;"></div>
+                                <span>Kəngərli</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>120</span></div>
+                                    <div><b>Özəl:</b> <span>79</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Sədərək" data-dovlet="60" data-ozel="37">
+                                <span class="bar-val">97</span>
+                                <div class="bar-teal" style="height: 16px;"></div>
+                                <span>Sədərək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>60</span></div>
+                                    <div><b>Özəl:</b> <span>37</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Digər" data-dovlet="20" data-ozel="15">
+                                <span class="bar-val">35</span>
+                                <div class="bar-teal" style="height: 8px;"></div>
+                                <span>Digər</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>20</span></div>
+                                    <div><b>Özəl:</b> <span>15</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- İş yerinin faktiki ünvanı üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">İş yerinin faktiki ünvanı üzrə</h3>
+                        <div class="chart-bar-single-container" id="workAddressBarChart">
+
+                            <div class="single-bar-group" data-region="Naxçıvan" data-dovlet="900" data-ozel="523">
+                                <span class="bar-val">1423</span>
+                                <div class="bar-teal" style="height: 110px;"></div>
+                                <span>Naxçıvan</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>900</span></div>
+                                    <div><b>Özəl:</b> <span>523</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şərur" data-dovlet="200" data-ozel="175">
+                                <span class="bar-val">375</span>
+                                <div class="bar-teal" style="height: 30px;"></div>
+                                <span>Şərur</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>200</span></div>
+                                    <div><b>Özəl:</b> <span>175</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Babək" data-dovlet="100" data-ozel="87">
+                                <span class="bar-val">187</span>
+                                <div class="bar-teal" style="height: 15px;"></div>
+                                <span>Babək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>100</span></div>
+                                    <div><b>Özəl:</b> <span>87</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Ordubad" data-dovlet="120" data-ozel="92">
+                                <span class="bar-val">212</span>
+                                <div class="bar-teal" style="height: 17px;"></div>
+                                <span>Ordubad</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>120</span></div>
+                                    <div><b>Özəl:</b> <span>92</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Culfa" data-dovlet="80" data-ozel="64">
+                                <span class="bar-val">144</span>
+                                <div class="bar-teal" style="height: 12px;"></div>
+                                <span>Culfa</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>80</span></div>
+                                    <div><b>Özəl:</b> <span>64</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şahbuz" data-dovlet="40" data-ozel="26">
+                                <span class="bar-val">66</span>
+                                <div class="bar-teal" style="height: 6px;"></div>
+                                <span>Şahbuz</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>40</span></div>
+                                    <div><b>Özəl:</b> <span>26</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Kəngərli" data-dovlet="90" data-ozel="69">
+                                <span class="bar-val">159</span>
+                                <div class="bar-teal" style="height: 13px;"></div>
+                                <span>Kəngərli</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>90</span></div>
+                                    <div><b>Özəl:</b> <span>69</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Sədərək" data-dovlet="40" data-ozel="28">
+                                <span class="bar-val">68</span>
+                                <div class="bar-teal" style="height: 6px;"></div>
+                                <span>Sədərək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>40</span></div>
+                                    <div><b>Özəl:</b> <span>28</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2. HİSSƏ: TƏHSİL, MƏŞĞULLUQ, KATEQORİYALAR VƏ GENDER QRAFİKLƏRİ -->
+                <div class="reg-charts-grid">
+
+                    <!-- Təhsil səviyyəsi (Hover Popover dəstəyi ilə) -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
+                        <div class="horizontal-bars-single" id="eduLevelChart">
+
+                            <div class="h-bar-row-single" data-edu="orta" data-dovlet="1300" data-ozel="903">
+                                <span class="h-label">Orta təhsil</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 85%;"></div>
+                                    <span class="h-bar-val">2203</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>1300</span></div>
+                                        <div><b>Özəl:</b> <span>903</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="h-bar-row-single" data-edu="ortaixtisas" data-dovlet="80" data-ozel="54">
+                                <span class="h-label">Orta ixtisas təhsili</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 15%;"></div>
+                                    <span class="h-bar-val">134</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>80</span></div>
+                                        <div><b>Özəl:</b> <span>54</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="h-bar-row-single" data-edu="ali" data-dovlet="180" data-ozel="116">
+                                <span class="h-label">Ali təhsil</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 25%;"></div>
+                                    <span class="h-bar-val">296</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>180</span></div>
+                                        <div><b>Özəl:</b> <span>116</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Məşğulluq statusu -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Məşğulluq statusu</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup status-pie-mock" id="empStatusPie">
+                                <span class="pie-txt p1" id="val-issiz-txt">1903</span>
+                                <span class="pie-txt p2" id="val-isaxtaran-txt">416</span>
+                                <span class="pie-txt p3" id="val-isaxtarantpo-txt">314</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> İşsiz (<span
+                                        id="lbl-issiz">1903</span>)</div>
+                                <div class="legend-item"><span class="dot orange"></span> İşaxtaran (<span
+                                        id="lbl-isaxtaran">416</span>)</div>
+                                <div class="legend-item"><span class="dot blue"></span> İşaxtaran (torpaq payı olan)
+                                    (<span id="lbl-isaxtarantpo">314</span>)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kateqoriyalar üzrə (Hover Popover dəstəyi ilə) -->
+                    <div class="card reg-chart-card" style="grid-column: span 2;">
+                        <h3 class="chart-box-title">Kateqoriyalar üzrə</h3>
+                        <div class="chart-bar-single-container category-bars" id="categoryBarChart">
+
+                            <div class="single-bar-group" data-cat="sehid" data-dovlet="15" data-ozel="5">
+                                <span class="bar-val">20</span>
+                                <div class="bar-teal" style="height: 30px;"></div>
+                                <span>Şəhid ailəsinin üzvü</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>15</span></div>
+                                    <div><b>Özəl:</b> <span>5</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="veteran" data-dovlet="20" data-ozel="10">
+                                <span class="bar-val">30</span>
+                                <div class="bar-teal" style="height: 45px;"></div>
+                                <span>Müharibə veteranı</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>20</span></div>
+                                    <div><b>Özəl:</b> <span>10</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="elil" data-dovlet="12" data-ozel="8">
+                                <span class="bar-val">20</span>
+                                <div class="bar-teal" style="height: 30px;"></div>
+                                <span>Müharibə əlili</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>12</span></div>
+                                    <div><b>Özəl:</b> <span>8</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="elilliyi-olan" data-dovlet="30" data-ozel="20">
+                                <span class="bar-val">50</span>
+                                <div class="bar-teal" style="height: 75px;"></div>
+                                <span>Əlilliyi olan şəxs</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>30</span></div>
+                                    <div><b>Özəl:</b> <span>20</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="simu" data-dovlet="5" data-ozel="2">
+                                <span class="bar-val">7</span>
+                                <div class="bar-teal" style="height: 12px;"></div>
+                                <span>SİMU valideyn</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>5</span></div>
+                                    <div><b>Özəl:</b> <span>2</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="coxusaqli" data-dovlet="6" data-ozel="3">
+                                <span class="bar-val">9</span>
+                                <div class="bar-teal" style="height: 15px;"></div>
+                                <span>Çoxuşaqlı valideyn</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>6</span></div>
+                                    <div><b>Özəl:</b> <span>3</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="pensiya" data-dovlet="10" data-ozel="7">
+                                <span class="bar-val">17</span>
+                                <div class="bar-teal" style="height: 25px;"></div>
+                                <span>Pensiya yaşına 2 ildən az qalmış şəxs</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>10</span></div>
+                                    <div><b>Özəl:</b> <span>7</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="genc" data-dovlet="2" data-ozel="1">
+                                <span class="bar-val">3</span>
+                                <div class="bar-teal" style="height: 6px;"></div>
+                                <span>20 yaşadək gənc</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>2</span></div>
+                                    <div><b>Özəl:</b> <span>1</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="kockun" data-dovlet="3" data-ozel="2">
+                                <span class="bar-val">5</span>
+                                <div class="bar-teal" style="height: 9px;"></div>
+                                <span>Məcburi köçkün</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>3</span></div>
+                                    <div><b>Özəl:</b> <span>2</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-cat="cezacatdirma" data-dovlet="8" data-ozel="5">
+                                <span class="bar-val">13</span>
+                                <div class="bar-teal" style="height: 20px;"></div>
+                                <span>Cəzaçəkmə yerlərindən azad edilmiş şəxs</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>8</span></div>
+                                    <div><b>Özəl:</b> <span>5</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ÖZÜNÜMƏŞĞULLUQ PROQRAMI BÖLMƏSİ (RESPONSİV VƏ SƏLİQƏLİ) -->
+            <div id="ozunumesgulluq" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Özünüməşğulluq proqramının icrasına dair göstəricilər</p>
+                </div>
+
+                <!-- Filtrləmə Paneli -->
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <label for="ozunFilterYear">İL</label>
+                        <select class="dashboard-select" id="ozunFilterYear" name="year"
+                            onchange="loadOzunumesgulluqData()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="ozunFilterMonth">AY</label>
+                        <select class="dashboard-select" id="ozunFilterMonth" name="month"
+                            onchange="loadOzunumesgulluqData()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="ozunFilterRegion">Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="ozunFilterRegion" name="region"
+                            onchange="loadOzunumesgulluqData()">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="naxcivan">Naxçıvan şəhəri</option>
+                            <option value="serur">Şərur rayonu</option>
+                            <option value="babek">Babək rayonu</option>
+                            <option value="ordubad">Ordubad rayonu</option>
+                            <option value="culfa">Culfa rayonu</option>
+                            <option value="sahbuz">Şahbuz rayonu</option>
+                            <option value="kengerli">Kəngərli rayonu</option>
+                            <option value="sederek">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Üst 5 Əsas Statistik Kart -->
+                <div class="ozun-top-cards">
+                    <div class="stat-card" data-id="umumi-muraciet">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Ümumi müraciət</span>
+                            <span class="stat-value-lg"><b class="val-muraciet">12 442</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="kvota">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Kvota</span>
+                            <span class="stat-value-lg"><b class="val-kvota">4 040</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="emlakla-temin">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Əmlakla təmin olunan</span>
+                            <span class="stat-value-lg"><b class="val-emlak">2 030</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="novbelilik">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Növbəlilik reyestrində olan</span>
+                            <span class="stat-value-lg"><b class="val-novbe">2 139</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="kenarlasdirilan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Kənarlaşdırılan</span>
+                            <span class="stat-value-lg"><b class="val-kenar">656</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İllər Üzrə Cədvəl -->
+                <div class="card ozun-table-card">
+                    <div class="table-responsive-wrapper">
+                        <table class="ozun-data-table" id="ozunReportTable">
+                            <thead>
+                                <tr>
+                                    <th>İL</th>
+                                    <th>Kvota</th>
+                                    <th>Müraciət</th>
+                                    <th>İlkin monitorinq</th>
+                                    <th>Təlimə cəlb olunan</th>
+                                    <th>Əmlak alan <br><small>(Kvotadan kənar təminlə birlikdə)</small></th>
+                                    <th>Əmlak alan <br><small>(Kvota üzrə)</small></th>
+                                    <th>Qalıq</th>
+                                    <th>Kvota icra faizi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-total">
+                                    <td><b>CƏM</b></td>
+                                    <td>4 040</td>
+                                    <td>12 442</td>
+                                    <td>9 579</td>
+                                    <td>4 156</td>
+                                    <td>2 030</td>
+                                    <td>1 844</td>
+                                    <td>2 196</td>
+                                    <td><span class="badge-faiz">46%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2023</td>
+                                    <td>1 000</td>
+                                    <td>2 798</td>
+                                    <td>2 462</td>
+                                    <td>744</td>
+                                    <td>84</td>
+                                    <td>1 000</td>
+                                    <td>0</td>
+                                    <td><span class="badge-faiz full">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2024</td>
+                                    <td>1 000</td>
+                                    <td>4 892</td>
+                                    <td>2 859</td>
+                                    <td>2 106</td>
+                                    <td>1 312</td>
+                                    <td>729</td>
+                                    <td>271</td>
+                                    <td><span class="badge-faiz">73%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025</td>
+                                    <td>615</td>
+                                    <td>3 557</td>
+                                    <td>1 719</td>
+                                    <td>983</td>
+                                    <td>564</td>
+                                    <td>96</td>
+                                    <td>519</td>
+                                    <td><span class="badge-faiz low">16%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026(8)</td>
+                                    <td>1 425</td>
+                                    <td>1 195</td>
+                                    <td>2 539</td>
+                                    <td>323</td>
+                                    <td>70</td>
+                                    <td>19</td>
+                                    <td>1 406</td>
+                                    <td><span class="badge-faiz min">1%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Təsərrüfat Zərfləri Qrafikləri -->
+                <div class="ozun-charts-grid">
+                    <!-- Maldarlıq -->
+                    <div class="card ozun-chart-card has-popover">
+                        <h4 class="sub-chart-title">Maldarlıq təsərrüfatı</h4>
+                        <div class="mini-bar-chart">
+                            <div class="mini-col"><span class="val">403</span>
+                                <div class="bar green" style="height: 100px;"></div><span class="lbl">Kvota</span>
+                            </div>
+                            <div class="mini-col"><span class="val">0</span>
+                                <div class="bar blue" style="height: 2px;"></div><span class="lbl">Təminat</span>
+                            </div>
+                            <div class="mini-col"><span class="val">403</span>
+                                <div class="bar yellow" style="height: 100px;"></div><span class="lbl">Qalıq</span>
+                            </div>
+                        </div>
+                        <div class="ozun-popover-note">
+                            <p>Ayrılmış kvota üzrə əmlakla təmin olunmama səbəbi heyvan xəstəlikləri ilə bağlı AR DMA
+                                tərəfindən canlı aktivlərin NMR-ə gönderilməməsidir.</p>
+                        </div>
+                    </div>
+
+                    <!-- Qoyunçuluq -->
+                    <div class="card ozun-chart-card">
+                        <h4 class="sub-chart-title">Qoyunçuluq təsərrüfatı</h4>
+                        <div class="mini-bar-chart">
+                            <div class="mini-col"><span class="val">350</span>
+                                <div class="bar green" style="height: 85px;"></div><span class="lbl">Kvota</span>
+                            </div>
+                            <div class="mini-col"><span class="val">0</span>
+                                <div class="bar blue" style="height: 2px;"></div><span class="lbl">Təminat</span>
+                            </div>
+                            <div class="mini-col"><span class="val">350</span>
+                                <div class="bar yellow" style="height: 85px;"></div><span class="lbl">Qalıq</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Keçiçilik -->
+                    <div class="card ozun-chart-card">
+                        <h4 class="sub-chart-title">Keçiçilik təsərrüfatı</h4>
+                        <div class="mini-bar-chart">
+                            <div class="mini-col"><span class="val">51</span>
+                                <div class="bar green" style="height: 45px;"></div><span class="lbl">Kvota</span>
+                            </div>
+                            <div class="mini-col"><span class="val">0</span>
+                                <div class="bar blue" style="height: 2px;"></div><span class="lbl">Təminat</span>
+                            </div>
+                            <div class="mini-col"><span class="val">51</span>
+                                <div class="bar yellow" style="height: 45px;"></div><span class="lbl">Qalıq</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arıçılıq -->
+                    <div class="card ozun-chart-card">
+                        <h4 class="sub-chart-title">Arıçılıq təsərrüfatı</h4>
+                        <div class="mini-bar-chart">
+                            <div class="mini-col"><span class="val">78</span>
+                                <div class="bar green" style="height: 60px;"></div><span class="lbl">Kvota</span>
+                            </div>
+                            <div class="mini-col"><span class="val">0</span>
+                                <div class="bar blue" style="height: 2px;"></div><span class="lbl">Təminat</span>
+                            </div>
+                            <div class="mini-col"><span class="val">78</span>
+                                <div class="bar yellow" style="height: 60px;"></div><span class="lbl">Qalıq</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- İstehsal – Xidmət -->
+                    <div class="card ozun-chart-card">
+                        <h4 class="sub-chart-title">İstehsal – Xidmət</h4>
+                        <div class="mini-bar-chart">
+                            <div class="mini-col"><span class="val">543</span>
+                                <div class="bar green" style="height: 115px;"></div><span class="lbl">Kvota</span>
+                            </div>
+                            <div class="mini-col"><span class="val">19</span>
+                                <div class="bar blue" style="height: 10px;"></div><span class="lbl">Təminat</span>
+                            </div>
+                            <div class="mini-col"><span class="val">524</span>
+                                <div class="bar yellow" style="height: 110px;"></div><span class="lbl">Qalıq</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sektorlar Üzrə Göstəricilər -->
+                <div class="ozun-sector-header-cards">
+                    <div class="stat-card highlight">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Əmlakla təmin olunan</span>
+                            <span class="stat-value-lg">2 300</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Kənd təsərrüfatı</span>
+                            <span class="stat-value-lg">1 035</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">İstehsal</span>
+                            <span class="stat-value-lg">294</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Xidmət</span>
+                            <span class="stat-value-lg">741</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gender və Rayon Qrafikləri -->
+                <div class="ozun-two-col-grid">
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie-ozun">
+                                <span class="pie-txt g1">1298</span>
+                                <span class="pie-txt g2">1002</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> Kişi - <b>1298</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b>1002</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Rayon üzrə</h3>
+                        <div class="horizontal-bars-single">
+                            <div class="h-bar-row-single"><span class="h-label">Naxçıvan</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 88%;"></div><span class="h-bar-val">619</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Şərur</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 15%;"></div><span class="h-bar-val">51</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Babək</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 25%;"></div><span class="h-bar-val">105</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Ordubad</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 16%;"></div><span class="h-bar-val">52</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Culfa</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 32%;"></div><span class="h-bar-val">144</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Şahbuz</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 14%;"></div><span class="h-bar-val">48</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Kəngərli</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 8%;"></div><span class="h-bar-val">15</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Sədərək</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 9%;"></div><span class="h-bar-val">17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kateqoriyalar -->
+                <div class="card reg-chart-card" style="margin-top: 25px;">
+                    <h3 class="chart-box-title">Kateqoriyalar üzrə</h3>
+                    <div class="category-chart-with-circle">
+                        <div class="chart-bar-single-container category-bars-ozun">
+                            <div class="single-bar-group"><span class="bar-val">20</span>
+                                <div class="bar-teal" style="height: 40px;"></div><span class="cat-lbl">Şəhid ailəsi
+                                    üzvü</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">30</span>
+                                <div class="bar-teal" style="height: 60px;"></div><span class="cat-lbl">Müharibə
+                                    əlili</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">20</span>
+                                <div class="bar-teal" style="height: 40px;"></div><span class="cat-lbl">Müharibə
+                                    əlilinin ailəsi</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">50</span>
+                                <div class="bar-teal" style="height: 90px;"></div><span class="cat-lbl">Müharibə
+                                    iştirakçısı</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">7</span>
+                                <div class="bar-teal" style="height: 15px;"></div><span class="cat-lbl">Müharibə
+                                    iştirakçısının...</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">9</span>
+                                <div class="bar-teal" style="height: 18px;"></div><span class="cat-lbl">Cəzaçəkmədən
+                                    azad...</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">17</span>
+                                <div class="bar-teal" style="height: 35px;"></div><span class="cat-lbl">Əlilliyi olan
+                                    şəxs</span>
+                            </div>
+                            <div class="single-bar-group"><span class="bar-val">3</span>
+                                <div class="bar-teal" style="height: 8px;"></div><span class="cat-lbl">ÜDSY təyinat
+                                    alanlar</span>
+                            </div>
+                        </div>
+                        <div class="percent-circle-badge">
+                            <div class="inner-circle">
+                                <h2>28,4 %</h2>
+                                <span>Ümumi cəlb olunanların</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
+     ========================================================== -->
+            <div id="ictimai-isler" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Haqqı ödənilən ictimai işlərə dair göstəricilər</p>
+                </div>
+
+                <!-- 1. ÜST FİLTRLƏMƏ PANENİ -->
+                <form id="publicWorksFilterForm" class="filter-bar" onsubmit="return false;"
+                    style="margin-bottom: 25px;">
+                    <div class="filter-item">
+                        <label for="pubYearFilter">İL</label>
+                        <select class="dashboard-select" id="pubYearFilter" name="year"
+                            onchange="fetchPublicWorksData()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="pubMonthFilter">AY</label>
+                        <select class="dashboard-select" id="pubMonthFilter" name="month"
+                            onchange="fetchPublicWorksData()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="pubRegionFilter">Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="pubRegionFilter" name="region"
+                            onchange="fetchPublicWorksData()">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                            <option value="Şərur">Şərur rayonu</option>
+                            <option value="Babək">Babək rayonu</option>
+                            <option value="Ordubad">Ordubad rayonu</option>
+                            <option value="Culfa">Culfa rayonu</option>
+                            <option value="Şahbuz">Şahbuz rayonu</option>
+                            <option value="Kəngərli">Kəngərli rayonu</option>
+                            <option value="Sədərək">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- 2. ÜST 5 ƏSAS STATİSTİK KART (ŞƏKİL 1) -->
+                <div class="ozun-top-cards" style="grid-template-columns: repeat(5, 1fr); margin-bottom: 30px;">
+                    <div class="stat-card" data-id="kvota">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">KVOTA</span>
+                            <span class="stat-value-lg"><b id="val-pub-kvota">2 500</b></span>
+                            <span class="stat-unit">Vakansiya</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="umumi-celb">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">ÜMUMİ CƏLB OLUNAN</span>
+                            <span class="stat-value-lg"><b id="val-pub-celb">2 795</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="aktiv-isci">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">AKTİV İŞÇİ</span>
+                            <span class="stat-value-lg"><b id="val-pub-aktiv">2 139</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="xitam-verilen">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">XİTAM VERİLƏN</span>
+                            <span class="stat-value-lg"><b id="val-pub-xitam">656</b></span>
+                            <span class="stat-unit">nəfər</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-id="vakant-yerler">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">VAKANT YERLƏR</span>
+                            <span class="stat-value-lg"><b id="val-pub-vakant">361</b></span>
+                            <span class="stat-unit">mövcud yer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. ORTA HİSSƏ: ÜMUMİ VƏZİYYƏT VƏ İCRAÇI QURUMLAR (ŞƏKİL 1) -->
+                <div class="reg-charts-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 35px;">
+
+                    <!-- Ümumi vəziyyət (İcra göstəricisi dairəsi) -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Ümumi vəziyyət</h3>
+                        <div class="general-status-flex">
+                            <div class="percent-circle-badge big">
+                                <div class="inner-circle big">
+                                    <h2>85%</h2>
+                                    <span>icra göstəricisi</span>
+                                </div>
+                            </div>
+                            <div class="status-summary-list">
+                                <div class="status-sum-row"><span>Aktiv işçilər</span> <b id="sum-aktiv">2 139</b></div>
+                                <div class="status-sum-row"><span>Xitam verilən</span> <b id="sum-xitam">656</b></div>
+                                <div class="status-sum-row"><span>Vakant yerlər</span> <b id="sum-vakant">361</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- İcraçı qurumlar üzrə bölgü -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">İcraçı qurumlar üzrə bölgü</h3>
+                        <div class="horizontal-bars-single" id="institutionsBarChart" style="padding: 10px 0;">
+                            <div class="h-bar-row-single"><span class="h-label">Kommunal Müəssisələr</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 95%;"></div><span class="h-bar-val">1 961</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Dini Qurumlarla İş</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 25%;"></div><span class="h-bar-val">48</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Avtomobil Yolları</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 22%;"></div><span class="h-bar-val">43</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Ekologiya</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 16%;"></div><span class="h-bar-val">32</span>
+                                </div>
+                            </div>
+                            <div class="h-bar-row-single"><span class="h-label">Kənd Təsərrüfatı</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 16%;"></div><span class="h-bar-val">32</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ==========================================================
+         4. AKTİV İŞÇİLƏR ÜZRƏ BLOK (ŞƏKİL 2)
+         ========================================================== -->
+                <h2 class="sub-section-title">Aktiv işçilər üzrə</h2>
+                <div class="reg-charts-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 25px;">
+
+                    <!-- Şəxsin qeydiyyat ünvanı üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Şəxsin qeydiyyat ünvanı üzrə</h3>
+                        <div class="chart-bar-single-container" id="pubActiveRegBarChart">
+                            <div class="single-bar-group" data-region="Naxçıvan"><span class="bar-val">112</span>
+                                <div class="bar-teal" style="height: 30px;"></div><span>Naxçıvan şəhəri</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şərur"><span class="bar-val">356</span>
+                                <div class="bar-teal" style="height: 95px;"></div><span>Şərur rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Babək"><span class="bar-val">392</span>
+                                <div class="bar-teal" style="height: 105px;"></div><span>Babək rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Ordubad"><span class="bar-val">261</span>
+                                <div class="bar-teal" style="height: 70px;"></div><span>Ordubad rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Culfa"><span class="bar-val">297</span>
+                                <div class="bar-teal" style="height: 80px;"></div><span>Culfa rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şahbuz"><span class="bar-val">243</span>
+                                <div class="bar-teal" style="height: 65px;"></div><span>Şahbuz rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Kəngərli"><span class="bar-val">258</span>
+                                <div class="bar-teal" style="height: 70px;"></div><span>Kəngərli rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Sədərək"><span class="bar-val">162</span>
+                                <div class="bar-teal" style="height: 45px;"></div><span>Sədərək rayonu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie-pub-active">
+                                <span class="pie-txt pub-g1">858</span>
+                                <span class="pie-txt pub-g2">1281</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> Kişi - <b
+                                        id="lbl-pub-kisi">858</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b
+                                        id="lbl-pub-qadin">1281</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ==========================================================
+     PEŞƏ HAZIRLIĞI KURSLARI BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
+     ========================================================== -->
+            <div id="pese-kurslari" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Peşə hazırlığı kurslarına dair göstəricilər</p>
+                </div>
+
+                <!-- ÜST 5 ƏSAS STATİSTİK KART -->
+                <div class="pese-top-cards">
+                    <div class="stat-card pese-card active-card" data-id="kurs-sayi">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Kurs sayı</span>
+                            <span class="stat-value-lg"><b id="val-kurs-sayi">23</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card pese-card" data-id="celb-olunan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Cəlb olunan</span>
+                            <span class="stat-value-lg"><b id="val-celb-olunan">2300</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card pese-card" data-id="bitiren">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Bitirən</span>
+                            <span class="stat-value-lg"><b id="val-bitiren">1 035</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card pese-card" data-id="davam-eden">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Davam edən</span>
+                            <span class="stat-value-lg"><b id="val-davam-eden">294</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card pese-card" data-id="xaric-olunan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Xaric olunan</span>
+                            <span class="stat-value-lg"><b id="val-xaric-olunan">741</b></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QRAFİKLƏR VƏ FİLTR PANENİ (SOL / SAĞ QURULUŞU) -->
+                <div class="pese-main-grid">
+
+                    <!-- SOL HİSSƏ: Filtrlər və Gender Üzrə Diagram -->
+                    <div class="pese-left-col">
+
+                        <!-- Filtrlər Kartı (Rayon, Dövr, Peşələr) -->
+                        <div class="card pese-filter-card">
+                            <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
+
+                            <form id="peseFilterForm" onsubmit="return false;">
+                                <div class="filter-row-item">
+                                    <label for="peseRegionFilter">Rayon</label>
+                                    <select class="dashboard-select" id="peseRegionFilter" name="region"
+                                        onchange="fetchPeseData()">
+                                        <option value="">Bütün rayonlar</option>
+                                        <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                                        <option value="Şərur">Şərur rayonu</option>
+                                        <option value="Babək">Babək rayonu</option>
+                                        <option value="Ordubad">Ordubad rayonu</option>
+                                        <option value="Culfa">Culfa rayonu</option>
+                                        <option value="Şahbuz">Şahbuz rayonu</option>
+                                        <option value="Kəngərli">Kəngərli rayonu</option>
+                                        <option value="Sədərək">Sədərək rayonu</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-row-item">
+                                    <label for="pesePeriodFilter">Dövr</label>
+                                    <select class="dashboard-select" id="pesePeriodFilter" name="period"
+                                        onchange="fetchPeseData()">
+                                        <option value="2026-09">2026, sentyabr</option>
+                                        <option value="2026-08">2026, avqust</option>
+                                        <option value="2026-07">2026, iyul</option>
+                                        <option value="2025-ALL">2025, Bütün il</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-row-item">
+                                    <label for="peseProfessionFilter">Peşələr</label>
+                                    <select class="dashboard-select" id="peseProfessionFilter" name="profession"
+                                        onchange="fetchPeseData()">
+                                        <option value="">Bütün peşələr</option>
+                                        <option value="derzi">Dərzi</option>
+                                        <option value="asci">Aşpaz</option>
+                                        <option value="komputer">Kompüter operatoru</option>
+                                        <option value="bərbər">Bərbər</option>
+                                        <option value="qaynaqci">Elektrik-qaynaqçı</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Gender üzrə Dairəvi Diaqram -->
+                        <div class="card reg-chart-card">
+                            <h3 class="chart-box-title">Gender üzrə</h3>
+                            <div class="pie-chart-flex">
+                                <div class="pie-mockup gender-pie-pese">
+                                    <span class="pie-txt g1" id="val-pese-kisi-txt">1298</span>
+                                    <span class="pie-txt g2" id="val-pese-qadin-txt">1002</span>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item"><span class="dot teal"></span> Kişi - <b
+                                            id="lbl-pese-kisi">1298</b></div>
+                                    <div class="legend-item"><span class="dot orange"></span> Qadın - <b
+                                            id="lbl-pese-qadin">1002</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SAĞ HİSSƏ: Rayon Üzrə Üfüqi Sütunlu Qrafik -->
+                    <div class="pese-right-col">
+                        <div class="card reg-chart-card" style="height: 100%;">
+                            <h3 class="chart-box-title">Rayon üzrə</h3>
+
+                            <div class="horizontal-bars-single" id="peseRegionChart"
+                                style="gap: 16px; padding: 15px 0;">
+
+                                <div class="h-bar-row-single" data-region="Naxçıvan">
+                                    <span class="h-label">Naxçıvan</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 88%;"></div>
+                                        <span class="h-bar-val">619</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Şərur">
+                                    <span class="h-label">Şərur</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 15%;"></div>
+                                        <span class="h-bar-val">51</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Babək">
+                                    <span class="h-label">Babək</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 32%;"></div>
+                                        <span class="h-bar-val">105</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Ordubad">
+                                    <span class="h-label">Ordubad</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 16%;"></div>
+                                        <span class="h-bar-val">52</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Culfa">
+                                    <span class="h-label">Culfa</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 42%;"></div>
+                                        <span class="h-bar-val">144</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Şahbuz">
+                                    <span class="h-label">Şahbuz</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 14%;"></div>
+                                        <span class="h-bar-val">48</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Kəngərli">
+                                    <span class="h-label">Kəngərli</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 8%;"></div>
+                                        <span class="h-bar-val">15</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Sədərək">
+                                    <span class="h-label">Sədərək</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 9%;"></div>
+                                        <span class="h-bar-val">17</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     PEŞƏYÖNÜMLÜ MƏSLƏHƏT XİDMƏTİ BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
+     ========================================================== -->
+            <div id="peseyonumlu-meslehet" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Peşəyönümlü məsləhət xidmətlərinə dair göstəricilər</p>
+                </div>
+
+                <!-- Filtrləmə Paneli (İl və Ay) -->
+                <form id="orientationFilterForm" class="filter-bar" style="max-width: 600px; margin-bottom: 25px;"
+                    onsubmit="return false;">
+                    <div class="filter-item">
+                        <label for="orientYearFilter">İL</label>
+                        <select class="dashboard-select" id="orientYearFilter" name="year"
+                            onchange="fetchOrientationData()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="orientMonthFilter">AY</label>
+                        <select class="dashboard-select" id="orientMonthFilter" name="month"
+                            onchange="fetchOrientationData()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- ƏSAS MƏZMUN DÜZƏNİ (SOL QRAFİKLƏR VƏ SAĞ LAYİHƏLƏR BLOKU) -->
+                <div class="orient-main-grid">
+
+                    <!-- SOL HİSSƏ: İştirak edən kartı və Rayon üzrə Sütunlu Qrafik -->
+                    <div class="orient-left-col">
+
+                        <!-- İştirak edən Kartı -->
+                        <div class="stat-card orient-total-card">
+                            <div class="stat-info">
+                                <span class="stat-title-sm" style="font-weight: 700; color: #555;">İştirak edən</span>
+                                <span class="stat-value-lg"
+                                    style="font-size: 36px; color: #1a3335; display: block; margin: 8px 0 2px 0;"><b
+                                        id="val-orient-total">2 795</b></span>
+                                <span class="stat-unit">nəfər</span>
+                            </div>
+                        </div>
+
+                        <!-- Rayon üzrə Sütunlu Qrafik -->
+                        <div class="card reg-chart-card" style="flex: 1;">
+                            <h3 class="chart-box-title">Rayon üzrə</h3>
+
+                            <div class="chart-bar-single-container" id="orientRegionBarChart"
+                                style="height: 220px; padding-top: 30px;">
+
+                                <div class="single-bar-group" data-region="Naxçıvan">
+                                    <span class="bar-val">426</span>
+                                    <div class="bar-teal" style="height: 110px;"></div>
+                                    <span>Naxçıvan şəhəri</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Şərur">
+                                    <span class="bar-val">99</span>
+                                    <div class="bar-teal" style="height: 25px;"></div>
+                                    <span>Şərur rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Babək">
+                                    <span class="bar-val">105</span>
+                                    <div class="bar-teal" style="height: 27px;"></div>
+                                    <span>Babək rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Ordubad">
+                                    <span class="bar-val">430</span>
+                                    <div class="bar-teal" style="height: 112px;"></div>
+                                    <span>Ordubad rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Culfa">
+                                    <span class="bar-val">438</span>
+                                    <div class="bar-teal" style="height: 115px;"></div>
+                                    <span>Culfa rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Şahbuz">
+                                    <span class="bar-val">274</span>
+                                    <div class="bar-teal" style="height: 70px;"></div>
+                                    <span>Şahbuz rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Kəngərli">
+                                    <span class="bar-val">494</span>
+                                    <div class="bar-teal" style="height: 130px;"></div>
+                                    <span>Kəngərli rayonu</span>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Sədərək">
+                                    <span class="bar-val">77</span>
+                                    <div class="bar-teal" style="height: 20px;"></div>
+                                    <span>Sədərək rayonu</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SAĞ HİSSƏ: LAYİHƏLƏR PANENİ (ŞAQLİ AYIRICI XƏTT İLƏ) -->
+                    <div class="orient-right-col">
+                        <h2 class="projects-side-title">LAYİHƏLƏR</h2>
+
+                        <div class="projects-cards-list">
+
+                            <!-- Layihə 1 -->
+                            <div class="stat-card project-card" data-project="pese-fest-naxcivan">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm" style="font-weight: 700; color: #333;">PeşəFest
+                                        Naxçıvan</span>
+                                    <span class="stat-value-lg" style="font-size: 32px; color: #1a3335;"><b
+                                            id="val-pese-naxcivan">8000</b></span>
+                                    <span class="stat-unit">iştirakçı</span>
+                                </div>
+                            </div>
+
+                            <!-- Layihə 2 -->
+                            <div class="stat-card project-card" data-project="pese-fest-ordubad">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm" style="font-weight: 700; color: #333;">PeşəFest
+                                        Ordubad</span>
+                                    <span class="stat-value-lg" style="font-size: 32px; color: #1a3335;"><b
+                                            id="val-pese-ordubad">7500</b></span>
+                                    <span class="stat-unit">iştirakçı</span>
+                                </div>
+                            </div>
+
+                            <!-- Layihə 3 -->
+                            <div class="stat-card project-card" data-project="ixtisas-beledcisi">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm" style="font-weight: 700; color: #333;">İxtisas
+                                        bələdçisi</span>
+                                    <span class="stat-value-lg" style="font-size: 32px; color: #1a3335;"><b
+                                            id="val-ixtisas-beledcisi">837</b></span>
+                                    <span class="stat-unit">nəfər</span>
+                                </div>
+                            </div>
+
+                            <!-- Layihə 4 -->
+                            <div class="stat-card project-card" data-project="kendime-gel">
+                                <div class="stat-info">
+                                    <span class="stat-title-sm" style="font-weight: 700; color: #333;">Kəndimə
+                                        gəl!</span>
+                                    <span class="stat-value-lg" style="font-size: 32px; color: #1a3335;"><b
+                                            id="val-kendime-gel">43</b></span>
+                                    <span class="stat-unit">nəfər</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     İŞSİZLİKDƏN SIĞORTA BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
+     ========================================================== -->
+            <div id="sigorta" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">İşsizlikdən sığorta ödənişlərinə dair göstəricilər</p>
+                </div>
+
+                <!-- ÜST 6 ƏSAS STATİSTİK KART -->
+                <div class="sigorta-top-cards">
+                    <div class="stat-card sigorta-card main-card" data-id="umumi-muraciet">
+                        <div class="stat-info">
+                            <span class="stat-title-sm" style="text-transform: uppercase;">ÜMUMİ MÜRACİƏT</span>
+                            <span class="stat-value-lg"><b id="val-sig-muraciet">1 051</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card sigorta-card" data-id="baxilan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm" style="text-transform: uppercase;">BAXILAN</span>
+                            <span class="stat-value-lg"><b id="val-sig-baxilan">1 035</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card sigorta-card" data-id="imtina-alan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm" style="text-transform: uppercase;">İMTİNA ALAN</span>
+                            <span class="stat-value-lg"><b id="val-sig-imtina">294</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card sigorta-card" data-id="teyinat-alan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm" style="text-transform: uppercase;">TƏYİNAT ALAN</span>
+                            <span class="stat-value-lg"><b id="val-sig-teyinat">741</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card sigorta-card" data-id="teyinati-dayandirilan">
+                        <div class="stat-info">
+                            <span class="stat-title-sm">Təyinata dayandırılan</span>
+                            <span class="stat-value-lg"><b id="val-sig-dayandirilan">651</b></span>
+                        </div>
+                    </div>
+                    <div class="stat-card sigorta-card" data-id="aktiv-odenis">
+                        <div class="stat-info">
+                            <span class="stat-title-sm" style="text-transform: uppercase;">AKTİV ÖDƏNİŞ</span>
+                            <span class="stat-value-lg"><b id="val-sig-aktiv">90</b></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QRAFİKLƏR VƏ FİLTR PANENİ (SOL / SAĞ QURULUŞU) -->
+                <div class="pese-main-grid">
+
+                    <!-- SOL HİSSƏ: Filtrlər və Gender Üzrə Diagram -->
+                    <div class="pese-left-col">
+
+                        <!-- Filtrlər Kartı (Rayon, Dövr, Status) -->
+                        <div class="card pese-filter-card">
+                            <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
+
+                            <form id="sigortaFilterForm" onsubmit="return false;">
+                                <div class="filter-row-item">
+                                    <label for="sigRegionFilter">Rayon</label>
+                                    <select class="dashboard-select" id="sigRegionFilter" name="region"
+                                        onchange="fetchSigortaData()">
+                                        <option value="">Bütün rayonlar</option>
+                                        <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                                        <option value="Şərur">Şərur rayonu</option>
+                                        <option value="Babək">Babək rayonu</option>
+                                        <option value="Ordubad">Ordubad rayonu</option>
+                                        <option value="Culfa">Culfa rayonu</option>
+                                        <option value="Şahbuz">Şahbuz rayonu</option>
+                                        <option value="Kəngərli">Kəngərli rayonu</option>
+                                        <option value="Sədərək">Sədərək rayonu</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-row-item">
+                                    <label for="sigPeriodFilter">Dövr</label>
+                                    <select class="dashboard-select" id="sigPeriodFilter" name="period"
+                                        onchange="fetchSigortaData()">
+                                        <option value="2026-09">2026, sentyabr</option>
+                                        <option value="2026-08">2026, avqust</option>
+                                        <option value="2026-07">2026, iyul</option>
+                                        <option value="2025-ALL">2025, Bütün il</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-row-item">
+                                    <label for="sigStatusFilter">Status</label>
+                                    <select class="dashboard-select" id="sigStatusFilter" name="status"
+                                        onchange="fetchSigortaData()">
+                                        <option value="">Bütün statuslar</option>
+                                        <option value="teyinat">Təyinat alanlar</option>
+                                        <option value="imtina">İmtina alanlar</option>
+                                        <option value="aktiv">Aktiv ödənişdə olanlar</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Gender üzrə Dairəvi Diaqram (% İndikatorları İlə) -->
+                        <div class="card reg-chart-card">
+                            <h3 class="chart-box-title">Gender üzrə</h3>
+                            <div class="pie-chart-flex">
+                                <div class="pie-mockup gender-pie-sigorta">
+                                    <span class="pie-txt sig-g1" id="val-sig-kisi-txt">54%</span>
+                                    <span class="pie-txt sig-g2" id="val-sig-qadin-txt">46%</span>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item"><span class="dot teal"></span> Kişi</div>
+                                    <div class="legend-item"><span class="dot orange"></span> Qadın</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SAĞ HİSSƏ: Rayonlar Üzrə Göstəricilər Üfüqi Sütunlu Qrafik -->
+                    <div class="pese-right-col">
+                        <div class="card reg-chart-card" style="height: 100%;">
+                            <h3 class="chart-box-title">Rayonlar üzrə göstəricilər</h3>
+
+                            <div class="horizontal-bars-single" id="sigortaRegionChart"
+                                style="gap: 16px; padding: 15px 0;">
+
+                                <div class="h-bar-row-single" data-region="Naxçıvan">
+                                    <span class="h-label">Naxçıvan</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 88%;"></div>
+                                        <span class="h-bar-val">619</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Şərur">
+                                    <span class="h-label">Şərur</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 15%;"></div>
+                                        <span class="h-bar-val">51</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Babək">
+                                    <span class="h-label">Babək</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 32%;"></div>
+                                        <span class="h-bar-val">105</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Ordubad">
+                                    <span class="h-label">Ordubad</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 16%;"></div>
+                                        <span class="h-bar-val">52</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Culfa">
+                                    <span class="h-label">Culfa</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 42%;"></div>
+                                        <span class="h-bar-val">144</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Şahbuz">
+                                    <span class="h-label">Şahbuz</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 14%;"></div>
+                                        <span class="h-bar-val">48</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Kəngərli">
+                                    <span class="h-label">Kəngərli</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 8%;"></div>
+                                        <span class="h-bar-val">15</span>
+                                    </div>
+                                </div>
+
+                                <div class="h-bar-row-single" data-region="Sədərək">
+                                    <span class="h-label">Sədərək</span>
+                                    <div class="h-bar-track">
+                                        <div class="bar-teal" style="width: 9%;"></div>
+                                        <span class="h-bar-val">17</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     ƏMƏKHAQQININ BİRGƏ MALİYYƏLƏŞDİRİLMƏSİ BÖLMƏSİ
+     ========================================================== -->
+            <div id="maliyelesdirilme" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Əməkhaqqının birgə maliyyələşdirilməsi proqramının icrasına dair
+                        göstəricilər</p>
+                </div>
+
+                <!-- ÜST FİLTRLƏR VƏ 4 ƏSAS KART (ŞƏKİL 1) -->
+                <div class="maliye-top-layout" style="margin-bottom: 25px;">
+
+                    <!-- Sol Hissə: Filtrlər Paneli -->
+                    <div class="card pese-filter-card" style="margin: 0;">
+                        <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
+                        <form id="maliyeFilterForm" onsubmit="return false;">
+                            <div class="filter-row-item">
+                                <label for="malRegionFilter">Rayon</label>
+                                <select class="dashboard-select" id="malRegionFilter" name="region"
+                                    onchange="fetchMaliyeData()">
+                                    <option value="">Bütün rayonlar</option>
+                                    <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                                    <option value="Şərur">Şərur rayonu</option>
+                                    <option value="Babək">Babək rayonu</option>
+                                    <option value="Ordubad">Ordubad rayonu</option>
+                                    <option value="Culfa">Culfa rayonu</option>
+                                    <option value="Şahbuz">Şahbuz rayonu</option>
+                                    <option value="Kəngərli">Kəngərli rayonu</option>
+                                    <option value="Sədərək">Sədərək rayonu</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-row-item">
+                                <label for="malPeriodFilter">Dövr</label>
+                                <select class="dashboard-select" id="malPeriodFilter" name="period"
+                                    onchange="fetchMaliyeData()">
+                                    <option value="2026-09">2026, sentyabr</option>
+                                    <option value="2026-08">2026, avqust</option>
+                                    <option value="2025-ALL">2025, Bütün il</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-row-item">
+                                <label for="malCompanyFilter">Müəssisələr</label>
+                                <select class="dashboard-select" id="malCompanyFilter" name="company"
+                                    onchange="fetchMaliyeData()">
+                                    <option value="">Bütün müəssisələr</option>
+                                    <option value="dovlet">Dövlət müəssisələri</option>
+                                    <option value="ozel">Özəl müəssisələr</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sağ Hissə: 4 Ədəd Göstərici Kartı -->
+                    <div class="maliye-cards-grid">
+                        <div class="stat-card maliye-card active-card" data-id="isle-temin">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">İşlə təmin olunan</span>
+                                <span class="stat-value-lg"><b id="val-mal-isletemin">203</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="odenis-davam">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">Ödənişi davam edən</span>
+                                <span class="stat-value-lg"><b id="val-mal-davam">47</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="odenis-dayanib">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">Ödənişi dayanıb, əmək fəaliyyəti davam edən</span>
+                                <span class="stat-value-lg"><b id="val-mal-dayanib">52</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="isden-cixan">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">İş yerindən çıxan</span>
+                                <span class="stat-value-lg"><b id="val-mal-cixan">103</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 1-Cİ SIRA QRAFİKLƏR (ŞƏKİL 1) -->
+                <div class="reg-charts-grid" style="margin-bottom: 25px;">
+
+                    <!-- Şəxsin qeydiyyat ünvanı üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Şəxsin qeydiyyat ünvanı üzrə</h3>
+                        <div class="chart-bar-single-container" id="malRegAddressBarChart">
+
+                            <div class="single-bar-group" data-region="Naxçıvan" data-dovlet="2500" data-ozel="2086">
+                                <span class="bar-val">4586</span>
+                                <div class="bar-teal" style="height: 100px;"></div>
+                                <span>Naxçıvan</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>2500</span></div>
+                                    <div><b>Özəl:</b> <span>2086</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şərur" data-dovlet="3000" data-ozel="2462">
+                                <span class="bar-val">5462</span>
+                                <div class="bar-teal" style="height: 120px;"></div>
+                                <span>Şərur</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>3000</span></div>
+                                    <div><b>Özəl:</b> <span>2462</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Babək" data-dovlet="2400" data-ozel="2081">
+                                <span class="bar-val">4481</span>
+                                <div class="bar-teal" style="height: 98px;"></div>
+                                <span>Babək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>2400</span></div>
+                                    <div><b>Özəl:</b> <span>2081</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Ordubad" data-dovlet="1400" data-ozel="1224">
+                                <span class="bar-val">2624</span>
+                                <div class="bar-teal" style="height: 58px;"></div>
+                                <span>Ordubad</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1400</span></div>
+                                    <div><b>Özəl:</b> <span>1224</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Culfa" data-dovlet="1600" data-ozel="1336">
+                                <span class="bar-val">2936</span>
+                                <div class="bar-teal" style="height: 65px;"></div>
+                                <span>Culfa</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1600</span></div>
+                                    <div><b>Özəl:</b> <span>1336</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şahbuz" data-dovlet="800" data-ozel="786">
+                                <span class="bar-val">1586</span>
+                                <div class="bar-teal" style="height: 35px;"></div>
+                                <span>Şahbuz</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>800</span></div>
+                                    <div><b>Özəl:</b> <span>786</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Kəngərli" data-dovlet="1200" data-ozel="1135">
+                                <span class="bar-val">2335</span>
+                                <div class="bar-teal" style="height: 52px;"></div>
+                                <span>Kəngərli</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1200</span></div>
+                                    <div><b>Özəl:</b> <span>1135</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Sədərək" data-dovlet="600" data-ozel="663">
+                                <span class="bar-val">1263</span>
+                                <div class="bar-teal" style="height: 28px;"></div>
+                                <span>Sədərək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>600</span></div>
+                                    <div><b>Özəl:</b> <span>663</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- İş yerinin faktiki ünvanı üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">İş yerinin faktiki ünvanı üzrə</h3>
+                        <div class="chart-bar-single-container" id="malWorkAddressBarChart">
+
+                            <div class="single-bar-group" data-region="Naxçıvan" data-dovlet="2500" data-ozel="2086">
+                                <span class="bar-val">4586</span>
+                                <div class="bar-teal" style="height: 100px;"></div>
+                                <span>Naxçıvan</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>2500</span></div>
+                                    <div><b>Özəl:</b> <span>2086</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şərur" data-dovlet="3000" data-ozel="2462">
+                                <span class="bar-val">5462</span>
+                                <div class="bar-teal" style="height: 120px;"></div>
+                                <span>Şərur</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>3000</span></div>
+                                    <div><b>Özəl:</b> <span>2462</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Babək" data-dovlet="2400" data-ozel="2081">
+                                <span class="bar-val">4481</span>
+                                <div class="bar-teal" style="height: 98px;"></div>
+                                <span>Babək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>2400</span></div>
+                                    <div><b>Özəl:</b> <span>2081</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Ordubad" data-dovlet="1400" data-ozel="1224">
+                                <span class="bar-val">2624</span>
+                                <div class="bar-teal" style="height: 58px;"></div>
+                                <span>Ordubad</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1400</span></div>
+                                    <div><b>Özəl:</b> <span>1224</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Culfa" data-dovlet="1600" data-ozel="1336">
+                                <span class="bar-val">2936</span>
+                                <div class="bar-teal" style="height: 65px;"></div>
+                                <span>Culfa</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1600</span></div>
+                                    <div><b>Özəl:</b> <span>1336</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şahbuz" data-dovlet="800" data-ozel="786">
+                                <span class="bar-val">1586</span>
+                                <div class="bar-teal" style="height: 35px;"></div>
+                                <span>Şahbuz</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>800</span></div>
+                                    <div><b>Özəl:</b> <span>786</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Kəngərli" data-dovlet="1200" data-ozel="1135">
+                                <span class="bar-val">2335</span>
+                                <div class="bar-teal" style="height: 52px;"></div>
+                                <span>Kəngərli</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>1200</span></div>
+                                    <div><b>Özəl:</b> <span>1135</span></div>
+                                </div>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Sədərək" data-dovlet="600" data-ozel="663">
+                                <span class="bar-val">1263</span>
+                                <div class="bar-teal" style="height: 28px;"></div>
+                                <span>Sədərək</span>
+                                <div class="bar-hover-popover">
+                                    <div><b>Dövlət:</b> <span>600</span></div>
+                                    <div><b>Özəl:</b> <span>663</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2-Cİ SIRA QRAFİKLƏR (ŞƏKİL 2) -->
+                <div class="reg-charts-grid" style="margin-bottom: 25px;">
+
+                    <!-- Təhsil səviyyəsi -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
+                        <div class="horizontal-bars-single" id="malEduChart">
+
+                            <div class="h-bar-row-single" data-edu="orta">
+                                <span class="h-label">Orta təhsil</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 80%;"></div>
+                                    <span class="h-bar-val">133</span>
+                                </div>
+                            </div>
+
+                            <div class="h-bar-row-single" data-edu="ortaixtisas">
+                                <span class="h-label">Orta ixtisas təhsili</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 20%;"></div>
+                                    <span class="h-bar-val">20</span>
+                                </div>
+                            </div>
+
+                            <div class="h-bar-row-single" data-edu="ali">
+                                <span class="h-label">Ali təhsil</span>
+                                <div class="h-bar-track">
+                                    <div class="bar-teal" style="width: 40%;"></div>
+                                    <span class="h-bar-val">56</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Məşğulluq statusu -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Məşğulluq statusu</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup status-pie-maliye">
+                                <span class="pie-txt mal-st1" id="val-mal-issiz-txt">140</span>
+                                <span class="pie-txt mal-st2" id="val-mal-isaxtaran-txt">63</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> İşsiz (<span
+                                        id="lbl-mal-issiz">140</span>)</div>
+                                <div class="legend-item"><span class="dot orange"></span> İşaxtaran (torpaq payı olan)
+                                    (<span id="lbl-mal-isaxtaran">63</span>)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 3-CÜ SIRA QRAFİKLƏR (ŞƏKİL 2) -->
+                <div class="reg-charts-grid">
+
+                    <!-- İşəgötürənlər üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">İşəgötürənlər üzrə</h3>
+                        <div class="chart-bar-single-container" id="malEmployersBarChart">
+
+                            <div class="single-bar-group" data-region="Naxçıvan">
+                                <span class="bar-val">4586</span>
+                                <div class="bar-teal" style="height: 100px;"></div>
+                                <span>Naxçıvan</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şərur">
+                                <span class="bar-val">5462</span>
+                                <div class="bar-teal" style="height: 120px;"></div>
+                                <span>Şərur</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Babək">
+                                <span class="bar-val">4481</span>
+                                <div class="bar-teal" style="height: 98px;"></div>
+                                <span>Babək</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Ordubad">
+                                <span class="bar-val">2624</span>
+                                <div class="bar-teal" style="height: 58px;"></div>
+                                <span>Ordubad</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Culfa">
+                                <span class="bar-val">2936</span>
+                                <div class="bar-teal" style="height: 65px;"></div>
+                                <span>Culfa</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Şahbuz">
+                                <span class="bar-val">1586</span>
+                                <div class="bar-teal" style="height: 35px;"></div>
+                                <span>Şahbuz</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Kəngərli">
+                                <span class="bar-val">2335</span>
+                                <div class="bar-teal" style="height: 52px;"></div>
+                                <span>Kəngərli</span>
+                            </div>
+
+                            <div class="single-bar-group" data-region="Sədərək">
+                                <span class="bar-val">1263</span>
+                                <div class="bar-teal" style="height: 28px;"></div>
+                                <span>Sədərək</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Gender üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie-maliye">
+                                <span class="pie-txt mal-g1" id="val-mal-kisi-txt">120</span>
+                                <span class="pie-txt mal-g2" id="val-mal-qadin-txt">83</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot teal"></span> Kişi - <b
+                                        id="lbl-mal-kisi">120</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b
+                                        id="lbl-mal-qadin">83</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     ƏMƏK YARMARKASI BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
+     ========================================================== -->
+            <div id="yarmarka" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Əmək yarmarkalarına dair göstəricilər</p>
+                </div>
+
+                <!-- ÜST FİLTRLƏR VƏ 4 ƏSAS KART (ŞƏKİL 1) -->
+                <div class="maliye-top-layout" style="margin-bottom: 30px;">
+
+                    <!-- Sol Hissə: Filtrlər Paneli -->
+                    <div class="card pese-filter-card" style="margin: 0; min-width: 280px;">
+                        <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
+                        <form id="yarmarkaFilterForm" onsubmit="return false;">
+                            <div class="filter-row-item">
+                                <label for="yarPeriodFilter">Dövr</label>
+                                <select class="dashboard-select" id="yarPeriodFilter" name="period"
+                                    onchange="fetchYarmarkaData()">
+                                    <option value="2026-09">2026, sentyabr</option>
+                                    <option value="2026-08">2026, avqust</option>
+                                    <option value="2025-ALL">2025, Bütün il</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-row-item">
+                                <label for="yarSelectFilter">Yarmarka</label>
+                                <select class="dashboard-select" id="yarSelectFilter" name="fair"
+                                    onchange="fetchYarmarkaData()">
+                                    <option value="">Bütün yarmarkalar</option>
+                                    <option value="naxcivan">Naxçıvan şəhər yarmarkası</option>
+                                    <option value="serur">Şərur rayon yarmarkası</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sağ Hissə: 4 Ədəd Göstərici Kartı -->
+                    <div class="maliye-cards-grid">
+                        <div class="stat-card maliye-card active-card" data-id="istirak-eden">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">Ümumi iştirak edən</span>
+                                <span class="stat-value-lg"><b id="val-yar-istirak">389</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="muessise-sayi">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">Müəssisə sayı</span>
+                                <span class="stat-value-lg"><b id="val-yar-muessise">42</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="vakansiya-sayi">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">Vakansiya sayı</span>
+                                <span class="stat-value-lg"><b id="val-yar-vakansiya">175</b></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card maliye-card" data-id="isle-temin">
+                            <div class="stat-info">
+                                <span class="stat-title-sm">İşlə təmin olunan</span>
+                                <span class="stat-value-lg"><b id="val-yar-temin">82</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ==========================================================
+         1. İŞTİRAKÇILAR ÜZRƏ BLOK (ŞƏKİL 1)
+         ========================================================== -->
+                <h2 class="sub-section-title">İŞTİRAKÇILAR ÜZRƏ</h2>
+                <div class="reg-charts-grid yarmarka-three-col" style="margin-bottom: 35px;">
+
+                    <!-- Qeydiyyat ünvanı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Qeydiyyat ünvanı</h3>
+                        <div class="chart-bar-single-container" id="yarParticipantBarChart">
+                            <div class="single-bar-group" data-region="Naxçıvan"><span class="bar-val">4586</span>
+                                <div class="bar-teal" style="height: 100px;"></div><span>Naxçıvan şəhəri</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şərur"><span class="bar-val">5462</span>
+                                <div class="bar-teal" style="height: 120px;"></div><span>Şərur rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Babək"><span class="bar-val">4481</span>
+                                <div class="bar-teal" style="height: 98px;"></div><span>Babək rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Ordubad"><span class="bar-val">2624</span>
+                                <div class="bar-teal" style="height: 58px;"></div><span>Ordubad rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Culfa"><span class="bar-val">2936</span>
+                                <div class="bar-teal" style="height: 65px;"></div><span>Culfa rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şahbuz"><span class="bar-val">1586</span>
+                                <div class="bar-teal" style="height: 35px;"></div><span>Şahbuz rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Kəngərli"><span class="bar-val">2335</span>
+                                <div class="bar-teal" style="height: 52px;"></div><span>Kəngərli rayonu</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Sədərək"><span class="bar-val">1263</span>
+                                <div class="bar-teal" style="height: 28px;"></div><span>Sədərək rayonu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie-part-yar">
+                                <span class="pie-txt yar-p-g1">183</span>
+                                <span class="pie-txt yar-p-g2">206</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Kişi - <b>183</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b>206</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Təhsil səviyyəsi -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup edu-pie-part-yar">
+                                <span class="pie-txt yar-e1">110</span>
+                                <span class="pie-txt yar-e2">79</span>
+                                <span class="pie-txt yar-e3">200</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Ali təhsil - <b>110</b>
+                                </div>
+                                <div class="legend-item"><span class="dot orange"></span> Orta ixtisas təhsili -
+                                    <b>79</b>
+                                </div>
+                                <div class="legend-item"><span class="dot green-dark"></span> Orta təhsil - <b>200</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ==========================================================
+         2. İŞLƏ TƏMİN OLUNANLAR ÜZRƏ BLOK (ŞƏKİL 2)
+         ========================================================== -->
+                <h2 class="sub-section-title">İŞLƏ TƏMİN OLUNANLAR ÜZRƏ</h2>
+                <div class="reg-charts-grid yarmarka-three-col" style="margin-bottom: 35px;">
+
+                    <!-- Qeydiyyat ünvanı -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Qeydiyyat ünvanı</h3>
+                        <div class="chart-bar-single-container" id="yarEmployedBarChart">
+                            <div class="single-bar-group" data-region="Naxçıvan"><span class="bar-val">4586</span>
+                                <div class="bar-teal" style="height: 100px;"></div><span>Naxçıvan</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şərur"><span class="bar-val">5462</span>
+                                <div class="bar-teal" style="height: 120px;"></div><span>Şərur</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Babək"><span class="bar-val">4481</span>
+                                <div class="bar-teal" style="height: 98px;"></div><span>Babək</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Ordubad"><span class="bar-val">2624</span>
+                                <div class="bar-teal" style="height: 58px;"></div><span>Ordubad</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Culfa"><span class="bar-val">2936</span>
+                                <div class="bar-teal" style="height: 65px;"></div><span>Culfa</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Şahbuz"><span class="bar-val">1586</span>
+                                <div class="bar-teal" style="height: 35px;"></div><span>Şahbuz</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Kəngərli"><span class="bar-val">2335</span>
+                                <div class="bar-teal" style="height: 52px;"></div><span>Kəngərli</span>
+                            </div>
+                            <div class="single-bar-group" data-region="Sədərək"><span class="bar-val">1263</span>
+                                <div class="bar-teal" style="height: 28px;"></div><span>Sədərək</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender üzrə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Gender üzrə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup gender-pie-emp-yar">
+                                <span class="pie-txt yar-e-g1">48</span>
+                                <span class="pie-txt yar-e-g2">34</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Kişi - <b>48</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qadın - <b>34</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Təhsil səviyyəsi -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup edu-pie-emp-yar">
+                                <span class="pie-txt yar-ee1">17</span>
+                                <span class="pie-txt yar-ee2">11</span>
+                                <span class="pie-txt yar-ee3">54</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Ali təhsil - <b>17</b>
+                                </div>
+                                <div class="legend-item"><span class="dot orange"></span> Orta ixtisas təhsili -
+                                    <b>11</b>
+                                </div>
+                                <div class="legend-item"><span class="dot green-dark"></span> Orta təhsil - <b>54</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ==========================================================
+         3. VAKANSİYALAR ÜZRƏ BLOK (ŞƏKİL 2)
+         ========================================================== -->
+                <h2 class="sub-section-title">VAKANSİYALAR ÜZRƏ</h2>
+                <div class="reg-charts-grid yarmarka-three-col">
+
+                    <!-- Müəssisə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Müəssisə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup company-pie-vac-yar">
+                                <span class="pie-txt yar-c1">8</span>
+                                <span class="pie-txt yar-c2">36</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Dövlət - <b>8</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Özəl - <b>36</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vakansiya -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Vakansiya</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup vacancy-pie-vac-yar">
+                                <span class="pie-txt yar-v1">65</span>
+                                <span class="pie-txt yar-v2">110</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Dövlət - <b>65</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Özəl - <b>110</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vakansiya təhsil tələbi -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Vakansiya təhsil tələbi</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup req-edu-pie-vac-yar">
+                                <span class="pie-txt yar-ve1">110</span>
+                                <span class="pie-txt yar-ve2">79</span>
+                                <span class="pie-txt yar-ve3">200</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-bright"></span> Ali təhsil - <b>110</b>
+                                </div>
+                                <div class="legend-item"><span class="dot orange"></span> Orta ixtisas təhsili -
+                                    <b>79</b>
+                                </div>
+                                <div class="legend-item"><span class="dot green-dark"></span> Orta təhsil - <b>200</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================================
+     VAKANSİYA BANKI BÖLMƏSİ (BACKEND VƏ INTERAKTİV QRAFİKLƏR İLƏ)
+     ========================================================== -->
+            <div id="vakansiya" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Vakansiya bankına dair göstəricilər</p>
+                </div>
+
+                <!-- Filtrləmə Paneli (SQL parametrini tutmaq üçün id və name atributları) -->
+                <form id="vacancyFilterForm" class="filter-bar" onsubmit="return false;">
+                    <div class="filter-item">
+                        <label for="vacYearFilter">İL</label>
+                        <select class="dashboard-select" id="vacYearFilter" name="year" onchange="fetchVacancyData()">
+                            <option value="">Bütün illər</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="vacMonthFilter">AY</label>
+                        <select class="dashboard-select" id="vacMonthFilter" name="month" onchange="fetchVacancyData()">
+                            <option value="">Bütün aylar</option>
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6">İyun</option>
+                            <option value="7">İyul</option>
+                            <option value="8">Avqust</option>
+                            <option value="9">Sentyabr</option>
+                            <option value="10">Oktyabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="vacRegionFilter">Rayon / Şəhər</label>
+                        <select class="dashboard-select" id="vacRegionFilter" name="region"
+                            onchange="fetchVacancyData()">
+                            <option value="">Bütün rayonlar</option>
+                            <option value="Naxçıvan">Naxçıvan şəhəri</option>
+                            <option value="Şərur">Şərur rayonu</option>
+                            <option value="Babək">Babək rayonu</option>
+                            <option value="Ordubad">Ordubad rayonu</option>
+                            <option value="Culfa">Culfa rayonu</option>
+                            <option value="Şahbuz">Şahbuz rayonu</option>
+                            <option value="Kəngərli">Kəngərli rayonu</option>
+                            <option value="Sədərək">Sədərək rayonu</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- ƏSAS MƏZMUN DÜZƏNİ (SOL KART VƏ SAĞ QRAFİK) -->
+                <div class="vac-main-grid" style="margin-bottom: 25px;">
+
+                    <!-- SOL HİSSƏ: Dövrün Sonuna Vakansiya Kartı -->
+                    <div class="vac-left-col">
+                        <div class="stat-card vac-total-card">
+                            <span class="vac-card-subtitle">Dövrün sonuna</span>
+                            <div class="stat-info" style="margin-top: 15px;">
+                                <span class="stat-title-sm"
+                                    style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">VAKANSİYA</span>
+                                <span class="stat-value-lg" style="font-size: 38px; color: #1f3d40;"><b
+                                        id="val-total-vac">3 543</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAĞ HİSSƏ: İş yerinin faktiki ünvanı üzrə Sütunlu Qrafik -->
+                    <div class="vac-right-col">
+                        <div class="card reg-chart-card">
+                            <h3 class="chart-box-title">İş yerinin faktiki ünvanı üzrə</h3>
+
+                            <div class="chart-bar-single-container" id="vacAddressBarChart"
+                                style="height: 200px; padding-top: 30px;">
+
+                                <!-- [NOT FOR BACKEND]: data-dovlet və data-qeyridovlet atributları hover edildikdə açılan popover daxilində görünür -->
+                                <div class="single-bar-group" data-region="Naxçıvan" data-dovlet="1300"
+                                    data-qeyridovlet="138">
+                                    <span class="bar-val">1438</span>
+                                    <div class="bar-teal" style="height: 120px;"></div>
+                                    <span>Naxçıvan şəhəri</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>1300</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>138</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Şərur" data-dovlet="580"
+                                    data-qeyridovlet="44">
+                                    <span class="bar-val">624</span>
+                                    <div class="bar-teal" style="height: 60px;"></div>
+                                    <span>Şərur rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>580</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>44</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Babək" data-dovlet="330"
+                                    data-qeyridovlet="24">
+                                    <span class="bar-val">354</span>
+                                    <div class="bar-teal" style="height: 35px;"></div>
+                                    <span>Babək rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>330</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>24</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Ordubad" data-dovlet="230"
+                                    data-qeyridovlet="17">
+                                    <span class="bar-val">247</span>
+                                    <div class="bar-teal" style="height: 25px;"></div>
+                                    <span>Ordubad rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>230</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>17</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Culfa" data-dovlet="170"
+                                    data-qeyridovlet="11">
+                                    <span class="bar-val">181</span>
+                                    <div class="bar-teal" style="height: 18px;"></div>
+                                    <span>Culfa rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>170</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>11</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Şahbuz" data-dovlet="240"
+                                    data-qeyridovlet="9">
+                                    <span class="bar-val">249</span>
+                                    <div class="bar-teal" style="height: 26px;"></div>
+                                    <span>Şahbuz rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>240</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>9</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Kəngərli" data-dovlet="230"
+                                    data-qeyridovlet="2">
+                                    <span class="bar-val">232</span>
+                                    <div class="bar-teal" style="height: 24px;"></div>
+                                    <span>Kəngərli rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>230</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>2</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="single-bar-group" data-region="Sədərək" data-dovlet="216"
+                                    data-qeyridovlet="2">
+                                    <span class="bar-val">218</span>
+                                    <div class="bar-teal" style="height: 22px;"></div>
+                                    <span>Sədərək rayonu</span>
+                                    <div class="bar-hover-popover">
+                                        <div><b>Dövlət:</b> <span>216</span></div>
+                                        <div><b>Qeyri-dövlət:</b> <span>2</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ALT HİSSƏ: MÜLKİYYƏT NÖVÜ VƏ QULLUQÇU / FƏHLƏ DİAQLAMLARI -->
+                <div class="reg-charts-grid">
+
+                    <!-- Mülkiyyət növü -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Mülkiyyət növü</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup property-pie-vac">
+                                <span class="pie-txt vac-p1" id="val-dovlet-txt">3296</span>
+                                <span class="pie-txt vac-p2" id="val-qeyridovlet-txt">247</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-dark"></span> Dövlət - <b
+                                        id="lbl-dovlet">3296</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Qeyri dövlət - <b
+                                        id="lbl-qeyridovlet">247</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Qulluqçu / Fəhlə -->
+                    <div class="card reg-chart-card">
+                        <h3 class="chart-box-title">Qulluqçu / Fəhlə</h3>
+                        <div class="pie-chart-flex">
+                            <div class="pie-mockup worker-pie-vac">
+                                <span class="pie-txt vac-w1" id="val-qulluqcu-txt">2024</span>
+                                <span class="pie-txt vac-w2" id="val-fehle-txt">1519</span>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot blue-dark"></span> Qulluqçu - <b
+                                        id="lbl-qulluqcu">2024</b></div>
+                                <div class="legend-item"><span class="dot orange"></span> Fəhlə - <b
+                                        id="lbl-fehle">1519</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- STRUKTUR BÖLMƏSİ - MÜASİR İYERARXİK DİZAYN -->
+            <div id="struktur" class="content-section">
+
+                <!-- Səhifə Başlığı -->
+                <div class="report-header">
+                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
+                    <p class="page-subtitle">Dövlət Məşğulluq Agentliyinin müasir idarəetmə strukturu</p>
+                </div>
+
+                <!-- Struktur Ağacının Əsas Konteyneri -->
+                <div class="org-tree-container">
+
+                    <!-- 1. İDARƏ HEYƏTİ SƏVİYYƏSİ -->
+                    <div class="org-level">
+                        <h3 class="org-section-title"><i class="fas fa-sitemap"></i> İdarə Heyəti</h3>
+
+                        <!-- Sədr -->
+                        <div class="org-node chairman">
+                            <div class="node-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="node-content">
+                                <h4>İdarə Heyətinin Sədri</h4>
+                                <span>Rəhbərlik</span>
+                            </div>
+                        </div>
+
+                        <!-- Sədrin müavinləri -->
+                        <div class="node-connector-vertical"></div>
+                        <div class="org-row">
+                            <div class="org-node">
+                                <div class="node-icon"><i class="fas fa-user-shield"></i></div>
+                                <div class="node-content">
+                                    <h4>İdarə Heyəti sədrinin müavini</h4>
+                                </div>
+                            </div>
+                            <div class="org-node">
+                                <div class="node-icon"><i class="fas fa-user-shield"></i></div>
+                                <div class="node-content">
+                                    <h4>İdarə Heyəti sədrinin müavini</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Köməkçi, Mətbuat, Referent -->
+                        <div class="org-row small-gap">
+                            <div class="org-node sm">İdarə Heyəti sədrinin köməkçisi</div>
+                            <div class="org-node sm">Mütəxəssis - hüquqşünas</div>
+                            <div class="org-node sm">Mütəxəssis – mətbuat</div>
+                            <div class="org-node sm">Referent</div>
+                        </div>
+                    </div>
+
+                    <!-- 2. ŞÖBƏLƏR SƏVİYYƏSİ -->
+                    <div class="org-level">
+                        <h3 class="org-section-title"><i class="fas fa-building"></i> Şöbələr</h3>
+                        <div class="org-grid-3">
+                            <div class="org-node dept">Özünüməşğulluğun təşkili və peşə hazırlığı şöbəsi</div>
+                            <div class="org-node dept">İctimai işlər və işsizlikdən sığorta şöbəsi</div>
+                            <div class="org-node dept">İşsiz şəxslər, sosial tərəfdaşlarla iş və birgə maliyyələşmə
+                                şöbəsi</div>
+                            <div class="org-node dept">Müraciətlər və yerli bölmələrlə iş şöbəsi</div>
+                            <div class="org-node dept">Maliyyə və təminat şöbəsi</div>
+                            <div class="org-node dept">Daxili nəzarət və monitorinq şöbəsi</div>
+                        </div>
+                    </div>
+
+                    <!-- 3. SEKTORLAR VƏ RAYON SEKTORLARI -->
+                    <div class="org-level">
+                        <h3 class="org-section-title"><i class="fas fa-layer-group"></i> Sektorlar və Rayon Bölmələri
+                        </h3>
+                        <div class="org-grid-4">
+                            <div class="org-node sector">Mühasibat uçotu sektoru</div>
+                            <div class="org-node sector">Satınalmalar və təminat sektoru</div>
+                            <div class="org-node sector">Daxili nəzarət sektoru</div>
+                            <div class="org-node sector">Monitorinq sektoru</div>
+                            <div class="org-node sector">Kadrlar sektoru</div>
+                            <div class="org-node sector">Sənədlərlə iş sektoru</div>
+                            <div class="org-node sector">Qiymətləndirmə və təhlil sektoru</div>
+                            <div class="org-node sector">Naxçıvan şəhər sektoru</div>
+                            <div class="org-node sector">Şərur rayon sektoru</div>
+                            <div class="org-node sector">Babək rayon sektoru</div>
+                            <div class="org-node sector">Ordubad rayon sektoru</div>
+                            <div class="org-node sector">Culfa rayon sektoru</div>
+                            <div class="org-node sector">Şahbuz rayon sektoru</div>
+                            <div class="org-node sector">Kəngərli rayon sektoru</div>
+                            <div class="org-node sector">Sədərək rayon sektoru</div>
+                        </div>
+                    </div>
+
+                    <!-- 4. TABE MÜƏSSİSƏLƏR -->
+                    <div class="org-level">
+                        <h3 class="org-section-title"><i class="fas fa-handshake"></i> Tabe Müəssisələr</h3>
+                        <div class="org-row">
+                            <div class="org-node enterprise">Naxçıvan Regional Peşə Hazırlığı Mərkəzi</div>
+                            <div class="org-node enterprise">Naxçıvan DOST İş Mərkəzi</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Xarici JS faylı -->
+    <script src="script.js"></script>
+</body>
+
+</html>

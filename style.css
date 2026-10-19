@@ -1,0 +1,2316 @@
+/* --- ÜMUMİ RESET VƏ FONT --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    height: 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icon-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    position: relative;
+}
+
+.nav-icon-btn .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.lang-select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* --- MAIN CONTAINER --- */
+.main-container {
+    display: flex;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    width: 100%;
+}
+
+/* --- SIDEBAR (Menyu Bar) --- */
+.sidebar {
+    width: 280px;
+    background-color: #2b5256;
+    /* İstədiyiniz əsas rəng kodu */
+    color: white;
+    height: 100%;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    z-index: 1000;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.user-profile {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #2b5256;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.user-info h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.user-info p {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.sidebar-menu li {
+    position: relative;
+}
+
+.sidebar-menu>li>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu a .menu-title-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Submenu */
+.submenu {
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.15);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.submenu li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 12px;
+    padding: 10px 20px 10px 45px;
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.submenu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.submenu li a i {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.submenu li a span {
+    text-align: left;
+    width: 100%;
+}
+
+li.dropdown.active .submenu {
+    max-height: 1200px;
+}
+
+li.dropdown.active>a i.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+.sidebar-menu i.fa-chevron-right {
+    transition: transform 0.3s;
+    font-size: 11px;
+}
+
+/* --- CONTENT AREA --- */
+.content {
+    margin-left: 280px;
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed~.content {
+    margin-left: 0;
+}
+
+.content-section {
+    display: none !important;
+}
+
+.content-section.active {
+    display: block !important;
+}
+
+.page-title {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- İNTERAKTİV HESABAT VƏ FİLtrlər --- */
+.report-header {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 10px;
+}
+
+.report-header .page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a3335;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    background: #eef2f3;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #d5dadf;
+}
+
+.filter-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-item label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+}
+
+.dashboard-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 13px;
+    color: #333;
+}
+
+/* --- STATİSTİK KARTLAR VƏ HOVER POPOVER MEXANİZMİ --- */
+#umumi-baxis {
+    overflow: visible !important;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px 20px;
+    position: relative;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f7f9f9 100%);
+    border: 2px solid #b2c2c4;
+    border-radius: 6px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.stat-card:hover {
+    border-color: #2b5256;
+    box-shadow: 0 6px 14px rgba(43, 82, 86, 0.2);
+    z-index: 100;
+}
+
+.stat-icon {
+    font-size: 32px;
+    color: #2b5256;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.stat-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2b5256;
+    line-height: 1.3;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    background: #e3ebec;
+    padding: 5px 15px;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
+    border: 1px solid #d0dadc;
+}
+
+/* --- SAĞ TƏRƏFDƏ AÇILAN OX XƏTTLİ POPOVER --- */
+.stat-popover {
+    display: none;
+    position: absolute;
+    left: calc(100% + 25px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 240px;
+    background: #f4f5f7;
+    border: 1.5px solid #222;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 200;
+    font-size: 12px;
+    color: #333;
+    pointer-events: none;
+}
+
+/* Birləşdirici qara xətt */
+.stat-popover::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: 25px;
+    height: 1.5px;
+    background-color: #222;
+}
+
+/* Xəttin kart tərəfindəki dairəvi nöqtəsi */
+.stat-popover::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 23px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #222;
+    border-radius: 50%;
+}
+
+/* Kursor kartın üzərinə gələndə popover-i aktivləşdiririk */
+.stat-card:hover .stat-popover {
+    display: block !important;
+    animation: popoverSlideIn 0.15s ease-out forwards;
+}
+
+/* Sağ sütundakı kartlar üçün popover-in sola açılması (ekrandan daşmaması üçün) */
+.stats-grid .stat-card:nth-child(3n) .stat-popover {
+    left: auto;
+    right: calc(100% + 25px);
+}
+
+.stats-grid .stat-card:nth-child(3n) .stat-popover::before {
+    right: auto;
+    left: 100%;
+}
+
+.stats-grid .stat-card:nth-child(3n) .stat-popover::after {
+    right: auto;
+    left: calc(100% + 23px);
+}
+
+.popover-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.popover-group {
+    margin-bottom: 10px;
+}
+
+.popover-group:last-child {
+    margin-bottom: 0;
+}
+
+.popover-group div {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 2px;
+}
+
+.popover-group div b {
+    font-weight: 700;
+    color: #111;
+    font-style: italic;
+}
+
+@keyframes popoverSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* --- RESPONSİV (MOBİL VƏ PLANŞET) ÜÇÜN --- */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-popover {
+        position: fixed;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 280px;
+    }
+
+    .stat-popover::before,
+    .stat-popover::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0 !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   QEYDİYYAT (İŞSİZ VƏ İŞAXTARANLAR) BÖLMƏSİNİN STİLLƏRİ
+   ========================================================== */
+
+/* Üst iki böyük kartın yerləşməsi */
+.reg-top-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.reg-main-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 8px;
+    padding: 20px 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.stat-title-sm {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+
+.stat-value-lg {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a3335;
+    display: block;
+    margin: 5px 0 2px 0;
+}
+
+.stat-unit {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Cədvəl Dizaynı (Əmək qabiliyyətli əhali / İşsizlik statusu) */
+.reg-table-container {
+    padding: 0;
+    margin-bottom: 25px;
+    overflow-x: auto;
+    border: 1px solid #2b5256;
+}
+
+.reg-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 13px;
+}
+
+.reg-info-table th {
+    background-color: #2b5256;
+    color: white;
+    padding: 10px;
+    border: 1px solid #1f3d40;
+    font-weight: 600;
+}
+
+.reg-info-table td {
+    padding: 12px;
+    border: 1px solid #d5dadf;
+    background-color: #ffffff;
+    color: #222;
+    font-size: 15px;
+}
+
+/* Qrafiklər üçün Grid Konteyneri (2 sütunlu düzən) */
+.reg-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.reg-chart-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+}
+
+.chart-box-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a3335;
+    margin-bottom: 15px;
+}
+
+/* Sütunlu Diaqram (Bar Chart) Simulyasiyası */
+.bar-chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 180px;
+    padding-top: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    font-size: 10px;
+    color: #555;
+}
+
+.bars {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 150px;
+}
+
+.bar-teal {
+    width: 8px;
+    background-color: #2b5256;
+    border-radius: 2px 2px 0 0;
+}
+
+.bar-orange {
+    width: 8px;
+    background-color: #e67e22;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Dairəvi Diaqram (Pie Chart) və Açıqlamalar */
+.pie-chart-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.pie-mockup {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(#2b5256 0deg 240deg, #e67e22 240deg 330deg, #007bff 330deg 360deg);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gender-pie {
+    background: conic-gradient(#2b5256 0deg 210deg, #e67e22 210deg 360deg);
+}
+
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    color: #333;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.dot.teal {
+    background-color: #2b5256;
+}
+
+.dot.orange {
+    background-color: #e67e22;
+}
+
+.dot.blue {
+    background-color: #007bff;
+}
+
+/* Üfüqi Sütunlar (Horizontal Bar Chart - Təhsil səviyyəsi üçün) */
+.horizontal-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.h-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.h-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+.h-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #f1f3f5;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.h-bars .bar-teal,
+.h-bars .bar-orange {
+    height: 10px;
+    border-radius: 2px;
+}
+
+/* Responsiv Tənzimləmələr */
+@media (max-width: 1024px) {
+
+    .reg-charts-grid,
+    .reg-top-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   MÜASİR STRUKTUR (ORGANIGRAM) ÜSLÜBLƏRİ
+   ========================================================== */
+
+.org-tree-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 10px 0 40px 0;
+}
+
+.org-level {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.org-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b5256;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #eef2f3;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* Struktur qovşaqları (Nodes) ümumi dizaynı */
+.org-node {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f7f6 100%);
+    border: 1.5px solid #b2c2c4;
+    border-radius: 8px;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2b5256;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.org-node:hover {
+    transform: translateY(-3px);
+    border-color: #2b5256;
+    box-shadow: 0 6px 15px rgba(43, 82, 86, 0.15);
+    background: #2b5256;
+    color: #ffffff;
+}
+
+.org-node:hover h4 {
+    color: #ffffff;
+}
+
+/* Sədr üçün xüsusi böyük qutu */
+.org-node.chairman {
+    background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%);
+    color: #ffffff;
+    border-color: #1a3335;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 18px;
+}
+
+.org-node.chairman h4 {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.node-icon {
+    font-size: 20px;
+    color: #2b5256;
+}
+
+.org-node.chairman .node-icon {
+    color: #ffffff;
+}
+
+.node-content h4 {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.node-content span {
+    font-size: 11px;
+    color: #777;
+    font-weight: 400;
+}
+
+/* Sıralar və Grid sistemləri */
+.org-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.org-row.small-gap {
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.org-node.sm {
+    padding: 10px 15px;
+    font-size: 12px;
+    background: #f9fbfb;
+}
+
+.org-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.org-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.org-node.dept {
+    border-left: 4px solid #2b5256;
+}
+
+.org-node.sector {
+    border-left: 4px solid #e67e22;
+    font-size: 12px;
+    padding: 12px;
+}
+
+.org-node.enterprise {
+    border-left: 4px solid #007bff;
+    background: #eef5ff;
+}
+
+/* Responsiv Tənzimləmələr (Mobil və Planşetlər üçün) */
+@media (max-width: 1024px) {
+
+    .org-grid-3,
+    .org-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .org-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .org-grid-3,
+    .org-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   ƏSAS SƏHİFƏ VƏ QEYDLƏR (NOTES) STİLLƏRİ
+   ========================================================== */
+
+.about-site-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f7f6 100%);
+    border-left: 5px solid #2b5256;
+    padding: 25px;
+}
+
+.about-content h2 {
+    font-size: 18px;
+    color: #2b5256;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-content p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Qeydlər bölməsi */
+.notes-section-card {
+    background: #ffffff;
+    padding: 25px;
+}
+
+.notes-header h3 {
+    font-size: 18px;
+    color: #1a3335;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.notes-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Qeyd yazmaq üçün form */
+.add-note-box {
+    background: #eef2f3;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d5dadf;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.dashboard-textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 13px;
+    color: #333;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.btn-save-note {
+    background-color: #2b5256;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-save-note:hover {
+    background-color: #1f3d40;
+}
+
+/* Qeydlər toru (Grid) */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.note-card {
+    background: #fffdf5;
+    border: 1px solid #e2dcc8;
+    border-top: 4px solid #e67e22;
+    border-radius: 6px;
+    padding: 18px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s;
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.note-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+}
+
+.note-card-header h4 {
+    font-size: 15px;
+    color: #2b5256;
+    font-weight: 700;
+}
+
+.note-date {
+    font-size: 11px;
+    color: #888;
+    margin-right: 20px;
+}
+
+.note-card p {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+    padding-right: 20px;
+}
+
+.btn-delete-note {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.btn-delete-note:hover {
+    color: #e74c3c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   İŞLƏ TƏMİN OLUNMA BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Üst Kartlar Düzəlişi */
+.emp-top-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.emp-card-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.emp-card-group.flex-3 {
+    flex: 3;
+}
+
+.emp-group-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a3335;
+}
+
+.emp-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.emp-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.main-emp-card {
+    border: 1.5px solid #2b5256;
+}
+
+.stat-value-md {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a3335;
+    display: block;
+    margin: 4px 0 2px 0;
+}
+
+/* Sütunlu Qrafiklər (Tək rəngli yaşıl bar-lar) */
+.chart-bar-single-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 180px;
+    padding-top: 25px;
+    border-bottom: 1px solid #ccc;
+}
+
+.single-bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #555;
+    text-align: center;
+    flex: 1;
+}
+
+.bar-val {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e67e22;
+}
+
+.single-bar-group .bar-teal {
+    width: 14px;
+    background-color: #2b5256;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Kateqoriyalar üçün sıx sütunlar */
+.category-bars .single-bar-group .bar-teal {
+    width: 10px;
+}
+
+.category-bars .single-bar-group span:last-child {
+    font-size: 8px;
+    line-height: 1.1;
+    max-width: 50px;
+}
+
+/* Üfüqi Sütunlar (Təhsil səviyyəsi üçün) */
+.horizontal-bars-single {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.h-bar-row-single {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.h-bar-track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f1f3f5;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.h-bar-track .bar-teal {
+    height: 14px;
+    border-radius: 3px;
+    background-color: #2b5256;
+}
+
+.h-bar-val {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e67e22;
+}
+
+/* Dairəvi Diaqramların Dəqiq Rəng Tənzimlənməsi */
+.status-pie-mock {
+    background: conic-gradient(#2b5256 0deg 210deg, #e67e22 210deg 290deg, #007bff 290deg 360deg);
+}
+
+.gender-pie-mock {
+    background: conic-gradient(#2b5256 0deg 230deg, #e67e22 230deg 360deg);
+}
+
+.pie-mockup {
+    position: relative;
+}
+
+.pie-txt {
+    position: absolute;
+    font-size: 10px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.pie-txt.p1 {
+    top: 40%;
+    left: 60%;
+}
+
+.pie-txt.p2 {
+    top: 25%;
+    left: 25%;
+}
+
+.pie-txt.p3 {
+    bottom: 20%;
+    left: 35%;
+}
+
+.pie-txt.g1 {
+    top: 40%;
+    left: 60%;
+}
+
+.pie-txt.g2 {
+    top: 30%;
+    left: 30%;
+}
+
+/* Responsiv Tənzimləmə */
+@media (max-width: 1024px) {
+    .emp-top-cards {
+        flex-direction: column;
+    }
+
+    .emp-sub-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .emp-sub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-bar-single-container {
+        overflow-x: auto;
+    }
+}
+
+/* ==========================================================
+   İŞLƏ TƏMİN OLUNMA BÖLMƏSİ — TAB LƏBƏLƏRİ VƏ HOVER POPOVER STİLLƏRİ
+   ========================================================== */
+
+/* Active Tab Effekti */
+.emp-card {
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.emp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(43, 82, 86, 0.18);
+    border-color: #2b5256;
+}
+
+/* Seçilmiş Tab Haqqında Görünüş */
+.emp-card.active-tab {
+    border: 2px solid #2b5256 !important;
+    background: #eef5f5 !important;
+    box-shadow: 0 4px 10px rgba(43, 82, 86, 0.2) !important;
+}
+
+.emp-card.active-tab::after {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2b5256;
+}
+
+/* 
+  HOVER POPOVER DİZAYNI (Qrafiklərin üstünə maus gəldikdə açılan Kölgəli Popover)
+  [NOT FOR BACKEND]: Həm dik sütunlar (single-bar-group), həm də üfüqi sətirlər (h-bar-track) üçün keçərlidir.
+*/
+.single-bar-group,
+.h-bar-track {
+    position: relative;
+    cursor: pointer;
+}
+
+.bar-hover-popover {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #2b5256;
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    z-index: 120;
+    white-space: nowrap;
+    font-size: 11px;
+    color: #333;
+    pointer-events: none;
+}
+
+/* Popover-in ox işarəsi */
+.bar-hover-popover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.bar-hover-popover div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    line-height: 1.4;
+}
+
+.bar-hover-popover b {
+    color: #2b5256;
+}
+
+/* Hover zamanı Popover-i göstərmək */
+.single-bar-group:hover .bar-hover-popover,
+.h-bar-track:hover .bar-hover-popover {
+    display: block !important;
+    animation: barPopoverFadeIn 0.2s ease-in-out forwards;
+}
+
+@keyframes barPopoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* ==========================================================
+   PEŞƏ HAZIRLIĞI KURSLARI BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Üst 5 Statistik Kartın Yan-Yana Düzülüşü */
+.pese-top-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.pese-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+
+.pese-card.active-card {
+    border: 1.5px solid #2b5256;
+}
+
+/* Sol və Sağ Şəbəkə (Grid) Düzən */
+.pese-main-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.pese-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Sol Tərəfdəki Filtr Formu Stilləri */
+.pese-filter-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.filter-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.filter-row-item:last-child {
+    margin-bottom: 0;
+}
+
+.filter-row-item label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    width: 80px;
+}
+
+.filter-row-item .dashboard-select {
+    flex: 1;
+    padding: 8px 12px;
+}
+
+/* Şəkildəki Gender Diaqramı Rəng Birləşməsi */
+.gender-pie-pese {
+    background: conic-gradient(#2b5256 0deg 210deg, #e67e22 210deg 360deg);
+}
+
+/* Responsivlik (Mobil və Planşet Ekranda) */
+@media (max-width: 1024px) {
+    .pese-top-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pese-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .pese-top-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   VAKANSİYA BANKI BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Sol Kart və Sağ Qrafik Düzəlişi */
+.vac-main-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.vac-left-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.vac-total-card {
+    background: #ffffff;
+    border: 1.5px solid #2b5256;
+    border-radius: 16px;
+    padding: 30px 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.vac-card-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a3335;
+}
+
+/* Şəkildəki Dairəvi Diaqramların Dəqiq Rəngləri (Göy və Narıncı) */
+.dot.blue-dark {
+    background-color: #2b5278;
+}
+
+.property-pie-vac {
+    background: conic-gradient(#2b5278 0deg 330deg, #e67e22 330deg 360deg);
+}
+
+.worker-pie-vac {
+    background: conic-gradient(#2b5278 0deg 215deg, #e67e22 215deg 360deg);
+}
+
+/* Diaqram üzərindəki mətnlərin koordinatları */
+.pie-txt.vac-p1 {
+    top: 45%;
+    left: 55%;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.pie-txt.vac-p2 {
+    top: 12%;
+    left: 50%;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 9px;
+}
+
+.pie-txt.vac-w1 {
+    top: 40%;
+    left: 60%;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.pie-txt.vac-w2 {
+    top: 30%;
+    left: 25%;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* Responsivlik (Mobil və Planşetlər üçün) */
+@media (max-width: 1024px) {
+    .vac-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   İŞSİZLİKDƏN SIĞORTA BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Üst 6 Statistik Kartın Düzülüşü */
+.sigorta-top-cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.sigorta-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 18px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+
+.sigorta-card.main-card {
+    border: 1.5px solid #2b5256;
+}
+
+/* Gender Diaqramı Rəng və Mətn Tənzimləmələri */
+.gender-pie-sigorta {
+    background: conic-gradient(#2b5256 0deg 194deg, #e67e22 194deg 360deg);
+}
+
+.pie-txt.sig-g1 {
+    top: 40%;
+    left: 60%;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 11px;
+}
+
+.pie-txt.sig-g2 {
+    top: 35%;
+    left: 28%;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 11px;
+}
+
+/* Responsivlik (Mobil və Planşetlər üçün) */
+@media (max-width: 1200px) {
+    .sigorta-top-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sigorta-top-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .sigorta-top-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   PEŞƏYÖNÜMLÜ MƏSLƏHƏT XİDMƏTİ BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+.orient-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.orient-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orient-total-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 22px 25px;
+    max-width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Sağ tərəf: Layihələr Sütunu və Şaquli Ayırıcı Xətt */
+.orient-right-col {
+    border-left: 2px solid #d5dadf;
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.projects-side-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #2b5256;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.projects-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    border-color: #2b5256;
+    box-shadow: 0 4px 12px rgba(43, 82, 86, 0.12);
+}
+
+/* Responsivlik (Mobil və Planşetlər üçün) */
+@media (max-width: 1024px) {
+    .orient-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .orient-right-col {
+        border-left: none;
+        border-top: 2px solid #d5dadf;
+        padding-left: 0;
+        padding-top: 20px;
+    }
+
+    .projects-cards-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-cards-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   ƏMƏKHAQQININ BİRGƏ MALİYYƏLƏŞDİRİLMƏSİ BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Üst Düzən (Filtrlər + 4 Kart) */
+.maliye-top-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.maliye-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.maliye-card {
+    background: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    padding: 18px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+
+.maliye-card.active-card {
+    border: 1.5px solid #2b5256;
+}
+
+/* Şəkildəki Dairəvi Diaqramların Dəqiq Birləşməsi */
+.status-pie-maliye {
+    background: conic-gradient(#2b5256 0deg 240deg, #e67e22 240deg 360deg);
+}
+
+.gender-pie-maliye {
+    background: conic-gradient(#2b5256 0deg 210deg, #e67e22 210deg 360deg);
+}
+
+.pie-txt.mal-st1 {
+    top: 40%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.mal-st2 {
+    top: 30%;
+    left: 25%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.mal-g1 {
+    top: 40%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.mal-g2 {
+    top: 30%;
+    left: 25%;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Responsivlik */
+@media (max-width: 1200px) {
+    .maliye-top-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .maliye-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .maliye-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   ƏMƏK YARMARKASI BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Alt Bölmə Başlıqları */
+.sub-section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a3335;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2b5256;
+    padding-bottom: 5px;
+    width: fit-content;
+}
+
+/* 3-lü Şəbəkə (Grid) Nizamlanması */
+.yarmarka-three-col {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+}
+
+/* Şəkildəki Diaqramların Dəqiq Rəng Birləşmələri */
+.dot.blue-bright {
+    background-color: #4171c6;
+}
+
+.dot.green-dark {
+    background-color: #4d8232;
+}
+
+/* 1. İştirakçılar Üzrə Diaqramlar */
+.gender-pie-part-yar {
+    background: conic-gradient(#4171c6 0deg 170deg, #e67e22 170deg 360deg);
+}
+
+.edu-pie-part-yar {
+    background: conic-gradient(#4171c6 0deg 100deg, #e67e22 100deg 170deg, #4d8232 170deg 360deg);
+}
+
+/* 2. İşlə Təmin Olunanlar Üzrə Diaqramlar */
+.gender-pie-emp-yar {
+    background: conic-gradient(#4171c6 0deg 210deg, #e67e22 210deg 360deg);
+}
+
+.edu-pie-emp-yar {
+    background: conic-gradient(#4171c6 0deg 70deg, #e67e22 70deg 120deg, #4d8232 120deg 360deg);
+}
+
+/* 3. Vakansiyalar Üzrə Diaqramlar */
+.company-pie-vac-yar {
+    background: conic-gradient(#4171c6 0deg 65deg, #e67e22 65deg 360deg);
+}
+
+.vacancy-pie-vac-yar {
+    background: conic-gradient(#4171c6 0deg 135deg, #e67e22 135deg 360deg);
+}
+
+.req-edu-pie-vac-yar {
+    background: conic-gradient(#4171c6 0deg 100deg, #e67e22 100deg 170deg, #4d8232 170deg 360deg);
+}
+
+/* Diaqram Mətnlərinin Mövqeləri */
+.pie-txt.yar-p-g1 {
+    top: 40%;
+    left: 65%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-p-g2 {
+    top: 40%;
+    left: 25%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-e1 {
+    top: 25%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-e2 {
+    top: 45%;
+    left: 70%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-e3 {
+    top: 50%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-e-g1 {
+    top: 40%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-e-g2 {
+    top: 35%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ee1 {
+    top: 20%;
+    left: 65%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ee2 {
+    top: 40%;
+    left: 75%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ee3 {
+    top: 50%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-c1 {
+    top: 25%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-c2 {
+    top: 50%;
+    left: 35%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-v1 {
+    top: 35%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-v2 {
+    top: 45%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ve1 {
+    top: 25%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ve2 {
+    top: 45%;
+    left: 70%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.yar-ve3 {
+    top: 50%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Responsivlik */
+@media (max-width: 1200px) {
+    .yarmarka-three-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ ÜÇÜN STİLLƏR
+   ========================================================== */
+
+/* Ümumi Vəziyyət Blokunun İçi */
+.general-status-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.inner-circle.big {
+    width: 150px;
+    height: 150px;
+    border-width: 12px;
+}
+
+.inner-circle.big h2 {
+    font-size: 28px;
+}
+
+.status-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.status-sum-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #444;
+    border-bottom: 1px dashed #e0e0e0;
+    padding-bottom: 6px;
+}
+
+.status-sum-row b {
+    color: #1a3335;
+}
+
+/* Aktiv İşçilər Üzrə Gender Diaqramı Rəng Birləşməsi */
+.gender-pie-pub-active {
+    background: conic-gradient(#2b5256 0deg 140deg, #e67e22 140deg 360deg);
+}
+
+.pie-txt.pub-g1 {
+    top: 35%;
+    left: 60%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.pie-txt.pub-g2 {
+    top: 50%;
+    left: 30%;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Responsivlik */
+@media (max-width: 1200px) {
+    .ozun-top-cards {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .reg-charts-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ozun-top-cards {
+        grid-template-columns: 1fr !important;
+    }
+
+    .general-status-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================
+   ƏN YÜKSƏK SƏLİQƏ DƏRƏCƏSİ VƏ İSTƏNİLƏN EKRANA UĞUNLAŞMA
+   ========================================================== */
+
+/* 1. Üst 5 Kart */
+.ozun-top-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* 2. Cədvəl Səliqəsi (OverFlow qorunması) */
+.ozun-table-card {
+    border: 1px solid #d5dadf;
+    border-radius: 12px;
+    background: #fff;
+    margin-bottom: 25px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ozun-data-table {
+    width: 100%;
+    min-width: 800px;
+    /* Kiçik ekranlarda sütunların sıxılmaması üçün */
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: center;
+}
+
+.ozun-data-table th {
+    background-color: #2b5256;
+    color: #ffffff;
+    padding: 12px 10px;
+    border: 1px solid #1f3d40;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ozun-data-table td {
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    color: #2d3748;
+}
+
+/* 3. Təsərrüfat Zərfləri Qrafikləri (5 Kart) */
+.ozun-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.ozun-chart-card {
+    position: relative;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sub-chart-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2b5256;
+    margin-bottom: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Kiçik Bar-lar */
+.mini-bar-chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 130px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-top: 10px;
+}
+
+.mini-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #718096;
+}
+
+.mini-col .val {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.mini-col .bar {
+    width: 14px;
+    border-radius: 3px 3px 0 0;
+}
+
+.bar.green {
+    background-color: #48bb78;
+}
+
+.bar.blue {
+    background-color: #4299e1;
+}
+
+.bar.yellow {
+    background-color: #ed8936;
+}
+
+/* Popover Notu - Mobil ekranda daşmama tənzimlənməsi */
+.ozun-popover-note {
+    display: none;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    background: #ffffff;
+    border: 1px solid #2b5256;
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    font-size: 11px;
+    color: #2d3748;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.ozun-chart-card.has-popover:hover .ozun-popover-note {
+    display: block;
+}
+
+/* 4. Sektor Kartları (4 dənə) */
+.ozun-sector-header-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* 5. İki Sütunlu Bölmə (Gender + Rayon) */
+.ozun-two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+}
+
+/* Kateqoriyalar Və Dairəvi Faiz İndikatoru */
+.category-chart-with-circle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Ekran kiçildikdə aşağı düşsün */
+}
+
+.category-bars-ozun {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cat-lbl {
+    font-size: 9px;
+    color: #4a5568;
+    line-height: 1.1;
+    text-align: center;
+    max-width: 60px;
+    word-break: break-word;
+}
+
+.percent-circle-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.inner-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid #2b5256;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.inner-circle h2 {
+    font-size: 20px;
+    color: #2b5256;
+    font-weight: 800;
+}
+
+.inner-circle span {
+    font-size: 9px;
+    color: #718096;
+}
+
+/* ==========================================================
+   MEDIA QUERIES (İSTƏNİLƏN EKRAN ÖLÇÜSÜ ÜÇÜN DƏQİQ DÜZƏN)
+   ========================================================== */
+
+@media (max-width: 1024px) {
+    .ozun-two-col-grid {
+        grid-template-columns: 1fr;
+        /* Planşetdə alt-alta keçsin */
+    }
+}
+
+@media (max-width: 600px) {
+    .category-chart-with-circle {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-bars-ozun {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
