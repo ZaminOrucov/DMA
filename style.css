@@ -885,7 +885,11 @@ li.dropdown.active>a i.fa-chevron-right {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
-
+.org-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
 .org-node.dept {
     border-left: 4px solid #2b5256;
 }
