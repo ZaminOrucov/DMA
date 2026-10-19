@@ -885,11 +885,13 @@ li.dropdown.active>a i.fa-chevron-right {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
+
 .org-grid-5 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
+
 .org-node.dept {
     border-left: 4px solid #2b5256;
 }
@@ -2317,4 +2319,188 @@ li.dropdown.active>a i.fa-chevron-right {
         width: 100%;
         overflow-x: auto;
     }
+}
+
+/* ==========================================================
+   EXCEL FİLTR MƏNTİQLİ COMBO BOX STİLLƏRİ
+   ========================================================== */
+
+.excel-combobox {
+    position: relative;
+    min-width: 220px;
+    user-select: none;
+}
+
+.combo-select-box {
+    background-color: #ffffff;
+    border: 1px solid #d5dadf;
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #2b5256;
+    transition: all 0.2s ease;
+}
+
+.combo-select-box:hover {
+    border-color: #2b5256;
+    background-color: #fcfdfe;
+}
+
+.combo-selected-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+    font-weight: 600;
+}
+
+.combo-arrow {
+    font-size: 10px;
+    color: #555;
+}
+
+.combo-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #2b5256;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 300;
+    padding: 8px;
+    width: 240px;
+}
+
+.excel-combobox.open .combo-dropdown {
+    display: block;
+    animation: fadeInDropdown 0.15s ease-in-out;
+}
+
+/* Excel Axtarış Xanası */
+.combo-search-box input {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+}
+
+.combo-search-box input:focus {
+    border-color: #2b5256;
+}
+
+/* Siyahı Və Scroll */
+.combo-options-list {
+    max-height: 180px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.combo-options-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 6px;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.combo-options-list label:hover {
+    background-color: #eef5f5;
+}
+
+.combo-options-list input[type="checkbox"] {
+    accent-color: #2b5256;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.combo-divider {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 4px 0;
+}
+
+@keyframes fadeInDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover popover strukturunun əsas tənzimlənməsi */
+.single-bar-group,
+.h-bar-row-single {
+    position: relative;
+    /* Popover-in elementə görə düzgün mövqe alması üçün vacibdir */
+}
+
+/* İlkin vəziyyətdə popover gizli olur */
+.single-bar-group .bar-hover-popover,
+.h-bar-row-single .bar-hover-popover {
+    display: none;
+    position: absolute;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #333333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    border: 1px solid #e0e0e0;
+}
+
+/* Hover popover strukturunun əsas tənzimlənməsi */
+.single-bar-group,
+.h-bar-row-single {
+    position: relative;
+    /* Popover-in elementə görə düzgün mövqe alması üçün vacibdir */
+}
+
+/* İlkin vəziyyətdə popover gizli olur */
+.single-bar-group .bar-hover-popover,
+.h-bar-row-single .bar-hover-popover {
+    display: none;
+    position: absolute;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #333333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    border: 1px solid #e0e0e0;
+}
+
+/* Mouse üzərinə gəldikdə popover görünür */
+.single-bar-group:hover .bar-hover-popover,
+.h-bar-row-single:hover .bar-hover-popover {
+    display: block;
 }
