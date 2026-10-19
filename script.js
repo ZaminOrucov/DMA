@@ -420,3 +420,220 @@ function loadOzunumesgulluqData() {
         .catch(err => console.error("Özünüməşğulluq məlumatları yüklənərkən xəta baş verdi:", err));
     */
 }
+/**
+ * Multi-Select menyunu açır / bağlayır
+ */
+function toggleMultiSelect(elementId) {
+    const container = document.getElementById(elementId);
+
+    // Digər açıq olan menyuları bağlayırıq
+    document.querySelectorAll('.custom-multiselect').forEach(el => {
+        if (el.id !== elementId) el.classList.remove('open');
+    });
+
+    container.classList.toggle('open');
+}
+
+/**
+ * Ekranın boş yerinə kliklədikdə dropdown-u bağlayır
+ */
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.custom-multiselect')) {
+        document.querySelectorAll('.custom-multiselect').forEach(el => el.classList.remove('open'));
+    }
+});
+
+/**
+ * Checkbox-lar seçildikdə mətni və başlığı yeniləyən funksiya
+ */
+function handleMultiSelectChange(elementId) {
+    const container = document.getElementById(elementId);
+    const checkedBoxes = container.querySelectorAll('input[type="checkbox"]:checked');
+    const selectedTextSpan = container.querySelector('.selected-text');
+
+    // Seçilmiş checkbox-ların adlarını (value) massivə toplayırıq
+    const selectedValues = Array.from(checkedBoxes).map(cb => cb.value);
+
+    // Başlıq mətni tənzimləməsi
+    if (selectedValues.length === 0) {
+        if (elementId === 'multiSelectYear') selectedTextSpan.innerText = 'İlləri seçin...';
+        else if (elementId === 'multiSelectMonth') selectedTextSpan.innerText = 'Ayları seçin...';
+        else if (elementId === 'multiSelectRegion') selectedTextSpan.innerText = 'Rayonları seçin...';
+    } else if (selectedValues.length <= 2) {
+        // Seçilmiş ay və ya rayon adlarını vergüllə göstəririk (Örnək: "Yanvar, Fevral")
+        selectedTextSpan.innerText = selectedValues.join(', ');
+    } else {
+        selectedTextSpan.innerText = `${selectedValues.length} seçim edildi`;
+    }
+
+    // Backend üçün filtrləri toplayıb sorğu göndəririk
+    fetchDashboardDataWithMultiFilters();
+}
+
+/**
+ * BACKEND / SQL İLƏ İL, AY ADLARI VƏ RAYON ÇOXLUSAL SEÇİM SORĞUSU
+ * 
+ * [NOT FOR BACKEND]: Bu funksiya seçilmiş bütün İlləri, Ay adlarını və Rayonları Array (massiv) kimi toplayır.
+ * SQL Nümunəsi: SELECT * FROM DashboardData WHERE Year IN ('2025', '2026') AND MonthName IN ('Yanvar', 'Fevral') AND Region IN ('Naxçıvan', 'Şərur')
+ */
+function fetchDashboardDataWithMultiFilters() {
+    // 1. Seçilmiş İllər (Örnək: ["2025", "2026"])
+    const selectedYears = Array.from(document.querySelectorAll('#multiSelectYear input[type="checkbox"]:checked')).map(cb => cb.value);
+
+    // 2. Seçilmiş Ay Adları (Örnək: ["Yanvar", "Fevral", "Mart"])
+    const selectedMonths = Array.from(document.querySelectorAll('#multiSelectMonth input[type="checkbox"]:checked')).map(cb => cb.value);
+
+    // 3. Seçilmiş Rayonlar (Örnək: ["Naxçıvan", "Şərur"])
+    const selectedRegions = Array.from(document.querySelectorAll('#multiSelectRegion input[type="checkbox"]:checked')).map(cb => cb.value);
+
+    console.log("[BACKEND API SORĞUSU]:", {
+        years: selectedYears,
+        months: selectedMonths,  // Birbaşa ay adları kimi ötürülür
+        regions: selectedRegions
+    });
+
+    /*
+    // BACKEND API FETCH / AJAX İNTEQRASİYASI:
+    fetch('/api/dashboard/filter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            years: selectedYears,
+            months: selectedMonths, // Örnək: ["Yanvar", "Fevral"]
+            regions: selectedRegions
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // SQL-dən gələn dataya əsasən cədvəl və qrafikləri yeniləyirik
+        console.log("Backend SQL Cavabı:", data);
+    })
+    .catch(err => console.error("API xətası:", err));
+    */
+}
+/**
+ * Combo Box pəncərəsini açır / bağlayır
+ */
+function toggleComboBox(containerId) {
+    const container = document.getElementById(containerId);
+
+    // Digər açıq pəncərələri bağlayırıq
+    document.querySelectorAll('.excel-combobox').forEach(el => {
+        if (el.id !== containerId) el.classList.remove('open');
+    });
+
+    container.classList.toggle('open');
+}
+
+/**
+ * Pəncərədən kənara kliklədikdə pəncərəni bağlayır
+ */
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.excel-combobox')) {
+        document.querySelectorAll('.excel-combobox').forEach(el => el.classList.remove('open'));
+    }
+});
+
+/**
+ * Excel Məntiqi ilə Axtarış (Search Box)
+ */
+function filterComboItems(containerId, searchText) {
+    const container = document.getElementById(containerId);
+    const labels = container.querySelectorAll('.combo-options-list label:not(.select-all-label)');
+    const term = searchText.toLowerCase().trim();
+
+    labels.forEach(label => {
+        const text = label.textContent.toLowerCase();
+        if (text.includes(term)) {
+            label.style.display = "flex";
+        } else {
+            label.style.display = "none";
+        }
+    });
+}
+
+/**
+ * "(Hamsını seç)" Checkbox-u sıxıldıqda
+ */
+function toggleSelectAll(containerId, isChecked) {
+    const container = document.getElementById(containerId);
+    // Yalnız hazırda görünən (axtarışda çıxan) checkbox-ları seçirik
+    const checkboxes = container.querySelectorAll('.combo-options-list label:not(.select-all-label) input[type="checkbox"]');
+
+    checkboxes.forEach(cb => {
+        if (cb.closest('label').style.display !== 'none') {
+            cb.checked = isChecked;
+        }
+    });
+
+    handleComboChange(containerId);
+}
+
+/**
+ * Seçimlər dəyişdikdə başlığı tənzimləyir və API sorğusu göndərir
+ */
+function handleComboChange(containerId) {
+    const container = document.getElementById(containerId);
+    const allCheckboxes = container.querySelectorAll('.combo-options-list label:not(.select-all-label) input[type="checkbox"]');
+    const checkedBoxes = container.querySelectorAll('.combo-options-list label:not(.select-all-label) input[type="checkbox"]:checked');
+    const selectAllCb = container.querySelector('.select-all-cb');
+    const selectedTextSpan = container.querySelector('.combo-selected-text');
+
+    const selectedValues = Array.from(checkedBoxes).map(cb => cb.value);
+
+    // Hamsını seç checkbox-unun vəziyyətini güncəlləyirik
+    if (selectedValues.length === allCheckboxes.length && allCheckboxes.length > 0) {
+        selectAllCb.checked = true;
+        selectAllCb.indeterminate = false;
+        selectedTextSpan.innerText = '(Hamsı)';
+    } else if (selectedValues.length === 0) {
+        selectAllCb.checked = false;
+        selectAllCb.indeterminate = false;
+        selectedTextSpan.innerText = '(Heç biri)';
+    } else {
+        selectAllCb.checked = false;
+        selectAllCb.indeterminate = true; // Hissəvi seçildiyini göstərən çizgi
+        if (selectedValues.length <= 2) {
+            selectedTextSpan.innerText = selectedValues.join(', ');
+        } else {
+            selectedTextSpan.innerText = `(${selectedValues.length} dənə seçildi)`;
+        }
+    }
+
+    // Backend üçün SQL sorğusunu tetikləyirik
+    fetchExcelFilterData();
+}
+
+/**
+ * BACKEND / SQL İLƏ ÇOXLUSAL EXCEL FİLTRİ SORĞUSU
+ */
+function fetchExcelFilterData() {
+    const selectedYears = Array.from(document.querySelectorAll('#comboYear .combo-options-list input[type="checkbox"]:checked')).map(cb => cb.value);
+    const selectedMonths = Array.from(document.querySelectorAll('#comboMonth .combo-options-list input[type="checkbox"]:checked')).map(cb => cb.value);
+    const selectedRegions = Array.from(document.querySelectorAll('#comboRegion .combo-options-list input[type="checkbox"]:checked')).map(cb => cb.value);
+
+    console.log("[EXCEL FİLTRİ BACKEND SORĞUSU]:", {
+        years: selectedYears,    // Massiv: ["2025", "2026"]
+        months: selectedMonths,  // Massiv: ["Yanvar", "Fevral"]
+        regions: selectedRegions // Massiv: ["Naxçıvan", "Şərur"]
+    });
+
+    /*
+    // BACKEND API AJAX / FETCH İNTEQRASİYASI:
+    fetch('/api/reports/excel-filter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            years: selectedYears,
+            months: selectedMonths,
+            regions: selectedRegions
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("SQL nəticələri:", data);
+        // Qrafik və cədvəlləri dinamik yeniləyirik
+    })
+    .catch(err => console.error("Excel filter API xətası:", err));
+    */
+}
