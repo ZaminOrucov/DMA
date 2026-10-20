@@ -637,3 +637,398 @@ function fetchExcelFilterData() {
     .catch(err => console.error("Excel filter API xətası:", err));
     */
 }
+function addNewNoteWithDeadline() {
+    const titleInput = document.getElementById('noteTitleInput');
+    const descInput = document.getElementById('noteDescInput');
+    const deadlineInput = document.getElementById('noteDeadlineInput');
+    const container = document.getElementById('notesContainer');
+
+    if (!titleInput.value.trim() || !descInput.value.trim()) {
+        alert("Lütfən qeydin başlığını və məzmununu daxil edin.");
+        return;
+    }
+
+    // Cari tarix
+    const today = new Date();
+    const currentDateStr = today.toLocaleDateString('az-AZ');
+
+    // Dedlayn hesablanması
+    let deadlineText = "Dedlayn təyin edilməyib";
+    let badgeStyle = "background: #f1f1f1; color: #666;";
+
+    if (deadlineInput.value) {
+        const deadlineDate = new Date(deadlineInput.value);
+
+        // Gün fərqinin hesablanması
+        const diffTime = deadlineDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays > 0) {
+            deadlineText = `Qalan vaxt: ${diffDays} gün`;
+            badgeStyle = "background: #e8f5e9; color: #2e7d32;"; // Yaşıl rəng
+        } else if (diffDays === 0) {
+            deadlineText = "Son gündür!";
+            badgeStyle = "background: #fff3e0; color: #ef6c00;"; // Narıncı rəng
+        } else {
+            deadlineText = `Vaxtı bitib (${Math.abs(diffDays)} gün keçib)`;
+            badgeStyle = "background: #ffebee; color: #c62828;"; // Qırmızı rəng
+        }
+    }
+
+    // Yeni kartın HTML-i
+    const noteHTML = `
+        <div class="note-card" style="position: relative; border-left: 4px solid #2b5256; padding: 15px; margin-bottom: 15px; background: #fff; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <div class="note-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="margin: 0; color: #2b5256;">${titleInput.value}</h4>
+                <span class="note-date" style="font-size: 12px; color: #777;">Tarix: ${currentDateStr}</span>
+            </div>
+            <p style="margin-bottom: 12px; color: #444;">${descInput.value}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="deadline-badge" style="${badgeStyle} padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    <i class="fa-regular fa-clock"></i> ${deadlineText}
+                </span>
+                <button class="btn-delete-note" onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: #e74c3c; cursor: pointer;">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Siyahının əvvəlinə əlavə et
+    container.insertAdjacentHTML('afterbegin', noteHTML);
+
+    // Formu təmizlə
+    titleInput.value = '';
+    descInput.value = '';
+    deadlineInput.value = '';
+}
+// Zəngə vuranda pəncərəni açır / bağlayır
+function toggleNotificationDropdown(event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById('notificationDropdown');
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
+}
+
+// Qeydin başlığına vuranda Əsas səhifəyə keçir və menyunu aktiv edir
+function goToMainPageFromNote(sectionId) {
+    // 1. Dropdown pəncərəsini bağla
+    document.getElementById('notificationDropdown').style.display = 'none';
+
+    // 2. Bütün bölmələri gizlət və yalnız 'esas-sehife' bölməsini göstər
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(sec => sec.classList.remove('active'));
+
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+
+    // 3. Sol menyudakı 'Əsas səhifə' düyməsini aktiv göstər
+    const menuItems = document.querySelectorAll('.sidebar-menu a, .submenu a');
+    menuItems.forEach(item => item.classList.remove('active'));
+
+    const mainPageMenuItem = document.querySelector(`[onclick*="${sectionId}"]`);
+    if (mainPageMenuItem) {
+        mainPageMenuItem.classList.add('active');
+    }
+
+    // 4. Səhifəni ən yuxarıya sürüşdür
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Ekranın istənilən boş yerinə vurulduqda bildiriş pəncərəsini bağla
+window.addEventListener('click', function (event) {
+    const dropdown = document.getElementById('notificationDropdown');
+    if (dropdown && dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    }
+});
+// Kartlara vurulduqda müvafiq menyu bölməsinə keçid funksiyası
+function navigateToSection(targetSectionId) {
+    // 1. Bütün bölmələrdən 'active' sinfini sil və seçilmiş bölməni aktiv et
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => section.classList.remove('active'));
+
+    const targetSection = document.getElementById(targetSectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+
+    // 2. Sol menyudakı linklərdən 'active' sinfini sil və yeni bölmənin menyusunu aktiv et
+    const menuLinks = document.querySelectorAll('.sidebar-menu a, .submenu a');
+    menuLinks.forEach(link => link.classList.remove('active'));
+
+    const targetMenuLink = document.querySelector(`[onclick*="${targetSectionId}"]`);
+    if (targetMenuLink) {
+        targetMenuLink.classList.add('active');
+
+        // Əgər həmin düymə alt-menyudadırsa (submenu), üst menyunu da genişləndir
+        const parentSubmenu = targetMenuLink.closest('.submenu');
+        if (parentSubmenu) {
+            parentSubmenu.style.display = 'block';
+            const parentToggle = parentSubmenu.previousElementSibling;
+            if (parentToggle) {
+                parentToggle.classList.add('active');
+            }
+        }
+    }
+
+    // 3. Səhifəni rəvan şəkildə yuxarıya sürüşdür
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// Nümunə API sorğusu ümumi baxış rəqəmləri kartlara çəkmək üçün
+fetch('/api/statistics')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('val-isle-temin').innerText = data.isleTeminSayi;
+        document.getElementById('pop-isle-kisi').innerText = data.isleKisiSayi;
+        // və sair...
+    });
+// VAKANSİYALAR ÜÇÜN BACKEND KODLARI
+function fetchVacancyData() {
+    // 1. Filtrlərdən seçilən dəyərləri oxuyuruq
+    const year = document.getElementById('vacYearFilter').value;
+    const month = document.getElementById('vacMonthFilter').value;
+    const region = document.getElementById('vacRegionFilter').value;
+    const education = document.getElementById('vacEducationFilter').value;
+    const gender = document.getElementById('vacGenderFilter').value;
+
+    // 2. Backend API ünvanına parametrləri ötürürük (URLSearchParams vasitəsilə)
+    const params = new URLSearchParams({ year, month, region, education, gender });
+
+    fetch(`/api/vacancies?${params.toString()}`)
+        .then(response => response.json())
+        .then(data => {
+            // 3. Gələn cavaba əsasən ID-ləri yeniləyirik
+            document.getElementById('val-total-vac').innerText = data.totalVacancies;
+            document.getElementById('lbl-dovlet').innerText = data.dovlet;
+            document.getElementById('lbl-qeyridovlet').innerText = data.qeyridovlet;
+            document.getElementById('lbl-qulluqcu').innerText = data.qulluqcu;
+            document.getElementById('lbl-fehle').innerText = data.fehle;
+
+            // Rayonlar üzrə dövrü məlumatların yenilənməsi...
+        })
+        .catch(error => console.error('Xəta baş verdi:', error));
+}
+// Çoxlu seçilən bəndlərin dəyərlərini backend üçün massiv şəklində toplayan funksiya
+function getSelectedComboValues(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return [];
+
+    const checkboxes = container.querySelectorAll('.combo-options-list input[type="checkbox"]:not(.select-all-cb):checked');
+    return Array.from(checkboxes).map(cb => cb.value);
+}
+
+// Vakansiya Filtrləri dəyişdikdə çağırılan backend sorğu funksiyası
+function fetchVacancyData() {
+    // 1. Çoxlu seçilmiş bəndləri massiv şəklində götürürük
+    const selectedYears = getSelectedComboValues('vacComboYear');       // örnək: ['2026', '2025']
+    const selectedMonths = getSelectedComboValues('vacComboMonth');     // örnək: ['Yanvar', 'Fevral']
+    const selectedRegions = getSelectedComboValues('vacComboRegion');   // örnək: ['Naxçıvan', 'Şərur']
+    const selectedEdus = getSelectedComboValues('vacComboEdu');         // örnək: ['Ali']
+    const selectedGenders = getSelectedComboValues('vacComboGender');   // örnək: ['Kisi']
+
+    // 2. Backend API üçün JSON obyekti yaradırıq
+    const filterPayload = {
+        years: selectedYears,
+        months: selectedMonths,
+        regions: selectedRegions,
+        educations: selectedEdus,
+        genders: selectedGenders
+    };
+
+    console.log("Backend-ə göndərilən filtrlər:", filterPayload);
+
+    /* 3. Backend Sorğusu (AJAX / Fetch)
+    fetch('/api/vacancies/filter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(filterPayload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Gələn məlumatlara əsasən kartları və diaqramları yeniləyin
+    });
+    */
+}
+// 1. Dropdown pəncərəsini açıb/bağlayan funksiya
+function toggleComboBox(comboId) {
+    event.stopPropagation();
+    const combo = document.getElementById(comboId);
+    const dropdown = combo.querySelector('.combo-dropdown');
+
+    // Digər açıq dropdown-ları bağla
+    document.querySelectorAll('.combo-dropdown').forEach(d => {
+        if (d !== dropdown) d.style.display = 'none';
+    });
+
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
+}
+
+// 2. Dropdown daxilində axtarış funksiyası
+function filterComboItems(comboId, query) {
+    const combo = document.getElementById(comboId);
+    const labels = combo.querySelectorAll('.combo-options-list label:not(.select-all-label)');
+    const q = query.toLowerCase();
+
+    labels.forEach(label => {
+        const text = label.textContent.toLowerCase();
+        if (text.includes(q)) {
+            label.style.display = 'flex';
+        } else {
+            label.style.display = 'none';
+        }
+    });
+}
+
+// 3. "Hamısını seç" funksiyası
+function toggleSelectAll(comboId, isChecked) {
+    const combo = document.getElementById(comboId);
+    const checkboxes = combo.querySelectorAll('.combo-options-list input[type="checkbox"]:not(.select-all-cb)');
+
+    checkboxes.forEach(cb => {
+        if (cb.closest('label').style.display !== 'none') {
+            cb.checked = isChecked;
+        }
+    });
+    updateComboSelectedText(comboId);
+    if (typeof fetchVacancyData === 'function') fetchVacancyData();
+}
+
+// 4. Checkbox dəyişdikdə çağırılan funksiya
+function handleComboChange(comboId) {
+    updateComboSelectedText(comboId);
+    if (typeof fetchVacancyData === 'function') fetchVacancyData();
+}
+
+// 5. Seçilmiş elementlərin sayını və ya adını yuxarıdakı qutuda göstərən funksiya
+function updateComboSelectedText(comboId) {
+    const combo = document.getElementById(comboId);
+    const checkboxes = combo.querySelectorAll('.combo-options-list input[type="checkbox"]:not(.select-all-cb)');
+    const checked = combo.querySelectorAll('.combo-options-list input[type="checkbox"]:not(.select-all-cb):checked');
+    const selectedTextSpan = combo.querySelector('.combo-selected-text');
+
+    if (checked.length === 0) {
+        selectedTextSpan.textContent = "(Seçilməyib)";
+    } else if (checked.length === checkboxes.length) {
+        selectedTextSpan.textContent = "(Hamısı)";
+    } else {
+        const values = Array.from(checked).map(cb => cb.closest('label').textContent.trim());
+        selectedTextSpan.textContent = values.join(', ');
+    }
+}
+
+// 6. Səhifənin boş yerinə kliklədikdə açıq dropdown-ları bağla
+window.addEventListener('click', function (e) {
+    if (!e.target.closest('.excel-combobox')) {
+        document.querySelectorAll('.combo-dropdown').forEach(d => {
+            d.style.display = 'none';
+        });
+    }
+});
+// rəhbərin tapşırıqları
+function addNewNoteWithDeadline() {
+    // 1. Daxil edilən dəyərləri oxuyuruq
+    const titleInput = document.getElementById('noteTitleInput');
+    const assigneeInput = document.getElementById('noteAssigneeInput');
+    const deadlineInput = document.getElementById('noteDeadlineInput');
+    const descInput = document.getElementById('noteDescInput');
+
+    const title = titleInput.value.trim();
+    const assignee = assigneeInput ? assigneeInput.value : '';
+    const deadline = deadlineInput.value;
+    const desc = descInput.value.trim();
+
+    // 2. Yoxlama (Başlıq və məzmun mütləqdir)
+    if (!title || !desc) {
+        alert("Lütfən qeydin başlığını və məzmununu daxil edin!");
+        return;
+    }
+
+    // 3. Cari Tarixi Formatlayırıq (GG.AA.İİİİ)
+    const today = new Date();
+    const dateStr = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
+
+    // 4. Dedlayn (Son tarix) üçün qalan günün hesablanması
+    let deadlineBadgeHTML = '';
+    if (deadline) {
+        const targetDate = new Date(deadline);
+        const diffTime = targetDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays > 0) {
+            deadlineBadgeHTML = `
+                <span class="deadline-badge" style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    <i class="fa-regular fa-clock"></i> Qalan vaxt: ${diffDays} gün
+                </span>`;
+        } else if (diffDays === 0) {
+            deadlineBadgeHTML = `
+                <span class="deadline-badge" style="background: #fff3e0; color: #ef6c00; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    <i class="fa-regular fa-clock"></i> Son gündür!
+                </span>`;
+        } else {
+            deadlineBadgeHTML = `
+                <span class="deadline-badge" style="background: #ffebee; color: #c62828; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    <i class="fa-regular fa-clock"></i> Vaxtı bitib (${Math.abs(diffDays)} gün keçib)
+                </span>`;
+        }
+    } else {
+        deadlineBadgeHTML = `
+            <span class="deadline-badge" style="background: #f5f5f5; color: #666; padding: 4px 10px; border-radius: 4px; font-size: 12px;">
+                <i class="fa-regular fa-clock"></i> Dedlayn yoxdur
+            </span>`;
+    }
+
+    // 5. İcraçı Şəxs Badge hazırlanması
+    const assigneeHTML = assignee ? `
+        <span class="assignee-badge" style="background: #eef2f3; color: #2b5256; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; border: 1px solid #d1d8d9;">
+            <i class="fa-solid fa-user-check"></i> İcraçı: ${assignee}
+        </span>` : `
+        <span class="assignee-badge" style="background: #f5f5f5; color: #888; padding: 4px 10px; border-radius: 4px; font-size: 12px;">
+            <i class="fa-solid fa-user"></i> İcraçı: Təyin edilməyib
+        </span>`;
+
+    // 6. Yeni Kart HTML karkasının daxil edilməsi
+    const noteId = Date.now(); // Unikal ID
+    const newNoteHTML = `
+        <div class="note-card" data-note-id="${noteId}" style="position: relative; border-left: 4px solid #2b5256; padding: 15px; margin-bottom: 15px; background: #fff; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #eee;">
+            <div class="note-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="margin: 0; color: #2b5256; font-size: 15px;">${title}</h4>
+                <span class="note-date" style="font-size: 12px; color: #777;">Tarix: ${dateStr}</span>
+            </div>
+            
+            <p style="margin-bottom: 12px; color: #444; font-size: 13px; line-height: 1.4;">
+                ${desc}
+            </p>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    ${assigneeHTML}
+                    ${deadlineBadgeHTML}
+                </div>
+
+                <button class="btn-delete-note" onclick="this.closest('.note-card').remove()" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;" title="Sil">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `;
+
+    // 7. Kartı siyahının ən üstünə əlavə edirik
+    const container = document.getElementById('notesContainer');
+    container.insertAdjacentHTML('afterbegin', newNoteHTML);
+
+    // 8. Formu sıfırlayırıq
+    titleInput.value = '';
+    if (assigneeInput) assigneeInput.value = '';
+    deadlineInput.value = '';
+    descInput.value = '';
+}
