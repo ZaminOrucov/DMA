@@ -6,6 +6,35 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.menu-icon-png {
+    width: 18px;
+    /* Loqonun eni (daha da kiçiltmək üçün rəqəmi azaldın, məsələn: 16px) */
+    height: 18px;
+    /* Loqonun hündürlüyü */
+    object-fit: contain;
+    /* Şəklin nisbətinin və keyfiyyətinin pozulmaması üçün */
+    vertical-align: middle;
+    /* Mətnlə eyni hizada durması üçün */
+    margin-right: 8px;
+    /* Mətnlə arasında olan məsafə */
+}
+
+.notes-section-card {
+    border-left: 5px solid #2b5256 !important;
+    /* Sol tərəfə tünd yaşıl xətt */
+    border-radius: 8px;
+    /* Künclərin səliqəli yuvarlaqlaşdırılması */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /* Səliqəli kölgə effekti */
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Bildiriş elementi hover effekti */
+.notification-item:hover {
+    background-color: #f4f7f6 !important;
+}
+
 body {
     background-color: #f4f6f9;
     display: flex;
@@ -525,6 +554,19 @@ li.dropdown.active>a i.fa-chevron-right {
     .stats-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ==========================================================
+   klik etdikdə menuya yönləndirmə
+   ========================================================== */
+.stat-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* ==========================================================
@@ -1497,6 +1539,19 @@ li.dropdown.active>a i.fa-chevron-right {
     grid-template-columns: 280px 1fr;
     gap: 25px;
     align-items: stretch;
+}
+
+/* Filtrləmə panelindəki elementlər arasında ara saxlamaq üçün */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px !important;
+    /* Elementlər arasında məsafə */
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 170px;
 }
 
 .vac-left-col {
