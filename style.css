@@ -2680,3 +2680,40 @@ li.dropdown.active>a i.fa-chevron-right {
 .single-bar-popover *::marker {
     content: none !important;
 }
+
+/* Konteynerlərin popover-i kəsməsinin qarşısını alırıq */
+.card.reg-chart-card,
+.pese-right-col,
+.pese-main-grid,
+.horizontal-bars-single {
+    overflow: visible !important;
+}
+
+/* Hover zamanı sətir elementinin qat səviyyəsini qaldırırıq ki, digər elementlərin altına düşməsin */
+.h-bar-row-single {
+    position: relative !important;
+}
+
+.h-bar-row-single:hover {
+    z-index: 100;
+}
+
+/* Popover-in dizaynı və görünməsi */
+.h-bar-row-single .hbar-popover {
+    display: none !important;
+    position: absolute;
+    bottom: 125%;
+    left: 20px;
+    background: #1e293b;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+}
+
+.h-bar-row-single:hover .hbar-popover {
+    display: block !important;
+}
