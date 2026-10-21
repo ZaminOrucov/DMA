@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /* 1. Grid və kartların konteyner tənzimləməsi */
 .stats-grid {
     position: relative;
@@ -62,7 +63,6 @@
     content: none !important;
 }
 
-
 .menu-icon-png {
     width: 18px;
     /* Loqonun eni (daha da kiçiltmək üçün rəqəmi azaldın, məsələn: 16px) */
@@ -75,6 +75,7 @@
     margin-right: 8px;
     /* Mətnlə arasında olan məsafə */
 }
+
 
 .notes-section-card {
     border-left: 5px solid #2b5256 !important;
@@ -2611,8 +2612,71 @@ li.dropdown.active>a i.fa-chevron-right {
     border: 1px solid #e0e0e0;
 }
 
+/*Qeydiyyat ekranı*/
 /* Mouse üzərinə gəldikdə popover görünür */
 .single-bar-group:hover .bar-hover-popover,
 .h-bar-row-single:hover .bar-hover-popover {
     display: block;
+}
+
+/* Konteynerlərin popover-ləri gizlətməsini əngəlləyirik */
+.reg-chart-card,
+.chart-mockup-area,
+.bar-chart-container,
+.horizontal-bars,
+.single-bar-wrapper,
+.single-hbar-wrapper {
+    overflow: visible !important;
+}
+
+/* Fərdi Sütun Popover-lərinin Əsas Stili */
+.single-bar-popover {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    bottom: calc(100% + 8px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-5px) !important;
+    width: 180px !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+    z-index: 99999 !important;
+    font-size: 11px !important;
+    color: #1e293b !important;
+    text-align: left !important;
+    transition: all 0.2s ease-in-out !important;
+    pointer-events: none;
+}
+
+/* Hover zamanı fərdi pəncərənin mütləq açılması */
+.single-bar-wrapper:hover .single-bar-popover,
+.single-hbar-wrapper:hover .single-bar-popover {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Üfüqi zolaqlar üçün Popover mövqeyi */
+.single-hbar-wrapper .hbar-popover {
+    bottom: 100% !important;
+    left: 140px !important;
+    transform: translateY(-5px) !important;
+}
+
+.single-hbar-wrapper:hover .hbar-popover {
+    transform: translateY(0) !important;
+}
+
+/* Ox işarələri və qara nöqtələri sıfırlayırıq */
+.single-bar-popover::before,
+.single-bar-popover::after {
+    display: none !important;
+}
+
+.single-bar-popover *::marker {
+    content: none !important;
 }
