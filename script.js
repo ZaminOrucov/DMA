@@ -1032,3 +1032,149 @@ function addNewNoteWithDeadline() {
     deadlineInput.value = '';
     descInput.value = '';
 }
+// ==========================================================
+// İŞLƏ TƏMİN OLUNMA BÖLMƏSİ - BÜTÜN DİAQRAMLARIN DƏYİŞMƏSİ
+// ==========================================================
+
+// 1. Üst Tab-ların Seçilməsi
+function selectEmpTab(element, tabName) {
+    // Qalın çərçivəni seçilən karta keçiririk
+    document.querySelectorAll('.emp-card').forEach(card => {
+        card.classList.remove('active-tab');
+        card.style.borderColor = '#e2e8f0';
+        card.style.borderWidth = '1px';
+    });
+
+    element.classList.add('active-tab');
+    element.style.borderColor = '#2b5256';
+    element.style.borderWidth = '2px';
+
+    // Bütün diaqramları və sütunları seçilən tab-a uyğun yeniləyirik
+    updateAllChartsAndStats(tabName);
+}
+
+// 2. Bütün Diaqramları, Sütunları və Popover-ləri Yeniləyən Əsas Funksiya
+function updateAllChartsAndStats(tabName) {
+
+    // MƏLUMAT BAZASI (Backend qoşulana qədər dynamic interaktivlik üçün)
+    const empDatabase = {
+        all: {
+            issiz: "1 903", isaxtaran: "416", tpo: "314",
+            regAddress: { "Naxçıvan": 544, "Şərur": 529, "Babək": 525, "Ordubad": 276, "Culfa": 235, "Şahbuz": 194, "Kəngərli": 199, "Sədərək": 97, "Digər": 35 },
+            workAddress: { "Naxçıvan": 1423, "Şərur": 375, "Babək": 187, "Ordubad": 212, "Culfa": 144, "Şahbuz": 66, "Kəngərli": 159, "Sədərək": 68 },
+            education: { "Orta təhsil": 2203, "Orta ixtisas təhsili": 134, "Ali təhsil": 296 },
+            categories: { "sehid": 20, "veteran": 30, "elil": 20, "elilliyi-olan": 50, "simu": 7, "coxusaqli": 9, "pensiya": 17, "genc": 3, "kockun": 5, "cezacatdirma": 13 }
+        },
+        hoii: {
+            issiz: "650", isaxtaran: "150", tpo: "83",
+            regAddress: { "Naxçıvan": 180, "Şərur": 170, "Babək": 165, "Ordubad": 90, "Culfa": 80, "Şahbuz": 60, "Kəngərli": 65, "Sədərək": 30, "Digər": 8 },
+            workAddress: { "Naxçıvan": 450, "Şərur": 120, "Babək": 70, "Ordubad": 80, "Culfa": 50, "Şahbuz": 25, "Kəngərli": 60, "Sədərək": 28 },
+            education: { "Orta təhsil": 750, "Orta ixtisas təhsili": 45, "Ali təhsil": 88 },
+            categories: { "sehid": 8, "veteran": 12, "elil": 6, "elilliyi-olan": 20, "simu": 3, "coxusaqli": 4, "pensiya": 8, "genc": 1, "kockun": 2, "cezacatdirma": 5 }
+        },
+        yarmarka: {
+            issiz: "50", isaxtaran: "20", tpo: "12",
+            regAddress: { "Naxçıvan": 20, "Şərur": 18, "Babək": 15, "Ordubad": 8, "Culfa": 7, "Şahbuz": 5, "Kəngərli": 5, "Sədərək": 3, "Digər": 1 },
+            workAddress: { "Naxçıvan": 40, "Şərur": 12, "Babək": 8, "Ordubad": 7, "Culfa": 5, "Şahbuz": 3, "Kəngərli": 4, "Sədərək": 3 },
+            education: { "Orta təhsil": 50, "Orta ixtisas təhsili": 12, "Ali təhsil": 20 },
+            categories: { "sehid": 2, "veteran": 3, "elil": 1, "elilliyi-olan": 4, "simu": 1, "coxusaqli": 1, "pensiya": 1, "genc": 1, "kockun": 0, "cezacatdirma": 1 }
+        },
+        ebm: {
+            issiz: "45", isaxtaran: "20", tpo: "9",
+            regAddress: { "Naxçıvan": 18, "Şərur": 15, "Babək": 12, "Ordubad": 8, "Culfa": 7, "Şahbuz": 4, "Kəngərli": 6, "Sədərək": 3, "Digər": 1 },
+            workAddress: { "Naxçıvan": 35, "Şərur": 10, "Babək": 8, "Ordubad": 6, "Culfa": 5, "Şahbuz": 2, "Kəngərli": 5, "Sədərək": 3 },
+            education: { "Orta təhsil": 40, "Orta ixtisas təhsili": 14, "Ali təhsil": 20 },
+            categories: { "sehid": 1, "veteran": 2, "elil": 1, "elilliyi-olan": 3, "simu": 0, "coxusaqli": 1, "pensiya": 1, "genc": 0, "kockun": 1, "cezacatdirma": 1 }
+        }
+    };
+
+    const data = empDatabase[tabName] || empDatabase['all'];
+
+    // A) Dairəvi Məşğulluq Statusu Rəqəmlərinin Yenilənməsi
+    if (document.getElementById('lbl-issiz')) document.getElementById('lbl-issiz').innerText = data.issiz;
+    if (document.getElementById('lbl-isaxtaran')) document.getElementById('lbl-isaxtaran').innerText = data.isaxtaran;
+    if (document.getElementById('lbl-isaxtarantpo')) document.getElementById('lbl-isaxtarantpo').innerText = data.tpo;
+
+    // B) Qeydiyyat Ünvanı Sütunlarının və Rəqəmlərinin Yenilənməsi
+    updateBarChart('regAddressBarChart', data.regAddress, 544);
+
+    // C) İş Yerinin Faktiki Ünvanı Sütunlarının Yenilənməsi
+    updateBarChart('workAddressBarChart', data.workAddress, 1423);
+
+    // D) Təhsil Səviyyəsi Zolaqlarının Yenilənməsi
+    updateHorizontalChart('eduLevelChart', data.education, 2203);
+
+    // E) Kateqoriyalar Üzrə Sütunların Yenilənməsi
+    updateCategoryChart('categoryBarChart', data.categories, 50);
+}
+
+// 3. Şaquli Sütunları Proporsional Şəkildə Böyüdüb-Kiçildən Köməkçi Funksiya
+function updateBarChart(containerId, chartData, maxVal) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const wrappers = container.querySelectorAll('.single-bar-wrapper');
+    wrappers.forEach(wrapper => {
+        const regionName = wrapper.querySelector('span:last-of-type')?.innerText.trim();
+        if (regionName && chartData[regionName] !== undefined) {
+            const newVal = chartData[regionName];
+
+            // Üstündəki rəqəmi dəyişirik
+            const valSpan = wrapper.querySelector('.bar-val');
+            if (valSpan) valSpan.innerText = newVal;
+
+            // Sütunun hündürlüyünü faizlə yeniləyirik
+            const bar = wrapper.querySelector('.bar-teal');
+            if (bar) {
+                const newHeight = Math.max(8, Math.round((newVal / maxVal) * 110));
+                bar.style.height = `${newHeight}px`;
+            }
+        }
+    });
+}
+
+// 4. Üfüqi Zolaqları Yeniləyən Funksiya (Təhsil Səviyyəsi)
+function updateHorizontalChart(containerId, chartData, maxVal) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const rows = container.querySelectorAll('.single-hbar-wrapper');
+    rows.forEach(row => {
+        const labelText = row.querySelector('.h-label')?.innerText.trim();
+        if (labelText && chartData[labelText] !== undefined) {
+            const newVal = chartData[labelText];
+
+            const valSpan = row.querySelector('.h-bar-val');
+            if (valSpan) valSpan.innerText = newVal;
+
+            const bar = row.querySelector('.bar-teal');
+            if (bar) {
+                const newWidth = Math.max(10, Math.round((newVal / maxVal) * 85));
+                bar.style.width = `${newWidth}%`;
+            }
+        }
+    });
+}
+
+// 5. Kateqoriyalar Bölməsini Yeniləyən Funksiya
+function updateCategoryChart(containerId, categoryData, maxVal) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const wrappers = container.querySelectorAll('.single-bar-wrapper');
+    wrappers.forEach((wrapper, index) => {
+        const keys = Object.keys(categoryData);
+        if (keys[index]) {
+            const newVal = categoryData[keys[index]];
+
+            const valSpan = wrapper.querySelector('.bar-val');
+            if (valSpan) valSpan.innerText = newVal;
+
+            const bar = wrapper.querySelector('.bar-teal');
+            if (bar) {
+                const newHeight = Math.max(10, Math.round((newVal / maxVal) * 110));
+                bar.style.height = `${newHeight}px`;
+            }
+        }
+    });
+}
