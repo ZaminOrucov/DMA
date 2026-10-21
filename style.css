@@ -5,13 +5,63 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.stat-card {
+/* 1. Grid və kartların konteyner tənzimləməsi */
+.stats-grid {
     position: relative;
+    overflow: visible !important;
 }
 
-.stat-card:hover .stat-popover {
-    z-index: 999;
+.stat-card {
+    position: relative !important;
+    overflow: visible !important;
 }
+
+/* 2. Yeni, hamar açılan və heç vaxt qaçmayan popover dizaynı */
+.stat-card .stat-popover {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(100% + 12px);
+    /* Kartın birbaşa aşağısında */
+    left: 50%;
+    /* Kartın tən ortası */
+    transform: translateX(-50%) translateY(8px);
+    /* Mərkəzləşmə və kiçik hərəkət effekti */
+    width: 310px;
+    /* Sabit və ideal en */
+    max-width: 90vw;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 16px;
+    box-sizing: border-box;
+    z-index: 99999;
+    transition: all 0.25s ease-in-out;
+    /* Çox səliqəli hamar açılma */
+    pointer-events: none;
+    /* Bağlı vəziyyətdə heç bir klikə mane olmur */
+}
+
+/* Kartın üzərinə gəldikdə işə düşür */
+.stat-card:hover .stat-popover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+/* 3. Qara nöqtələri, markerləri və istənməyən simvolları kökündən silən qoruma */
+.stat-popover,
+.stat-popover * {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+.stat-popover *::marker {
+    content: none !important;
+}
+
 
 .menu-icon-png {
     width: 18px;
