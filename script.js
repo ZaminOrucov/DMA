@@ -1178,3 +1178,148 @@ function updateCategoryChart(containerId, categoryData, maxVal) {
         }
     });
 }
+// ==========================================================
+// ÖZÜNÜMƏŞĞULLUQ - SEKTORLARA GÖRƏ DİAQRAMLARI DƏYİŞDİRƏN JS
+// ==========================================================
+
+function selectOzunSector(element, sectorName) {
+    // Kartların aktivlik border dizaynını yeniləyirik
+    document.querySelectorAll('.ozun-tab-card').forEach(card => {
+        card.style.borderColor = '#e2e8f0';
+        card.style.borderWidth = '1px';
+    });
+    element.style.borderColor = '#2b5256';
+    element.style.borderWidth = '2px';
+
+    // Sektor üzrə məlumat bazası (Nümunə simulyasiya)
+    const sectorDatabase = {
+        all: {
+            regions: { "Naxçıvan": { t: 619, k: 348, q: 271 }, "Şərur": { t: 51, k: 29, q: 22 }, "Babək": { t: 105, k: 58, q: 47 }, "Ordubad": { t: 52, k: 28, q: 24 }, "Culfa": { t: 144, k: 81, q: 63 }, "Şahbuz": { t: 48, k: 26, q: 22 }, "Kəngərli": { t: 15, k: 8, q: 7 }, "Sədərək": { t: 17, k: 10, q: 7 } }
+        },
+        kend: {
+            regions: { "Naxçıvan": { t: 300, k: 170, q: 130 }, "Şərur": { t: 30, k: 18, q: 12 }, "Babək": { t: 60, k: 35, q: 25 }, "Ordubad": { t: 25, k: 14, q: 11 }, "Culfa": { t: 80, k: 45, q: 35 }, "Şahbuz": { t: 25, k: 14, q: 11 }, "Kəngərli": { t: 8, k: 4, q: 4 }, "Sədərək": { t: 10, k: 6, q: 4 } }
+        },
+        istehsal: {
+            regions: { "Naxçıvan": { t: 100, k: 55, q: 45 }, "Şərur": { t: 8, k: 4, q: 4 }, "Babək": { t: 15, k: 8, q: 7 }, "Ordubad": { t: 10, k: 5, q: 5 }, "Culfa": { t: 24, k: 14, q: 10 }, "Şahbuz": { t: 8, k: 4, q: 4 }, "Kəngərli": { t: 3, k: 2, q: 1 }, "Sədərək": { t: 3, k: 2, q: 1 } }
+        },
+        xidmet: {
+            regions: { "Naxçıvan": { t: 219, k: 123, q: 96 }, "Şərur": { t: 13, k: 7, q: 6 }, "Babək": { t: 30, k: 15, q: 15 }, "Ordubad": { t: 17, k: 9, q: 8 }, "Culfa": { t: 40, k: 22, q: 18 }, "Şahbuz": { t: 15, k: 8, q: 7 }, "Kəngərli": { t: 4, k: 2, q: 2 }, "Sədərək": { t: 4, k: 2, q: 2 } }
+        }
+    };
+
+    const currentData = sectorDatabase[sectorName] || sectorDatabase['all'];
+    updateOzunRegionChart(currentData.regions);
+}
+
+// Rayon qrafiklərinin və popover-lərin dəyərlərini yeniləyən funksiya
+function updateOzunRegionChart(regionsMap) {
+    const container = document.getElementById('ozunRegionChart');
+    if (!container) return;
+
+    const rows = container.querySelectorAll('.single-hbar-wrapper');
+    rows.forEach(row => {
+        const labelEl = row.querySelector('.h-label');
+        if (!labelEl) return;
+        const regionName = labelEl.innerText.trim();
+
+        if (regionsMap[regionName]) {
+            const vals = regionsMap[regionName];
+
+            // Ümumi rəqəm
+            const valSpan = row.querySelector('.h-bar-val');
+            if (valSpan) valSpan.innerText = vals.t;
+
+            // Zolağın eni (max 619 əsas alınaraq faiz hesablanır)
+            const bar = row.querySelector('.bar-teal');
+            if (bar) {
+                const widthPercent = Math.max(5, Math.round((vals.t / 619) * 100));
+                bar.style.width = `${widthPercent}%`;
+            }
+
+            // Popover daxilindəki kişi və qadın sayları
+            const popTotal = row.querySelector('.pop-total');
+            const popKisi = row.querySelector('.pop-kisi');
+            const popQadin = row.querySelector('.pop-qadin');
+
+            if (popTotal) popTotal.innerText = vals.t;
+            if (popKisi) popKisi.innerText = vals.k;
+            if (popQadin) popQadin.innerText = vals.q;
+        }
+    });
+}
+// Rayon sətirlərinə JavaScript vasitəsilə hover effekti əlavə edirik
+document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll('.h-bar-row-single');
+
+    rows.forEach(row => {
+        const popover = row.querySelector('.hbar-popover');
+        if (!popover) return;
+
+        row.addEventListener('mouseenter', () => {
+            popover.style.display = 'block';
+        });
+
+        row.addEventListener('mouseleave', () => {
+            popover.style.display = 'none';
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // Rayon sətrlərini tapırıq
+    const rows = document.querySelectorAll('#peseRegionChart .h-bar-row-single');
+
+    // Səhifəyə tək bir popover elementi əlavə edirik (bütün sətirlər üçün ortaq istifadə olunacaq)
+    let tooltip = document.getElementById('global-hover-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'global-hover-tooltip';
+        tooltip.style.cssText = `
+            position: absolute;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-family: inherit;
+            white-space: nowrap;
+            z-index: 999999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            pointer-events: none;
+            display: none;
+        `;
+        document.body.appendChild(tooltip);
+    }
+
+    rows.forEach(row => {
+        row.addEventListener('mouseenter', (e) => {
+            const regionName = row.getAttribute('data-region') || row.querySelector('.h-label')?.innerText.trim();
+            const totalVal = row.querySelector('.h-bar-val')?.innerText.trim() || "0";
+
+            // Sadə demo saylar (və ya HTML-dəki popover-dən oxuya bilərsiniz)
+            // Real məlumatları buradan və ya HTML içindəki strukturdan ala bilərik
+            let kisi = "–", qadin = "–";
+            const popoverInner = row.querySelector('.single-bar-popover, .bar-hover-popover');
+
+            if (popoverInner) {
+                // Əgər HTML-də popover varsa oradakı rəqəmləri oxuyuruq
+                const textHTML = popoverInner.innerHTML;
+                tooltip.innerHTML = textHTML;
+            } else {
+                // Əks halda ümumi dəyəri göstəririk
+                tooltip.innerHTML = `<b>${regionName}</b><br>Ümumi: ${totalVal}`;
+            }
+
+            tooltip.style.display = 'block';
+        });
+
+        row.addEventListener('mousemove', (e) => {
+            // Kursoru izləyərək popover-i hərəkət etdiririk
+            tooltip.style.left = (e.pageX + 12) + 'px';
+            tooltip.style.top = (e.pageY - 28) + 'px';
+        });
+
+        row.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
+    });
+});
