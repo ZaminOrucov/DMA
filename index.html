@@ -221,13 +221,18 @@
             <!-- ƏSAS SƏHİFƏ BÖLMƏSİ (ENİNƏ UZUN BANNER YERİ İLƏ) -->
             <!-- ========================================================== -->
             <div id="esas-sehife" class="content-section active">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">ƏSAS SƏHİFƏ</h1>
-                    <p class="page-subtitle">Naxçıvan Muxtar Respublikasının Əmək və Əhalinin Sosial Müdafiəsi
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> ƏSAS SƏHİFƏ
+                    </h4>
+                    <p style="color: #cbd5e1; font-size: 13px; margin: 6px 0 0 0;">Naxçıvan Muxtar Respublikasının Əmək
+                        və Əhalinin Sosial Müdafiəsi
                         Nazirliyinin İdarəetmə Panelinə xoş gəlmisiniz</p>
                 </div>
+
 
                 <!-- ENİNƏ UZUN BANNER / ŞƏKİL YERİ -->
                 <div class="card dashboard-banner-card"
@@ -372,45 +377,63 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- ÜMUMİ BAXIŞ BÖLMƏSİ (BACKEND İNTEQRASİYASINA UYĞUN RƏQƏM İD-LƏRİ İLƏ) -->
+            <!-- ÜMUMİ BAXIŞ BÖLMƏSİ (FUNKSİONALLIQ VƏ RƏNGLƏR QORUNmaqla ZƏNGİN DİZAYN) -->
             <!-- ========================================================== -->
             <div id="umumi-baxis" class="content-section active">
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Dövlət Məşğulluq Agentliyinin fəaliyyətinə dair göstəricilər</p>
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> Dövlət
+                        Məşğulluq Agentliyinin
+                        fəaliyyətinə dair göstəricilər
+                    </h4>
                 </div>
 
                 <!-- Filtrlər (Backend üçün id və name atributları) -->
-                <div class="filter-bar">
+                <div class="filter-bar"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; background: #fff; padding: 18px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 25px;">
 
                     <!-- 1. İLLƏR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
-                        <label>İLLƏR</label>
-                        <div class="excel-combobox" id="baxisComboYear">
-                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboYear')">
-                                <span class="combo-selected-text">(Hamsı)</span>
-                                <div class="combo-arrow">▼</div>
+                        <label
+                            style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">İLLƏR</label>
+                        <div class="excel-combobox" id="baxisComboYear" style="position: relative;">
+                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboYear')"
+                                style="background: #fdfdfd; border: 1px solid #ced4da; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                                <span class="combo-selected-text" style="color: #333;">(Hamsı)</span>
+                                <div class="combo-arrow" style="font-size: 10px; color: #6c757d;">▼</div>
                             </div>
-                            <div class="combo-dropdown">
-                                <div class="combo-search-box">
+                            <div class="combo-dropdown"
+                                style="display: none; position: absolute; top: 105%; left: 0; width: 100%; background: #fff; border: 1px solid #ced4da; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 100; padding: 10px;">
+                                <div class="combo-search-box" style="margin-bottom: 8px;">
                                     <input type="text" placeholder="Axtar..."
-                                        onkeyup="filterComboItems('baxisComboYear', this.value)">
+                                        onkeyup="filterComboItems('baxisComboYear', this.value)"
+                                        style="width: 100%; padding: 6px; font-size: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box;">
                                 </div>
-                                <div class="combo-options-list">
-                                    <label class="select-all-label">
+                                <div class="combo-options-list"
+                                    style="max-height: 150px; overflow-y: auto; font-size: 12px; display: flex; flex-direction: column; gap: 5px;">
+                                    <label class="select-all-label"
+                                        style="font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px;">
                                         <input type="checkbox" class="select-all-cb"
                                             onchange="toggleSelectAll('baxisComboYear', this.checked)">
                                         <b>(Hamsını seç)</b>
                                     </label>
-                                    <hr class="combo-divider">
-                                    <label><input type="checkbox" value="2026"
-                                            onchange="handleComboChange('baxisComboYear')"> 2026</label>
-                                    <label><input type="checkbox" value="2025"
-                                            onchange="handleComboChange('baxisComboYear')"> 2025</label>
-                                    <label><input type="checkbox" value="2024"
-                                            onchange="handleComboChange('baxisComboYear')"> 2024</label>
-                                    <label><input type="checkbox" value="2023"
-                                            onchange="handleComboChange('baxisComboYear')"> 2023</label>
+                                    <hr class="combo-divider"
+                                        style="margin: 4px 0; border: 0; border-top: 1px solid #eee;">
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="2026" onchange="handleComboChange('baxisComboYear')">
+                                        2026</label>
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="2025" onchange="handleComboChange('baxisComboYear')">
+                                        2025</label>
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="2024" onchange="handleComboChange('baxisComboYear')">
+                                        2024</label>
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="2023" onchange="handleComboChange('baxisComboYear')">
+                                        2023</label>
                                 </div>
                             </div>
                         </div>
@@ -418,47 +441,66 @@
 
                     <!-- 2. AYLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
-                        <label>AYLAR</label>
-                        <div class="excel-combobox" id="baxisComboMonth">
-                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboMonth')">
-                                <span class="combo-selected-text">(Hamsı)</span>
-                                <div class="combo-arrow">▼</div>
+                        <label
+                            style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">AYLAR</label>
+                        <div class="excel-combobox" id="baxisComboMonth" style="position: relative;">
+                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboMonth')"
+                                style="background: #fdfdfd; border: 1px solid #ced4da; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                                <span class="combo-selected-text" style="color: #333;">(Hamsı)</span>
+                                <div class="combo-arrow" style="font-size: 10px; color: #6c757d;">▼</div>
                             </div>
-                            <div class="combo-dropdown">
-                                <div class="combo-search-box">
+                            <div class="combo-dropdown"
+                                style="display: none; position: absolute; top: 105%; left: 0; width: 100%; background: #fff; border: 1px solid #ced4da; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 100; padding: 10px;">
+                                <div class="combo-search-box" style="margin-bottom: 8px;">
                                     <input type="text" placeholder="Axtar..."
-                                        onkeyup="filterComboItems('baxisComboMonth', this.value)">
+                                        onkeyup="filterComboItems('baxisComboMonth', this.value)"
+                                        style="width: 100%; padding: 6px; font-size: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box;">
                                 </div>
-                                <div class="combo-options-list">
-                                    <label class="select-all-label">
+                                <div class="combo-options-list"
+                                    style="max-height: 150px; overflow-y: auto; font-size: 12px; display: flex; flex-direction: column; gap: 5px;">
+                                    <label class="select-all-label"
+                                        style="font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px;">
                                         <input type="checkbox" class="select-all-cb"
                                             onchange="toggleSelectAll('baxisComboMonth', this.checked)">
                                         <b>(Hamsını seç)</b>
                                     </label>
-                                    <hr class="combo-divider">
-                                    <label><input type="checkbox" value="Yanvar"
+                                    <hr class="combo-divider"
+                                        style="margin: 4px 0; border: 0; border-top: 1px solid #eee;">
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Yanvar"
                                             onchange="handleComboChange('baxisComboMonth')"> Yanvar</label>
-                                    <label><input type="checkbox" value="Fevral"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Fevral"
                                             onchange="handleComboChange('baxisComboMonth')"> Fevral</label>
-                                    <label><input type="checkbox" value="Mart"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Mart"
                                             onchange="handleComboChange('baxisComboMonth')"> Mart</label>
-                                    <label><input type="checkbox" value="Aprel"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Aprel"
                                             onchange="handleComboChange('baxisComboMonth')"> Aprel</label>
-                                    <label><input type="checkbox" value="May"
-                                            onchange="handleComboChange('baxisComboMonth')"> May</label>
-                                    <label><input type="checkbox" value="İyun"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="May" onchange="handleComboChange('baxisComboMonth')">
+                                        May</label>
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="İyun"
                                             onchange="handleComboChange('baxisComboMonth')"> İyun</label>
-                                    <label><input type="checkbox" value="İyul"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="İyul"
                                             onchange="handleComboChange('baxisComboMonth')"> İyul</label>
-                                    <label><input type="checkbox" value="Avqust"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Avqust"
                                             onchange="handleComboChange('baxisComboMonth')"> Avqust</label>
-                                    <label><input type="checkbox" value="Sentyabr"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Sentyabr"
                                             onchange="handleComboChange('baxisComboMonth')"> Sentyabr</label>
-                                    <label><input type="checkbox" value="Oktyabr"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Oktyabr"
                                             onchange="handleComboChange('baxisComboMonth')"> Oktyabr</label>
-                                    <label><input type="checkbox" value="Noyabr"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Noyabr"
                                             onchange="handleComboChange('baxisComboMonth')"> Noyabr</label>
-                                    <label><input type="checkbox" value="Dekabr"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Dekabr"
                                             onchange="handleComboChange('baxisComboMonth')"> Dekabr</label>
                                 </div>
                             </div>
@@ -467,39 +509,55 @@
 
                     <!-- 3. RAYONLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
-                        <label>RAYONLAR / ŞƏHƏR</label>
-                        <div class="excel-combobox" id="baxisComboRegion">
-                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboRegion')">
-                                <span class="combo-selected-text">(Hamsı)</span>
-                                <div class="combo-arrow">▼</div>
+                        <label
+                            style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">RAYONLAR
+                            / ŞƏHƏR</label>
+                        <div class="excel-combobox" id="baxisComboRegion" style="position: relative;">
+                            <div class="combo-select-box" onclick="toggleComboBox('baxisComboRegion')"
+                                style="background: #fdfdfd; border: 1px solid #ced4da; padding: 9px 12px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                                <span class="combo-selected-text" style="color: #333;">(Hamsı)</span>
+                                <div class="combo-arrow" style="font-size: 10px; color: #6c757d;">▼</div>
                             </div>
-                            <div class="combo-dropdown">
-                                <div class="combo-search-box">
+                            <div class="combo-dropdown"
+                                style="display: none; position: absolute; top: 105%; left: 0; width: 100%; background: #fff; border: 1px solid #ced4da; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 100; padding: 10px;">
+                                <div class="combo-search-box" style="margin-bottom: 8px;">
                                     <input type="text" placeholder="Axtar..."
-                                        onkeyup="filterComboItems('baxisComboRegion', this.value)">
+                                        onkeyup="filterComboItems('baxisComboRegion', this.value)"
+                                        style="width: 100%; padding: 6px; font-size: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box;">
                                 </div>
-                                <div class="combo-options-list">
-                                    <label class="select-all-label">
+                                <div class="combo-options-list"
+                                    style="max-height: 150px; overflow-y: auto; font-size: 12px; display: flex; flex-direction: column; gap: 5px;">
+                                    <label class="select-all-label"
+                                        style="font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px;">
                                         <input type="checkbox" class="select-all-cb"
                                             onchange="toggleSelectAll('baxisComboRegion', this.checked)">
                                         <b>(Hamsını seç)</b>
                                     </label>
-                                    <hr class="combo-divider">
-                                    <label><input type="checkbox" value="Naxçıvan"
+                                    <hr class="combo-divider"
+                                        style="margin: 4px 0; border: 0; border-top: 1px solid #eee;">
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Naxçıvan"
                                             onchange="handleComboChange('baxisComboRegion')"> Naxçıvan şəhəri</label>
-                                    <label><input type="checkbox" value="Şərur"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Şərur"
                                             onchange="handleComboChange('baxisComboRegion')"> Şərur rayonu</label>
-                                    <label><input type="checkbox" value="Babək"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Babək"
                                             onchange="handleComboChange('baxisComboRegion')"> Babək rayonu</label>
-                                    <label><input type="checkbox" value="Ordubad"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Ordubad"
                                             onchange="handleComboChange('baxisComboRegion')"> Ordubad rayonu</label>
-                                    <label><input type="checkbox" value="Culfa"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Culfa"
                                             onchange="handleComboChange('baxisComboRegion')"> Culfa rayonu</label>
-                                    <label><input type="checkbox" value="Şahbuz"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Şahbuz"
                                             onchange="handleComboChange('baxisComboRegion')"> Şahbuz rayonu</label>
-                                    <label><input type="checkbox" value="Kəngərli"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Kəngərli"
                                             onchange="handleComboChange('baxisComboRegion')"> Kəngərli rayonu</label>
-                                    <label><input type="checkbox" value="Sədərək"
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Sədərək"
                                             onchange="handleComboChange('baxisComboRegion')"> Sədərək rayonu</label>
                                 </div>
                             </div>
@@ -507,15 +565,26 @@
                     </div>
                 </div>
 
-                <!-- Statistik Kartlar Grid (3x3) - Backend İD Atributları ilə -->
-                <div class="stats-grid" id="statsContainer">
+                <!-- Statistik Kartlar Grid (Zəngin Stildə, Bütün ID-lər və Onclick-lər Yerindədir) -->
+                <div class="stats-grid" id="statsContainer"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px;">
 
                     <!-- Kart 1: İşlə təmin olunmuşdur -->
-                    <div class="stat-card" data-id="isle-temin" onclick="navigateToSection('isle-temin')">
-                        <div class="stat-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">İşlə təmin olunmuşdur</span>
-                            <span class="stat-value"><b id="val-isle-temin" class="count-val">2634</b> nəfər</span>
+                    <div class="stat-card" data-id="isle-temin" onclick="navigateToSection('isle-temin')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-person-walking-luggage"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">İşlə
+                                    təmin olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-ozunumesgulluq" class="count-val">2634</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
@@ -523,21 +592,18 @@
                                 <div><b>Kişi</b> – <span id="pop-isle-kisi">1500</span></div>
                                 <div><b>Qadın</b> – <span id="pop-isle-qadin">1100</span></div>
                             </div>
-                            <!--sperator-->
-                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 20px 0;"></div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
                             <div class="popover-group">
                                 <div><b>Dövlət sektoru üzrə</b> – <span id="pop-isle-dovlet">1500</span></div>
                                 <div><b>Özəl sektor üzrə</b> – <span id="pop-isle-ozel">1100</span></div>
                             </div>
-                            <!--sperator-->
-                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 20px 0;"></div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
                             <div class="popover-group">
                                 <div><b>İşsiz</b> – <span id="pop-isle-issiz">1400</span></div>
                                 <div><b>İşaxtaran</b> – <span id="pop-isle-isaxtaran">400</span></div>
                                 <div><b>İşaxtaran (tpo)</b> – <span id="pop-isle-tpo">800</span></div>
                             </div>
-                            <!--sperator-->
-                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 20px 0;"></div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
                             <div class="popover-group">
                                 <div><b>Ali təhsilli</b> – <span id="pop-isle-ali">500</span></div>
                                 <div><b>Orta ixtisas təhsilli</b> – <span id="pop-isle-ortaixtisas">200</span></div>
@@ -547,11 +613,21 @@
                     </div>
 
                     <!-- Kart 2: Özünüməşğulluq -->
-                    <div class="stat-card" data-id="ozunumesgulluq" onclick="navigateToSection('ozunumesgulluq')">
-                        <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Özünüməşğulluq proqramına cəlb olunmuşdur</span>
-                            <span class="stat-value"><b id="val-ozunumesgulluq" class="count-val">986</b> nəfər</span>
+                    <div class="stat-card" data-id="ozunumesgulluq" onclick="navigateToSection('ozunumesgulluq')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Özünüməşğulluq
+                                    proqramına cəlb olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-ozunumesgulluq" class="count-val">986</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
@@ -559,42 +635,61 @@
                                 <div><b>Kişi</b> – <span id="pop-ozun-kisi">550</span></div>
                                 <div><b>Qadın</b> – <span id="pop-ozun-qadin">436</span></div>
                             </div>
-                            <!--sperator-->
-                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 20px 0;"></div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
                             <div class="popover-group">
                                 <div><b>İşsiz</b> – <span id="pop-ozun-issiz">700</span></div>
-                                <div><b>İşaxtaran (tpo)</b> – <span id="pop-ozun-isaxtaran">286</span>
-                                </div>
+                                <div><b>İşaxtaran (tpo)</b> – <span id="pop-ozun-isaxtaran">286</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 3: Haqqı ödənilən ictimai işlər -->
-                    <div class="stat-card" data-id="ictimai-isler" onclick="navigateToSection('ictimai-isler')">
-                        <div class="stat-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Haqqı ödənilən ictimai işlərə cəlb olunmuşdur</span>
-                            <span class="stat-value"><b id="val-ictimai-isler" class="count-val">853</b> nəfər</span>
+                    <div class="stat-card" data-id="ictimai-isler" onclick="navigateToSection('ictimai-isler')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-hands-holding-child"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Haqqı
+                                    ödənilən ictimai işlərə cəlb olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-ictimai-isler" class="count-val">853</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
                             <div class="popover-group">
-                                <div><b>Kvota</b> – <span id="pop-sigorta-kisi">1051</span></div>
-                                <div><b>Ümumi cəlb olunan</b> – <span id="pop-sigorta-qadin">1035</span></div>
-                                <div><b>Aktiv işçi</b> – <span id="pop-sigorta-qadin">294</span></div>
-                                <div><b>Xitam verilən</b> – <span id="pop-sigorta-qadin">741</span></div>
-                                <div><b>Vakant yerlər</b> – <span id="pop-sigorta-qadin">651</span></div>
-
+                                <div><b>Kişi</b> – <span id="pop-ozun-kisi">550</span></div>
+                                <div><b>Qadın</b> – <span id="pop-ozun-qadin">436</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>İşsiz</b> – <span id="pop-ozun-issiz">700</span></div>
+                                <div><b>İşaxtaran (tpo)</b> – <span id="pop-ozun-isaxtaran">286</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 4: Peşə hazırlığı kursları -->
-                    <div class="stat-card" data-id="pese-kurslari" onclick="navigateToSection('pese-kurslari')">
-                        <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Peşə hazırlığı kurslarına cəlb olunmuşdur</span>
-                            <span class="stat-value"><b id="val-pese-kurslari" class="count-val">2600</b> nəfər</span>
+                    <div class="stat-card" data-id="pese-kurslari" onclick="navigateToSection('pese-kurslari')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Peşə
+                                    hazırlığı kurslarına cəlb olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-pese-kurslari" class="count-val">2600</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
@@ -607,106 +702,180 @@
 
                     <!-- Kart 5: Peşəyönümlü məsləhət xidməti -->
                     <div class="stat-card" data-id="peseyonumlu-meslehet"
-                        onclick="navigateToSection('peseyonumlu-meslehet')">
-                        <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Peşəyönümlü məsləhət xidmətlərinə cəlb olunmuşdur</span>
-                            <span class="stat-value"><b id="val-peseyonumlu" class="count-val">2600</b> nəfər</span>
-                        </div>
-                        <div class="stat-popover">
-                            <div class="popover-title">Onlardan,</div>
-                            <div class="popover-group">
-                                <div><b>Məktəbli</b> – <span id="pop-meslehet-mektebli">1800</span></div>
-                                <div><b>Digər</b> – <span id="pop-meslehet-diger">800</span></div>
+                        onclick="navigateToSection('peseyonumlu-meslehet')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Peşəyönümlü
+                                    məsləhət xidmətlərinə cəlb olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-peseyonumlu" class="count-val">2600</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 6: İşsizlikdən sığorta ödənişi -->
-                    <div class="stat-card" data-id="sigorta" onclick="navigateToSection('sigorta')">
-                        <div class="stat-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">İşsizlikdən sığorta ödənişi təyin edilmişdir</span>
-                            <span class="stat-value"><b id="val-sigorta" class="count-val">2600</b> nəfər</span>
+                    <div class="stat-card" data-id="sigorta" onclick="navigateToSection('sigorta')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">İşsizlikdən
+                                    sığorta ödənişi təyin edilmişdir</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-sigorta" class="count-val">2600</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
                             <div class="popover-group">
-                                <div><b>Ümumi müraciət</b> – <span id="pop-sigorta-kisi">1051</span></div>
-                                <div><b>Baxılan</b> – <span id="pop-sigorta-qadin">1035</span></div>
-                                <div><b>İmtina alan</b> – <span id="pop-sigorta-qadin">294</span></div>
-                                <div><b>Təyinat alan</b> – <span id="pop-sigorta-qadin">741</span></div>
-                                <div><b>Təyinatı dayandırılan</b> – <span id="pop-sigorta-qadin">651</span></div>
-                                <div><b>Aktiv ödəniş</b> – <span id="pop-sigorta-qadin">90</span></div>
+                                <div><b>Kişi</b> – <span id="pop-sigorta-kisi">1051</span></div>
+                                <div><b>Qadın</b> – <span id="pop-sigorta-qadin">1035</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 7: Əməkhaqqının birgə maliyyələşdirilməsi -->
-                    <div class="stat-card" data-id="maliyelesdirilme" onclick="navigateToSection('maliyelesdirilme')">
-                        <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Əməkhaqqının birgə maliyyələşdirilməsi ilə işlə təmin
-                                olunmuşdur</span>
-                            <span class="stat-value"><b id="val-maliyelesdirilme" class="count-val">74</b> nəfər</span>
+                    <div class="stat-card" data-id="maliyelesdirilme" onclick="navigateToSection('maliyelesdirilme')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Əməkhaqqının
+                                    birgə maliyyələşdirilməsi ilə işlə təmin olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-maliyelesdirilme" class="count-val">74</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
                             <div class="popover-group">
-                                <div><b>Özəl sektor</b> – <span id="pop-maliye-ozel">74</span></div>
+                                <div><b>Kişi</b> – <span id="pop-isle-kisi">1500</span></div>
+                                <div><b>Qadın</b> – <span id="pop-isle-qadin">1100</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>İşsiz</b> – <span id="pop-isle-issiz">1400</span></div>
+                                <div><b>İşaxtaran</b> – <span id="pop-isle-isaxtaran">400</span></div>
+                                <div><b>İşaxtaran (tpo)</b> – <span id="pop-isle-tpo">800</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>Ali təhsilli</b> – <span id="pop-isle-ali">500</span></div>
+                                <div><b>Orta ixtisas təhsilli</b> – <span id="pop-isle-ortaixtisas">200</span></div>
+                                <div><b>Orta təhsilli</b> – <span id="pop-isle-orta">1900</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 8: Əmək yarmarkası -->
-                    <div class="stat-card" data-id="yarmarka" onclick="navigateToSection('yarmarka')">
-                        <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Əmək yarmarkasında işlə təmin olunmuşdur</span>
-                            <span class="stat-value"><b id="val-yarmarka" class="count-val">82</b> nəfər</span>
+                    <div class="stat-card" data-id="yarmarka" onclick="navigateToSection('yarmarka')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Əmək
+                                    yarmarkasında işlə təmin olunmuşdur</span>
+                                <span class="stat-value" style="font-size: 22px; color: #1e293b; font-weight: 700;"><b
+                                        id="val-yarmarka" class="count-val">82</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">nəfər</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
                             <div class="popover-group">
-                                <div><b>Kişi</b> – <span id="pop-yarmarka-kisi">42</span></div>
-                                <div><b>Qadın</b> – <span id="pop-yarmarka-qadin">40</span></div>
+                                <div><b>Kişi</b> – <span id="pop-isle-kisi">1500</span></div>
+                                <div><b>Qadın</b> – <span id="pop-isle-qadin">1100</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>Dövlət sektoru üzrə</b> – <span id="pop-isle-dovlet">1500</span></div>
+                                <div><b>Özəl sektor üzrə</b> – <span id="pop-isle-ozel">1100</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>İşsiz</b> – <span id="pop-isle-issiz">1400</span></div>
+                                <div><b>İşaxtaran</b> – <span id="pop-isle-isaxtaran">400</span></div>
+                                <div><b>İşaxtaran (tpo)</b> – <span id="pop-isle-tpo">800</span></div>
+                            </div>
+                            <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                            <div class="popover-group">
+                                <div><b>Ali təhsilli</b> – <span id="pop-isle-ali">500</span></div>
+                                <div><b>Orta ixtisas təhsilli</b> – <span id="pop-isle-ortaixtisas">200</span></div>
+                                <div><b>Orta təhsilli</b> – <span id="pop-isle-orta">1900</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kart 9: Vakansiya bankı -->
-                    <div class="stat-card" data-id="vakansiya" onclick="navigateToSection('vakansiya')">
-                        <div class="stat-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-title">Vakansiya bankı</span>
-                            <span class="stat-value"><b id="val-vakansiya" class="count-val">3543</b> Vakansiya</span>
+                    <div class="stat-card" data-id="vakansiya" onclick="navigateToSection('vakansiya')"
+                        style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="stat-icon"
+                                style="background: #f1f5f9; color: #2b5256; width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <div class="stat-info" style="flex: 1;">
+                                <span class="stat-title"
+                                    style="font-size: 13px; color: #64748b; font-weight: 600; display: block; margin-bottom: 6px;">Vakansiya
+                                    bankı</span>
+                                <span class="stat-value"
+                                    style="font-size: 22px; width: 100%;color: #1e293b; font-weight: 700;"><b
+                                        id="val-vakansiya" class="count-val">3543</b> <span
+                                        style="font-size: 13px; font-weight: normal; color: #64748b;">Vakansiya</span></span>
+                            </div>
                         </div>
                         <div class="stat-popover">
                             <div class="popover-title">Onlardan,</div>
                             <div class="popover-group">
                                 <div><b>Dövlət sektoru</b> – <span id="pop-vakansiya-dovlet">2000</span></div>
                                 <div><b>Özəl sektor</b> – <span id="pop-vakansiya-ozel">1543</span></div>
-                                <!--sperator-->
-                                <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 20px 0;"></div>
+                                <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
                                 <div><b>Fəhlə</b> – <span id="pop-vakansiya-dovlet">2000</span></div>
                                 <div><b>Qulluqçu</b> – <span id="pop-vakansiya-ozel">1543</span></div>
+                                <div style="width: 100%; height: 1px; background-color: #d1d8d9; margin: 15px 0;"></div>
+                                <div><b>Ali təhsilli</b> – <span id="pop-isle-ali">500</span></div>
+                                <div><b>Orta ixtisas təhsilli</b> – <span id="pop-isle-ortaixtisas">200</span></div>
+                                <div><b>Orta təhsilli</b> – <span id="pop-isle-orta">1900</span></div>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
             <!-- ==========================================================
      QEYDİYYAT BÖLMƏSİ (ŞKALA ÜZRƏ AÇIQ RƏQƏMLƏR VƏ HOVER İLƏ)
      ========================================================== -->
             <div id="qeydiyyat" class="content-section">
-
-                <!-- Bölmənin başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">İşsiz və işaxtaran kimi müraciət etmiş şəxslərin qeydiyyatına dair
-                        göstəricilər</p>
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> İşsiz və
+                        işaxtaran kimi müraciət etmiş şəxslərin qeydiyyatına dair
+                        göstəricilər
+                    </h4>
                 </div>
 
                 <!-- Filtrləmə paneli (Excel üslublu Combo Box: İl, Ay, Rayon) -->
@@ -1262,11 +1431,14 @@
      İŞLƏ TƏMİN OLUNMA BÖLMƏSİ (EXCEL FİLTRLƏRİ VƏ INTERAKTİV TAB/HOVER İLƏ)
      ========================================================== -->
             <div id="isle-temin" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">İşlə təmin edilmiş şəxslərə dair göstəricilər</p>
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> İşlə təmin
+                        edilmiş şəxslərə dair göstəricilər
+                    </h4>
                 </div>
 
                 <!-- Filtrləmə Paneli (Excel üslublu çoxseçimli Combo Box) -->
@@ -1828,13 +2000,15 @@
      ÖZÜNÜMƏŞĞULLUQ PROQRAMI BÖLMƏSİ (GENDER SİLİNDİ, HOVER ƏLAVƏ OLUNDU)
      ========================================================== -->
             <div id="ozunumesgulluq" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Özünüməşğulluq proqramının icrasına dair göstəricilər</p>
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> Özünüməşğulluq
+                        proqramının icrasına dair göstəricilər
+                    </h4>
                 </div>
-
                 <!-- Filtrləmə Paneli (EXCEL FİLTR MƏNTİQLİ COMBO BOX PANENİ) -->
                 <div class="filter-bar">
 
@@ -2353,13 +2527,15 @@
      HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (ÜMUMİ VƏZİYYƏT ÇIXARILDI)
      ========================================================== -->
             <div id="ictimai-isler" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Haqqı ödənilən ictimai işlərə dair göstəricilər</p>
+                <!-- Səhifə Başlığı Blok Banneri -->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> Haqqı ödənilən
+                        ictimai işlərə dair göstəricilər
+                    </h4>
                 </div>
-
                 <!-- 1. ÜST FİLTRLƏMƏ PANENİ (Excel üslublu çoxseçimli Combo Box) -->
                 <div class="filter-bar" style="margin-bottom: 25px;">
 
@@ -2675,13 +2851,15 @@
      PEŞƏ HAZIRLIĞI KURSLARI BÖLMƏSİ (EXCEL FİLTRLƏRİ İLƏ)
      ========================================================== -->
             <div id="pese-kurslari" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Peşə hazırlığı kurslarına dair göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i>Peşə hazırlığı
+                        kurslarına dair göstəricilər
+                    </h4>
                 </div>
-
                 <!-- ÜST 5 ƏSAS STATİSTİK KART -->
                 <div class="pese-top-cards">
                     <div class="stat-card pese-card active-card" data-id="kurs-sayi">
@@ -3007,13 +3185,15 @@
      PEŞƏYÖNÜMLÜ MƏSLƏHƏT XİDMƏTİ BÖLMƏSİ (YENİLƏNMİŞ VƏ UYUMLU)
      ========================================================== -->
             <div id="peseyonumlu-meslehet" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Peşəyönümlü məsləhət xidmətlərinə dair göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> Peşəyönümlü
+                        məsləhət xidmətlərinə dair göstəricilər
+                    </h4>
                 </div>
-
                 <!-- 1. ÜST FİLTRLƏMƏ PANENİ (Excel üslublu Combo Box) -->
                 <div class="filter-bar" style="margin-bottom: 25px;">
 
@@ -3268,13 +3448,15 @@
             İŞSİZLİKDƏN SIĞORTA BÖLMƏSİ (BACKEND İLƏ TAM UYUMLU)
             ========================================================== -->
             <div id="sigorta" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">İşsizlikdən sığorta ödənişlərinə dair göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> İşsizlikdən
+                        sığorta ödənişlərinə dair göstəricilər
+                    </h4>
                 </div>
-
                 <!-- ÜST 6 ƏSAS STATİSTİK KART -->
                 <div class="sigorta-top-cards">
                     <div class="stat-card sigorta-card main-card" data-id="umumi-muraciet">
@@ -3467,14 +3649,16 @@
             ƏMƏKHAQQININ BİRGƏ MALİYYƏLƏŞDİRİLMƏSİ BÖLMƏSİ
             ========================================================== -->
             <div id="maliyelesdirilme" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Əməkhaqqının birgə maliyyələşdirilməsi proqramının icrasına dair
-                        göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i> Əməkhaqqının
+                        birgə maliyyələşdirilməsi proqramının icrasına dair
+                        göstəricilər
+                    </h4>
                 </div>
-
                 <!-- ÜST FİLTRLƏR VƏ 4 ƏSAS KART (ŞƏKİL 1) -->
                 <div class="maliye-top-layout" style="margin-bottom: 25px;">
 
@@ -3873,11 +4057,14 @@
      ƏMƏK YARMARKASI BÖLMƏSİ (HOVER BÖLGÜSÜ VƏ GÖNDƏRİŞ SAYI KARTI İLƏ)
      ========================================================== -->
             <div id="yarmarka" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Əmək yarmarkalarına dair göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i>Əmək
+                        yarmarkalarına dair göstəricilər
+                    </h4>
                 </div>
 
                 <!-- ÜST FİLTRLƏR VƏ 4 ƏSAS KART -->
@@ -4448,11 +4635,14 @@
      VAKANSİYA BANKI BÖLMƏSİ (EXCEL ÇOXLU SEÇİMLİ FİLTRLƏR İLƏ)
      ========================================================== -->
             <div id="vakansiya" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Vakansiya bankına dair ətraflı göstəricilər</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i>Vakansiya
+                        bankına dair ətraflı göstəricilər
+                    </h4>
                 </div>
 
                 <!-- EXCEL ÜSLUBLU ÇOXLU SEÇİMLİ (MULTI-SELECT) FİLTRLƏMƏ PANELSİ -->
@@ -4505,8 +4695,8 @@
                     <!-- 2. AYLAR (ÇOXLU SEÇİM) -->
                     <div class="filter-item">
                         <label
-                            style="font-size: 11px; font-weight: 600; color: #555; display: block; margin-bottom: 4px;">DÖVRÜN
-                            SONUNA(AYLAR)</label>
+                            style="font-size: 11px; font-weight: 600; color: #555; display: block; margin-bottom: 4px;">AYLAR(DÖVRÜN
+                            SONUNA)</label>
                         <div class="excel-combobox" id="vacComboMonth" style="position: relative;">
                             <div class="combo-select-box" onclick="toggleComboBox('vacComboMonth')"
                                 style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
@@ -4700,6 +4890,9 @@
                                     <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
                                             type="checkbox" value="Qadin"
                                             onchange="handleComboChange('vacComboGender')"> Qadın</label>
+                                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;"><input
+                                            type="checkbox" value="Qadin"
+                                            onchange="handleComboChange('vacComboGender')"> Cins tələbi yoxdur</label>
                                 </div>
                             </div>
                         </div>
@@ -4936,11 +5129,14 @@
             <!-- STRUKTUR BÖLMƏSİ - MÜASİR İYERARXİK DİZAYN (ŞÖBƏ - SEKTOR BAĞLANTISI İLƏ) -->
             <!-- ========================================================== -->
             <div id="struktur" class="content-section">
-
-                <!-- Səhifə Başlığı -->
-                <div class="report-header">
-                    <h1 class="page-title">İNTERAKTİV HESABAT</h1>
-                    <p class="page-subtitle">Dövlət Məşğulluq Agentliyinin müasir idarəetmə strukturu</p>
+                <!--səhifə başlığı-->
+                <div class="report-header"
+                    style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
+                    <h4 class="page-title"
+                        style="color: #ffffff; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: #81ecec;"></i>Dövlət
+                        Məşğulluq Agentliyinin müasir idarəetmə strukturu
+                    </h4>
                 </div>
 
                 <!-- Struktur Ağacının Əsas Konteyneri -->
