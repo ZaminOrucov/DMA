@@ -5,6 +5,13 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.stat-card {
+    position: relative;
+}
+
+.stat-card:hover .stat-popover {
+    z-index: 999;
+}
 
 .menu-icon-png {
     width: 18px;
