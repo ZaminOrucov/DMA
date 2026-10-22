@@ -1323,3 +1323,297 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+// ==========================================================
+// HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (JAVASCRIPT)
+// ==========================================================
+
+const publicData = {
+    kvota: {
+        titleSuffix: "Kvota",
+        institutions: [
+            { name: "Kommunal Müəssisələr Kombinatı", val: 1961, pct: 95 },
+            { name: "Dini Qurumlarla İş üzrə Dövlət Komitəsi", val: 48, pct: 25 },
+            { name: "Naxçıvan Avtomobil Yolları Dövlət agentliyi", val: 43, pct: 22 },
+            { name: "Ekologiya və Təbii Sərvətlər Nazirliyi", val: 32, pct: 16 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 32, pct: 16 },
+            { name: "Naxçıvan Yaşıllaşdırma xidməti", val: 56, pct: 34 },
+            { name: "Naxçıvan Dövlət Energetika Xidməti", val: 45, pct: 30 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 32, pct: 16 }
+        ],
+        regions: [
+            { name: "Naxçıvan şəhəri", val: 120, height: 30, kisi: 45, qadin: 75 },
+            { name: "Şərur rayonu", val: 444, height: 95, kisi: 200, qadin: 244 },
+            { name: "Babək rayonu", val: 335, height: 80, kisi: 150, qadin: 185 },
+            { name: "Ordubad rayonu", val: 315, height: 75, kisi: 140, qadin: 175 },
+            { name: "Culfa rayonu", val: 365, height: 85, kisi: 160, qadin: 205 },
+            { name: "Şahbuz rayonu", val: 252, height: 60, kisi: 110, qadin: 142 },
+            { name: "Kəngərli rayonu", val: 155, height: 40, kisi: 70, qadin: 85 },
+            { name: "Sədərək rayonu", val: 145, height: 35, kisi: 65, qadin: 80 }
+        ],
+        gender: { kisi: 1100, qadin: 1400 }
+    },
+    celb: {
+        titleSuffix: "Ümumi cəlb olunan",
+        institutions: [
+            { name: "Kommunal Müəssisələr Kombinatı", val: 2150, pct: 98 },
+            { name: "Dini Qurumlarla İş üzrə Dövlət Komitəsi", val: 60, pct: 30 },
+            { name: "Naxçıvan Avtomobil Yolları Dövlət agentliyi", val: 55, pct: 25 },
+            { name: "Ekologiya və Təbii Sərvətlər Nazirliyi", val: 45, pct: 20 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 40, pct: 28 },
+            { name: "Naxçıvan Yaşıllaşdırma xidməti", val: 32, pct: 30 },
+            { name: "Naxçıvan Dövlət Energetika Xidməti", val: 18, pct: 16 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 56, pct: 34 }
+        ],
+        regions: [
+            { name: "Naxçıvan şəhəri", val: 156, height: 35, kisi: 60, qadin: 96 },
+            { name: "Şərur rayonu", val: 522, height: 110, kisi: 220, qadin: 302 },
+            { name: "Babək rayonu", val: 430, height: 90, kisi: 180, qadin: 250 },
+            { name: "Ordubad rayonu", val: 355, height: 75, kisi: 150, qadin: 205 },
+            { name: "Culfa rayonu", val: 417, height: 85, kisi: 170, qadin: 247 },
+            { name: "Şahbuz rayonu", val: 290, height: 65, kisi: 120, qadin: 170 },
+            { name: "Kəngərli rayonu", val: 171, height: 45, kisi: 75, qadin: 96 },
+            { name: "Sədərək rayonu", val: 200, height: 50, kisi: 85, qadin: 115 }
+        ],
+        gender: { kisi: 1250, qadin: 1603 }
+    },
+    xitam: {
+        titleSuffix: "Xitam verilən",
+        institutions: [
+            { name: "Kommunal Müəssisələr Kombinatı", val: 520, pct: 90 },
+            { name: "Dini Qurumlarla İş üzrə Dövlət Komitəsi", val: 15, pct: 20 },
+            { name: "Naxçıvan Avtomobil Yolları Dövlət agentliyi", val: 12, pct: 18 },
+            { name: "Ekologiya və Təbii Sərvətlər Nazirliyi", val: 10, pct: 15 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 8, pct: 12 },
+            { name: "Naxçıvan Yaşıllaşdırma xidməti", val: 32, pct: 28 },
+            { name: "Naxçıvan Dövlət Energetika Xidməti", val: 24, pct: 24 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 22, pct: 18 }
+        ],
+        regions: [
+            { name: "Naxçıvan şəhəri", val: 63, height: 30, kisi: 25, qadin: 38 },
+            { name: "Şərur rayonu", val: 95, height: 50, kisi: 40, qadin: 55 },
+            { name: "Babək rayonu", val: 112, height: 60, kisi: 45, qadin: 67 },
+            { name: "Ordubad rayonu", val: 55, height: 30, kisi: 22, qadin: 33 },
+            { name: "Culfa rayonu", val: 66, height: 35, kisi: 26, qadin: 40 },
+            { name: "Şahbuz rayonu", val: 55, height: 30, kisi: 22, qadin: 33 },
+            { name: "Kəngərli rayonu", val: 49, height: 25, kisi: 20, qadin: 29 },
+            { name: "Sədərək rayonu", val: 62, height: 32, kisi: 25, qadin: 37 }
+        ],
+        gender: { kisi: 265, qadin: 398 }
+    },
+    aktiv: {
+        titleSuffix: "Aktiv işçi",
+        institutions: [
+            { name: "Kommunal Müəssisələr Kombinatı", val: 1961, pct: 95 },
+            { name: "Dini Qurumlarla İş üzrə Dövlət Komitəsi", val: 48, pct: 25 },
+            { name: "Naxçıvan Avtomobil Yolları Dövlət agentliyi", val: 43, pct: 22 },
+            { name: "Ekologiya və Təbii Sərvətlər Nazirliyi", val: 32, pct: 16 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 32, pct: 30 },
+            { name: "Naxçıvan Yaşıllaşdırma xidməti", val: 44, pct: 35 },
+            { name: "Naxçıvan Dövlət Energetika Xidməti", val: 16, pct: 16 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 14, pct: 13 }
+        ],
+        regions: [
+            { name: "Naxçıvan şəhəri", val: 112, height: 30, kisi: 45, qadin: 67 },
+            { name: "Şərur rayonu", val: 356, height: 95, kisi: 140, qadin: 216 },
+            { name: "Babək rayonu", val: 392, height: 105, kisi: 155, qadin: 237 },
+            { name: "Ordubad rayonu", val: 261, height: 70, kisi: 105, qadin: 156 },
+            { name: "Culfa rayonu", val: 297, height: 80, kisi: 120, qadin: 177 },
+            { name: "Şahbuz rayonu", val: 243, height: 65, kisi: 98, qadin: 145 },
+            { name: "Kəngərli rayonu", val: 258, height: 70, kisi: 104, qadin: 154 },
+            { name: "Sədərək rayonu", val: 162, height: 45, kisi: 65, qadin: 97 }
+        ],
+        gender: { kisi: 858, qadin: 1281 }
+    },
+    vakant: {
+        titleSuffix: "Vakant yerlər",
+        institutions: [
+            { name: "Kommunal Müəssisələr Kombinatı", val: 210, pct: 85 },
+            { name: "Dini Qurumlarla İş üzrə Dövlət Komitəsi", val: 12, pct: 13 },
+            { name: "Naxçıvan Avtomobil Yolları Dövlət agentliyi", val: 57, pct: 57 },
+            { name: "Ekologiya və Təbii Sərvətlər Nazirliyi", val: 28, pct: 34 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 25, pct: 30 },
+            { name: "Naxçıvan Yaşıllaşdırma xidməti", val: 33, pct: 24 },
+            { name: "Naxçıvan Dövlət Energetika Xidməti", val: 28, pct: 19 },
+            { name: "Kənd Təsərrüfatı Nazirliyi", val: 45, pct: 33 }
+        ],
+        regions: [
+            { name: "Naxçıvan şəhəri", val: 44, height: 40, kisi: 20, qadin: 24 },
+            { name: "Şərur rayonu", val: 50, height: 45, kisi: 25, qadin: 25 },
+            { name: "Babək rayonu", val: 40, height: 35, kisi: 18, qadin: 22 },
+            { name: "Ordubad rayonu", val: 35, height: 30, kisi: 15, qadin: 20 },
+            { name: "Culfa rayonu", val: 45, height: 40, kisi: 20, qadin: 25 },
+            { name: "Şahbuz rayonu", val: 38, height: 35, kisi: 18, qadin: 20 },
+            { name: "Kəngərli rayonu", val: 30, height: 28, kisi: 14, qadin: 16 },
+            { name: "Sədərək rayonu", val: 28, height: 25, kisi: 12, qadin: 16 }
+        ],
+        gender: { kisi: 142, qadin: 168 }
+    }
+};
+
+function updatePublicCharts(type) {
+    // Aktiv kart sinfini dəyişirik
+    document.querySelectorAll('.pub-stat-btn').forEach(card => card.classList.remove('active'));
+    const activeBtn = document.querySelector(`.pub-stat-btn[data-type="${type}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    const data = publicData[type];
+    if (!data) return;
+
+    // Başlıqları yeniləyirik
+    const instTitle = document.getElementById('institutionsTitle');
+    const subTitle = document.getElementById('sectionSubTitle');
+    const regTitle = document.getElementById('regionChartTitle');
+
+    if (instTitle) instTitle.innerText = `İcraçı qurumlar üzrə bölgü (${data.titleSuffix})`;
+    if (subTitle) subTitle.innerText = `${data.titleSuffix} rayon bölgüsü`;
+    if (regTitle) regTitle.innerText = `${data.titleSuffix} üzrə qeydiyyat bölgüsü`;
+
+    // İcraçı qurumlar qrafikini yeniləyirik
+    let instHtml = '';
+    data.institutions.forEach(inst => {
+        instHtml += `
+            <div class="h-bar-row-single"><span class="h-label">${inst.name}</span>
+                <div class="h-bar-track">
+                    <div class="bar-teal" style="width: ${inst.pct}%;"></div><span class="h-bar-val">${inst.val.toLocaleString()}</span>
+                </div>
+            </div>`;
+    });
+    const instContainer = document.getElementById('institutionsBarChart');
+    if (instContainer) instContainer.innerHTML = instHtml;
+
+    // Rayonlar qrafikini yeniləyirik (Dikinə sütunlar və hover popover)
+    let regHtml = '';
+    data.regions.forEach(reg => {
+        regHtml += `
+            <div class="single-bar-group" data-region="${reg.name}" onmouseenter="this.querySelector('.bar-hover-popover').style.display='block'" onmouseleave="this.querySelector('.bar-hover-popover').style.display='none'" style="position: relative; cursor: pointer;">
+                <span class="bar-val">${reg.val}</span>
+                <div class="bar-teal" style="height: ${reg.height}px; width: 28px !important; border-radius: 6px 6px 0 0;"></div>
+                <span>${reg.name}</span>
+                <div class="bar-hover-popover" style="display: none; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: #1e293b; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 11px; z-index: 9999; white-space: nowrap;">
+                    <div><b>Kişi:</b> <span>${reg.kisi}</span></div>
+                    <div><b>Qadın:</b> <span>${reg.qadin}</span></div>
+                </div>
+            </div>`;
+    });
+    const regContainer = document.getElementById('pubActiveRegBarChart');
+    if (regContainer) regContainer.innerHTML = regHtml;
+
+    // Gender rəqəmlərini yeniləyirik
+    const valKisi = document.getElementById('val-gender-kisi');
+    const valQadin = document.getElementById('val-gender-qadin');
+    const lblKisi = document.getElementById('lbl-pub-kisi');
+    const lblQadin = document.getElementById('lbl-pub-qadin');
+
+    if (valKisi) valKisi.innerText = data.gender.kisi;
+    if (valQadin) valQadin.innerText = data.gender.qadin;
+    if (lblKisi) lblKisi.innerText = data.gender.kisi;
+    if (lblQadin) lblQadin.innerText = data.gender.qadin;
+}
+
+function handlePubFilter() {
+    // Filtrlər dəyişdikdə aktiv kartın göstəricilərini yenidən tətbiq edirik
+    const activeCard = document.querySelector('.pub-stat-btn.active');
+    if (activeCard) {
+        updatePublicCharts(activeCard.getAttribute('data-type'));
+    }
+}
+
+// Səhifə yüklənəndə ilkin olaraq 'kvota' məlumatlarını göstəririk
+document.addEventListener("DOMContentLoaded", function () {
+    updatePublicCharts('kvota');
+});
+// ==========================================================
+// KƏND-RAYON İYERARXİYASI VƏ 3 KART ÜÇÜN JAVASCRIPT
+// ==========================================================
+
+const pubUniqueStructure = {
+    "Babək": ["Babək", "Cəhri", "Nehrəm", "Aşağı Buzqov", "Aşağı Yaqut", "Badaşqan", "Bulğan", "Buzqov", "Çeşməbasar", "Didivar", "Gahab", "Göynük", "Gümür", "Güznüt", "Hacıvar", "Xal-Xal", "Kərimbəyli", "Kültəpə", "Məzrə", "Nəhəcrik", "Nəzərabad", "Payız", "Şıxmahmud", "Sirab", "Tumbul", "Vayxır", "Yarımca", "Yuxarı Buzqov", "Zeynəddin"],
+    "Culfa": ["Culfa", "Boyəhməd", "Bənəniyar", "Camaldın", "Dizə", "Əbrəqunus", "Əlincə", "Ərəfsə", "Ərəzin", "Gal", "Göydərə", "Göynük", "Gülüstan", "Xanəgah", "Xoşkeşin", "Kırna", "Qazançı", "Qızılca", "Ləkətağ", "Milax", "Nəhəcir", "Saltaq", "Şurud", "Teyvaz", "Yaycı"],
+    "Kəngərli": ["Qıvraq", "Böyükdüz", "Çalxanqala", "Qabıllı", "Qarabağlar", "Şahtaxtı", "Təzəkənd", "Xıncab", "Xok", "Yeni Kərki", "Yurdçu"],
+    "Ordubad": ["Ordubad", "Şəhriyar", "Parağaçay", "Ağrı", "Ələhi", "Əlisər", "Anaqut", "Əndəmic", "Aşağı Aza", "Aşağı Əylis", "Baş Dizə", "Baş Kənd", "Biləv", "Bist", "Bırut", "Çennəb", "Darkənd", "Dəstə", "Dirnis", "Düyylün", "Əynəzər", "Gənzə", "Gilançay", "Xanağa", "Kələki", "Kələntər Dizə", "Kilit", "Kotam", "Nüsnüs", "Pazmar", "Sabirkənd", "Sərxan", "Tişivi", "Unus", "Üstüpü", "Vanand", "Vələver", "Vənənd", "Yuxarı Aza", "Yuxarı Əndəmic", "Yuxarı Əylis", "Zənnən"],
+    "Sədərək": ["Heydərabad", "Dəmirçi", "Qaraağac", "Sədərək", "Kərki"],
+    "Şahbuz": ["Şahbuz", "Badamlı qəsəbəsi", "Ağbulaq", "Ayrınç", "Badamlı", "Biçənək", "Daylaqlı", "Ərikli", "Əsədabad", "Gömür", "Güney Qışlaq", "Keçili", "Kolanı", "Kükü", "Mahmudoba", "Mərəlik", "Nursu", "Sələsüz", "Şada", "Türkeş", "Vaqif", "Yuxarı Qışlaq", "Zirəmli"],
+    "Şərur": ["Şərur", "Axura", "Aşağı Aralıq", "Aşağı Daşarx", "Aşlama", "Çomaxtur", "Dəmirçi", "Dənzik", "Dizə", "Dudengə", "Əbülfəzqan", "Əhədabad", "Ərəbyengicə", "Gümüşlü", "Havuş", "İbadulla", "İmamqulukənd", "Xanlıqlar", "Xələc", "Kərimbəyli", "Qara Həsənli", "Qarabağlar", "Qarxun", "Qazançı", "Qışlaqabbas", "Qorçulu", "Muğanlı", "Oğlanqala", "Püsyan", "Siyaqut", "Şahbulaq", "Şəhriyar", "Tənənəm", "Təzəkənd", "Vərməziyar", "Yuxarı Aralıq", "Yuxarı Daşarx", "Yengicə", "Zeyvə"],
+    "Naxçıvan": ["Naxçıvan", "Əliabad", "Başbaşı", "Qaraxanbəyli", "Tumbul"]
+};
+
+function pubOnRegionChange() {
+    const selectedRegionCbs = document.querySelectorAll('#pubUniqueComboRegion .combo-options-list input[type="checkbox"]:not(.select-all-cb):checked');
+    const selectedRegions = Array.from(selectedRegionCbs).map(cb => cb.value);
+
+    const villageListContainer = document.getElementById('pubUniqueVillageOptionsList');
+    if (!villageListContainer) return;
+
+    let targetVillages = [];
+
+    if (selectedRegions.length === 0) {
+        Object.keys(pubUniqueStructure).forEach(reg => {
+            targetVillages = targetVillages.concat(pubUniqueStructure[reg]);
+        });
+    } else {
+        selectedRegions.forEach(reg => {
+            if (pubUniqueStructure[reg]) {
+                targetVillages = targetVillages.concat(pubUniqueStructure[reg]);
+            }
+        });
+    }
+
+    targetVillages = [...new Set(targetVillages)];
+
+    let html = `
+        <label class="select-all-label" style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="select-all-cb" onchange="pubToggleSelectAllVillages(this.checked)">
+            <b>(Hamısını seç)</b>
+        </label>
+        <hr class="combo-divider" style="border:0; border-top:1px solid #e2e8f0; margin:4px 0;">
+    `;
+
+    targetVillages.forEach(v => {
+        html += `<label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" value="${v}" onchange="pubHandleFilter()"> ${v}</label>`;
+    });
+
+    villageListContainer.innerHTML = html;
+    pubUpdateComboSelectedText('pubUniqueComboRegion');
+    pubHandleFilter();
+}
+
+function pubToggleSelectAllRegions(checked) {
+    const cbs = document.querySelectorAll('#pubUniqueComboRegion .combo-options-list input[type="checkbox"]:not(.select-all-cb)');
+    cbs.forEach(cb => cb.checked = checked);
+    pubOnRegionChange();
+}
+
+function pubToggleSelectAllVillages(checked) {
+    const cbs = document.querySelectorAll('#pubUniqueVillageOptionsList input[type="checkbox"]:not(.select-all-cb)');
+    cbs.forEach(cb => cb.checked = checked);
+    pubUpdateComboSelectedText('pubUniqueComboVillage');
+    pubHandleFilter();
+}
+
+function pubUpdateComboSelectedText(comboId) {
+    const combo = document.getElementById(comboId);
+    if (!combo) return;
+    const checkedCbs = combo.querySelectorAll('.combo-options-list input[type="checkbox"]:not(.select-all-cb):checked');
+    const textSpan = combo.querySelector('.combo-selected-text');
+    if (checkedCbs.length === 0) {
+        textSpan.innerText = "(Hamısı)";
+    } else if (checkedCbs.length === 1) {
+        textSpan.innerText = checkedCbs[0].value;
+    } else {
+        textSpan.innerText = `Seçilib (${checkedCbs.length})`;
+    }
+}
+
+function pubUpdateCharts(type) {
+    document.querySelectorAll('.pub-stat-btn').forEach(card => card.classList.remove('active'));
+    const activeBtn = document.querySelector(`.pub-stat-btn[data-type="${type}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+function pubHandleFilter() {
+    pubUpdateComboSelectedText('pubUniqueComboVillage');
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    pubOnRegionChange();
+});
