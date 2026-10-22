@@ -3084,127 +3084,194 @@
                     </div>
                 </div>
 
-                <!-- Kateqoriyalar (Sütunlar qalınlaşdırıldı və səliqəyə salındı) -->
-                <div class="card reg-chart-card"
-                    style="background:#fff; padding:22px; border-radius:10px; border:1px solid #e2e8f0; overflow:visible;">
-                    <h3 class="chart-box-title"
-                        style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:20px;">Kateqoriyalar üzrə
-                    </h3>
-                    <div class="category-chart-with-circle"
-                        style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+                <!-- ========================================================== -->
+                <!-- KATEQORİYALAR VƏ LAYİHƏLƏR DİAQRAMLARI (YANAŞI BLOK) -->
+                <!-- ========================================================== -->
+                <div class="reg-charts-grid"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
 
-                        <!-- Sütunlar Konteyneri (Genişləndirilib və aralarındakı məsafə tənzimlənib) -->
-                        <div class="chart-bar-single-container category-bars-ozun"
-                            style="display:flex; justify-content:space-around; align-items:flex-end; height:210px; flex:1; min-width:350px; overflow-x:auto; gap:16px; padding-top:10px;">
+                    <!-- 1. BİRİNCİ DİAQRAM: KATEQORİYALAR ÜZRƏ (ORİJİNAL HALINDA) -->
+                    <div class="card reg-chart-card"
+                        style="background:#fff; padding:22px; border-radius:10px; border:1px solid #e2e8f0; overflow:visible;">
+                        <h3 class="chart-box-title"
+                            style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:20px;">Kateqoriyalar
+                            üzrə
+                        </h3>
+                        <div class="category-chart-with-circle"
+                            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
 
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">20</span>
-                                <div class="bar-teal"
-                                    style="height: 40px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                            <!-- Sütunlar Konteyneri -->
+                            <div class="chart-bar-single-container category-bars-ozun"
+                                style="display:flex; justify-content:space-around; align-items:flex-end; height:210px; flex:1; min-width:350px; overflow-x:auto; gap:16px; padding-top:10px;">
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">20</span>
+                                    <div class="bar-teal"
+                                        style="height: 40px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Şəhid
+                                        ailəsi üzvü</span>
                                 </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Şəhid
-                                    ailəsi üzvü</span>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">30</span>
+                                    <div class="bar-teal"
+                                        style="height: 60px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
+                                        əlili</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">20</span>
+                                    <div class="bar-teal"
+                                        style="height: 40px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
+                                        əlilinin ailəsi</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">50</span>
+                                    <div class="bar-teal"
+                                        style="height: 90px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
+                                        iştirakçısı</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">7</span>
+                                    <div class="bar-teal"
+                                        style="height: 15px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
+                                        iştirakçısının...</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">9</span>
+                                    <div class="bar-teal"
+                                        style="height: 18px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Cəzaçəkmədən
+                                        azad...</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">17</span>
+                                    <div class="bar-teal"
+                                        style="height: 35px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Əlilliyi
+                                        olan şəxs</span>
+                                </div>
+
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">3</span>
+                                    <div class="bar-teal"
+                                        style="height: 8px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">ÜDSY
+                                        təyinat alanlar</span>
+                                </div>
+
                             </div>
 
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">30</span>
-                                <div class="bar-teal"
-                                    style="height: 60px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                            <!-- Sağ Tərəfdəki Dairəvi Faiz Nişanı -->
+                            <div class="percent-circle-badge"
+                                style="width:130px; height:130px; border-radius:50%; background:#f8fafc; border:4px solid #2b5256; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; flex-shrink:0; margin:0 auto;">
+                                <div class="inner-circle">
+                                    <h2 style="font-size:18px; font-weight:800; color:#2b5256; margin:0;">28,4 %</h2>
+                                    <span style="font-size:10px; color:#64748b;">Ümumi cəlb olunanların</span>
                                 </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
-                                    əlili</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">20</span>
-                                <div class="bar-teal"
-                                    style="height: 40px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
-                                    əlilinin ailəsi</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">50</span>
-                                <div class="bar-teal"
-                                    style="height: 90px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
-                                    iştirakçısı</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">7</span>
-                                <div class="bar-teal"
-                                    style="height: 15px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Müharibə
-                                    iştirakçısının...</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">9</span>
-                                <div class="bar-teal"
-                                    style="height: 18px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Cəzaçəkmədən
-                                    azad...</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">17</span>
-                                <div class="bar-teal"
-                                    style="height: 35px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">Əlilliyi
-                                    olan şəxs</span>
-                            </div>
-
-                            <div class="single-bar-wrapper"
-                                style="position:relative; text-align:center; min-width:65px; cursor:pointer;">
-                                <span class="bar-val"
-                                    style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">3</span>
-                                <div class="bar-teal"
-                                    style="height: 8px; width:28px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
-                                </div>
-                                <span class="cat-lbl"
-                                    style="font-size:10px; font-weight:600; color:#334155; margin-top:8px; display:block; line-height:1.2;">ÜDSY
-                                    təyinat alanlar</span>
                             </div>
 
                         </div>
-
-                        <!-- Sağ Tərəfdəki Dairəvi Faiz Nişanı -->
-                        <div class="percent-circle-badge"
-                            style="width:130px; height:130px; border-radius:50%; background:#f8fafc; border:4px solid #2b5256; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; flex-shrink:0; margin:0 auto;">
-                            <div class="inner-circle">
-                                <h2 style="font-size:18px; font-weight:800; color:#2b5256; margin:0;">28,4 %</h2>
-                                <span style="font-size:10px; color:#64748b;">Ümumi cəlb olunanların</span>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <!-- 2. İKİNCİ DİAQRAM: YENİ "LAYİHƏLƏR" (NMR DMA, AR DMA, Dünya Bankı) -->
+                    <div class="card reg-chart-card"
+                        style="background:#fff; padding:22px; border-radius:10px; border:1px solid #e2e8f0; overflow:visible;">
+                        <h3 class="chart-box-title"
+                            style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:20px;">Cəlb olunduğu
+                            layihə
+                        </h3>
+                        <div
+                            style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:20px;">
+
+                            <!-- Sütunlar Konteyneri -->
+                            <div class="chart-bar-single-container"
+                                style="display:flex; justify-content:space-around; align-items:flex-end; height:210px; flex:1; min-width:250px; padding-top:10px;">
+
+                                <!-- 1. Sütun: NMR DMA -->
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">42</span>
+                                    <div class="bar-teal"
+                                        style="height: 75px; width:32px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:12px; font-weight:700; color:#334155; margin-top:8px; display:block; line-height:1.2;">NMR
+                                        DMA</span>
+                                </div>
+
+                                <!-- 2. Sütun: AR DMA -->
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">85</span>
+                                    <div class="bar-teal"
+                                        style="height: 130px; width:32px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:12px; font-weight:700; color:#334155; margin-top:8px; display:block; line-height:1.2;">AR
+                                        DMA</span>
+                                </div>
+
+                                <!-- 3. Sütun: Dünya Bankı -->
+                                <div class="single-bar-wrapper"
+                                    style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
+                                    <span class="bar-val"
+                                        style="font-size:11px; font-weight:700; color:#2b5256; display:block; margin-bottom:4px;">64</span>
+                                    <div class="bar-teal"
+                                        style="height: 100px; width:32px; background:#2b5256; border-radius:4px 4px 0 0; margin:0 auto;">
+                                    </div>
+                                    <span class="cat-lbl"
+                                        style="font-size:12px; width: 100px; font-weight:700; color:#334155; margin-top:8px; display:block; line-height:1.2;">Dünya
+                                        Bankı</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
