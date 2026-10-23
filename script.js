@@ -18,30 +18,24 @@ function toggleSubmenu(element) {
 
 // Menyu elementlərinə kliklədikdə sağ tərəfdəki məzmunu dinamik dəyişmək
 function showContent(sectionId) {
-    // 1. Bütün bölmələrdən 'active' klassını silirik (gizlədirik)
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => {
         section.classList.remove('active');
     });
 
-    // 2. Yalnız seçilən bölməyə 'active' klassı veririk (göstəririk)
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.classList.add('active');
     }
 
-    // Mobil menyu açıqdısa bağlayırıq
     if (window.innerWidth <= 768 && typeof sidebar !== 'undefined') {
         sidebar.classList.remove('mobile-open');
     }
 }
-// Səhifə tam yüklənəndə yalnız "esas-sehife"ni aç, digərlərini gizlət
 document.addEventListener("DOMContentLoaded", function () {
     showContent('esas-sehife');
 });
-/**
- * Əsas səhifədə rəhbər tərəfindən yeni qeyd əlavə etmək üçün funksiya
- */
+
 function addNewNote() {
     const titleInput = document.getElementById('noteTitleInput');
     const descInput = document.getElementById('noteDescInput');
@@ -55,13 +49,11 @@ function addNewNote() {
         return;
     }
 
-    // Cari tarixi almaq üçün
     const today = new Date();
     const dateStr = String(today.getDate()).padStart(2, '0') + '.' +
         String(today.getMonth() + 1).padStart(2, '0') + '.' +
         today.getFullYear();
 
-    // Yeni qeyd elementi yaradılması
     const noteCard = document.createElement('div');
     noteCard.className = 'note-card';
     noteCard.innerHTML = `
@@ -73,15 +65,12 @@ function addNewNote() {
         <button class="btn-delete-note" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
     `;
 
-    // Siyahının əvvəlinə əlavə edirik
     notesContainer.prepend(noteCard);
 
-    // Formu təmizləyirik
     titleInput.value = '';
     descInput.value = '';
 }
 
-// Təhlükəsizlik üçün HTML simvollarını qorumaq köməkçisi
 function escapeHtml(text) {
     const map = {
         '&': '&amp;',
@@ -92,33 +81,20 @@ function escapeHtml(text) {
     };
     return text.replace(/[&<>"']/g, function (m) { return map[m]; });
 }
-/**
- * TAB SEÇİMİ VƏ FİLTRLƏMƏ FUNKSİYASI
- * 
- * @param {HTMLElement} element - Kliklənən statistik kart
- * @param {string} tabType - Seçilən kateqoriya ('all', 'hoii', 'yarmarka', 'ebm')
- */
+
 function selectEmpTab(element, tabType) {
-    // 1. Bütün tab kartlarından active-tab klassını silirik
     const allTabs = document.querySelectorAll('.emp-card');
     allTabs.forEach(tab => tab.classList.remove('active-tab'));
 
-    // 2. Kliklənən karta active-tab klassını veririk
     element.classList.add('active-tab');
 
     console.log(`[TAB DƏYİŞDİ]: Seçilən rejim -> ${tabType}`);
 
-    // 3. Backend-dən yeni datanı çəkmək üçün funksiyanı çağırırıq
     fetchEmploymentData(tabType);
 }
 
-/**
- * BACKEND API İLƏ MƏLUMATLARIN İDARƏ EDİLMƏSİ (SQL INTERACTION)
- * 
- * [NOT FOR BACKEND]: Bu funksiya həm il/ay/rayon filtrləri dəyişdikdə, həm də ust tablar klikləndikdə çağırılır.
- */
+
 function fetchEmploymentData(currentTab) {
-    // Əgər parametr ötürülməyibsə, aktiv olan tab-ı tapırıq
     if (!currentTab) {
         const activeCard = document.querySelector('.emp-card.active-tab');
         currentTab = activeCard ? activeCard.getAttribute('data-tab') : 'all';
@@ -1090,25 +1066,19 @@ function updateAllChartsAndStats(tabName) {
 
     const data = empDatabase[tabName] || empDatabase['all'];
 
-    // A) Dairəvi Məşğulluq Statusu Rəqəmlərinin Yenilənməsi
     if (document.getElementById('lbl-issiz')) document.getElementById('lbl-issiz').innerText = data.issiz;
     if (document.getElementById('lbl-isaxtaran')) document.getElementById('lbl-isaxtaran').innerText = data.isaxtaran;
     if (document.getElementById('lbl-isaxtarantpo')) document.getElementById('lbl-isaxtarantpo').innerText = data.tpo;
 
-    // B) Qeydiyyat Ünvanı Sütunlarının və Rəqəmlərinin Yenilənməsi
     updateBarChart('regAddressBarChart', data.regAddress, 544);
 
-    // C) İş Yerinin Faktiki Ünvanı Sütunlarının Yenilənməsi
     updateBarChart('workAddressBarChart', data.workAddress, 1423);
 
-    // D) Təhsil Səviyyəsi Zolaqlarının Yenilənməsi
     updateHorizontalChart('eduLevelChart', data.education, 2203);
 
-    // E) Kateqoriyalar Üzrə Sütunların Yenilənməsi
     updateCategoryChart('categoryBarChart', data.categories, 50);
 }
 
-// 3. Şaquli Sütunları Proporsional Şəkildə Böyüdüb-Kiçildən Köməkçi Funksiya
 function updateBarChart(containerId, chartData, maxVal) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -1119,11 +1089,9 @@ function updateBarChart(containerId, chartData, maxVal) {
         if (regionName && chartData[regionName] !== undefined) {
             const newVal = chartData[regionName];
 
-            // Üstündəki rəqəmi dəyişirik
             const valSpan = wrapper.querySelector('.bar-val');
             if (valSpan) valSpan.innerText = newVal;
 
-            // Sütunun hündürlüyünü faizlə yeniləyirik
             const bar = wrapper.querySelector('.bar-teal');
             if (bar) {
                 const newHeight = Math.max(8, Math.round((newVal / maxVal) * 110));
@@ -1133,7 +1101,6 @@ function updateBarChart(containerId, chartData, maxVal) {
     });
 }
 
-// 4. Üfüqi Zolaqları Yeniləyən Funksiya (Təhsil Səviyyəsi)
 function updateHorizontalChart(containerId, chartData, maxVal) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -1156,7 +1123,6 @@ function updateHorizontalChart(containerId, chartData, maxVal) {
     });
 }
 
-// 5. Kateqoriyalar Bölməsini Yeniləyən Funksiya
 function updateCategoryChart(containerId, categoryData, maxVal) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -1178,12 +1144,8 @@ function updateCategoryChart(containerId, categoryData, maxVal) {
         }
     });
 }
-// ==========================================================
-// ÖZÜNÜMƏŞĞULLUQ - SEKTORLARA GÖRƏ DİAQRAMLARI DƏYİŞDİRƏN JS
-// ==========================================================
 
 function selectOzunSector(element, sectorName) {
-    // Kartların aktivlik border dizaynını yeniləyirik
     document.querySelectorAll('.ozun-tab-card').forEach(card => {
         card.style.borderColor = '#e2e8f0';
         card.style.borderWidth = '1px';
@@ -1191,7 +1153,6 @@ function selectOzunSector(element, sectorName) {
     element.style.borderColor = '#2b5256';
     element.style.borderWidth = '2px';
 
-    // Sektor üzrə məlumat bazası (Nümunə simulyasiya)
     const sectorDatabase = {
         all: {
             regions: { "Naxçıvan": { t: 619, k: 348, q: 271 }, "Şərur": { t: 51, k: 29, q: 22 }, "Babək": { t: 105, k: 58, q: 47 }, "Ordubad": { t: 52, k: 28, q: 24 }, "Culfa": { t: 144, k: 81, q: 63 }, "Şahbuz": { t: 48, k: 26, q: 22 }, "Kəngərli": { t: 15, k: 8, q: 7 }, "Sədərək": { t: 17, k: 10, q: 7 } }
@@ -1211,7 +1172,6 @@ function selectOzunSector(element, sectorName) {
     updateOzunRegionChart(currentData.regions);
 }
 
-// Rayon qrafiklərinin və popover-lərin dəyərlərini yeniləyən funksiya
 function updateOzunRegionChart(regionsMap) {
     const container = document.getElementById('ozunRegionChart');
     if (!container) return;
@@ -1225,18 +1185,15 @@ function updateOzunRegionChart(regionsMap) {
         if (regionsMap[regionName]) {
             const vals = regionsMap[regionName];
 
-            // Ümumi rəqəm
             const valSpan = row.querySelector('.h-bar-val');
             if (valSpan) valSpan.innerText = vals.t;
 
-            // Zolağın eni (max 619 əsas alınaraq faiz hesablanır)
             const bar = row.querySelector('.bar-teal');
             if (bar) {
                 const widthPercent = Math.max(5, Math.round((vals.t / 619) * 100));
                 bar.style.width = `${widthPercent}%`;
             }
 
-            // Popover daxilindəki kişi və qadın sayları
             const popTotal = row.querySelector('.pop-total');
             const popKisi = row.querySelector('.pop-kisi');
             const popQadin = row.querySelector('.pop-qadin');
@@ -1247,7 +1204,6 @@ function updateOzunRegionChart(regionsMap) {
         }
     });
 }
-// Rayon sətirlərinə JavaScript vasitəsilə hover effekti əlavə edirik
 document.addEventListener("DOMContentLoaded", function () {
     const rows = document.querySelectorAll('.h-bar-row-single');
 
@@ -1265,10 +1221,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 document.addEventListener("DOMContentLoaded", function () {
-    // Rayon sətrlərini tapırıq
     const rows = document.querySelectorAll('#peseRegionChart .h-bar-row-single');
 
-    // Səhifəyə tək bir popover elementi əlavə edirik (bütün sətirlər üçün ortaq istifadə olunacaq)
     let tooltip = document.getElementById('global-hover-tooltip');
     if (!tooltip) {
         tooltip = document.createElement('div');
@@ -1295,17 +1249,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const regionName = row.getAttribute('data-region') || row.querySelector('.h-label')?.innerText.trim();
             const totalVal = row.querySelector('.h-bar-val')?.innerText.trim() || "0";
 
-            // Sadə demo saylar (və ya HTML-dəki popover-dən oxuya bilərsiniz)
-            // Real məlumatları buradan və ya HTML içindəki strukturdan ala bilərik
             let kisi = "–", qadin = "–";
             const popoverInner = row.querySelector('.single-bar-popover, .bar-hover-popover');
 
             if (popoverInner) {
-                // Əgər HTML-də popover varsa oradakı rəqəmləri oxuyuruq
                 const textHTML = popoverInner.innerHTML;
                 tooltip.innerHTML = textHTML;
             } else {
-                // Əks halda ümumi dəyəri göstəririk
                 tooltip.innerHTML = `<b>${regionName}</b><br>Ümumi: ${totalVal}`;
             }
 
@@ -1313,7 +1263,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         row.addEventListener('mousemove', (e) => {
-            // Kursoru izləyərək popover-i hərəkət etdiririk
             tooltip.style.left = (e.pageX + 12) + 'px';
             tooltip.style.top = (e.pageY - 28) + 'px';
         });
@@ -1323,9 +1272,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-// ==========================================================
 // HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (JAVASCRIPT)
-// ==========================================================
 
 const publicData = {
     kvota: {
@@ -1451,7 +1398,6 @@ const publicData = {
 };
 
 function updatePublicCharts(type) {
-    // Aktiv kart sinfini dəyişirik
     document.querySelectorAll('.pub-stat-btn').forEach(card => card.classList.remove('active'));
     const activeBtn = document.querySelector(`.pub-stat-btn[data-type="${type}"]`);
     if (activeBtn) activeBtn.classList.add('active');
@@ -1459,7 +1405,6 @@ function updatePublicCharts(type) {
     const data = publicData[type];
     if (!data) return;
 
-    // Başlıqları yeniləyirik
     const instTitle = document.getElementById('institutionsTitle');
     const subTitle = document.getElementById('sectionSubTitle');
     const regTitle = document.getElementById('regionChartTitle');
@@ -1468,7 +1413,6 @@ function updatePublicCharts(type) {
     if (subTitle) subTitle.innerText = `${data.titleSuffix} rayon bölgüsü`;
     if (regTitle) regTitle.innerText = `${data.titleSuffix} üzrə qeydiyyat bölgüsü`;
 
-    // İcraçı qurumlar qrafikini yeniləyirik
     let instHtml = '';
     data.institutions.forEach(inst => {
         instHtml += `
@@ -1481,7 +1425,6 @@ function updatePublicCharts(type) {
     const instContainer = document.getElementById('institutionsBarChart');
     if (instContainer) instContainer.innerHTML = instHtml;
 
-    // Rayonlar qrafikini yeniləyirik (Dikinə sütunlar və hover popover)
     let regHtml = '';
     data.regions.forEach(reg => {
         regHtml += `
@@ -1498,7 +1441,6 @@ function updatePublicCharts(type) {
     const regContainer = document.getElementById('pubActiveRegBarChart');
     if (regContainer) regContainer.innerHTML = regHtml;
 
-    // Gender rəqəmlərini yeniləyirik
     const valKisi = document.getElementById('val-gender-kisi');
     const valQadin = document.getElementById('val-gender-qadin');
     const lblKisi = document.getElementById('lbl-pub-kisi');
@@ -1511,20 +1453,15 @@ function updatePublicCharts(type) {
 }
 
 function handlePubFilter() {
-    // Filtrlər dəyişdikdə aktiv kartın göstəricilərini yenidən tətbiq edirik
     const activeCard = document.querySelector('.pub-stat-btn.active');
     if (activeCard) {
         updatePublicCharts(activeCard.getAttribute('data-type'));
     }
 }
 
-// Səhifə yüklənəndə ilkin olaraq 'kvota' məlumatlarını göstəririk
 document.addEventListener("DOMContentLoaded", function () {
     updatePublicCharts('kvota');
 });
-// ==========================================================
-// KƏND-RAYON İYERARXİYASI VƏ 3 KART ÜÇÜN JAVASCRIPT
-// ==========================================================
 
 const pubUniqueStructure = {
     "Babək": ["Babək", "Cəhri", "Nehrəm", "Aşağı Buzqov", "Aşağı Yaqut", "Badaşqan", "Bulğan", "Buzqov", "Çeşməbasar", "Didivar", "Gahab", "Göynük", "Gümür", "Güznüt", "Hacıvar", "Xal-Xal", "Kərimbəyli", "Kültəpə", "Məzrə", "Nəhəcrik", "Nəzərabad", "Payız", "Şıxmahmud", "Sirab", "Tumbul", "Vayxır", "Yarımca", "Yuxarı Buzqov", "Zeynəddin"],
