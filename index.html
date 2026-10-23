@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İdarəetmə Paneli</title>
-    <!-- FontAwesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Xarici CSS faylı -->
     <link rel="stylesheet" href="style.css">
      <link rel="icon" type="image/png" href="Logo_Nav.png">
     <link rel="apple-touch-icon" href="Logo_Nav.png">
 </head>
 
 <body>
-    <!-- NAVBAR -->
     <header class="navbar">
         <div class="navbar-left">
             <button class="menu-toggle" id="menuToggle">
@@ -30,16 +27,13 @@
                 <option value="en">EN</option>
                 <option value="ru">RU</option>
             </select>
-            <!-- BİLDİRİŞ ZƏNGİ VƏ DROPDOWN -->
             <div class="notification-wrapper" style="position: relative; display: inline-block;">
 
-                <!-- Sizin göndərdiyiniz düymə (onclick əlavə olundu) -->
                 <button class="nav-icon-btn" onclick="toggleNotificationDropdown(event)">
                     <i class="fa-regular fa-bell"></i>
                     <span class="badge">1</span>
                 </button>
 
-                <!-- Açılan Bildiriş Pəncərəsi (Dropdown) -->
                 <div class="notification-dropdown" id="notificationDropdown"
                     style="display: none; position: absolute; top: 120%; right: 0; background: #ffffff; min-width: 260px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-radius: 8px; border: 1px solid #e0e0e0; z-index: 1000; overflow: hidden;">
 
@@ -51,7 +45,6 @@
 
                     <div class="notification-list" style="max-height: 250px; overflow-y: auto;">
 
-                        <!-- Qeydin başlığı (Kliklədikdə Əsas səhifəyə yönləndirir) -->
                         <div class="notification-item" onclick="goToMainPageFromNote('esas-sehife')"
                             style="padding: 12px 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; display: flex; flex-direction: column; gap: 4px;">
                             <span class="note-title-pop"
@@ -69,10 +62,8 @@
         </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
     <div class="main-container">
 
-        <!-- SIDEBAR (Menyu Bar) -->
         <nav class="sidebar" id="sidebar">
             <div class="user-profile">
                 <div class="user-avatar" id="userAvatar">AS</div>
@@ -91,7 +82,6 @@
                     </a>
                 </li>
 
-                <!-- Dövlət Məşğulluq Agentliyi -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" onclick="toggleSubmenu(this)">
                         <span class="menu-title-area">
@@ -219,11 +209,8 @@
 
         <main class="content">
 
-            <!-- ========================================================== -->
-            <!-- ƏSAS SƏHİFƏ BÖLMƏSİ (ENİNƏ UZUN BANNER YERİ İLƏ) -->
-            <!-- ========================================================== -->
+            <!-- ƏSAS SƏHİFƏ BÖLMƏSİ -->
             <div id="esas-sehife" class="content-section active">
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -236,21 +223,17 @@
                 </div>
 
 
-                <!-- ENİNƏ UZUN BANNER / ŞƏKİL YERİ -->
                 <div class="card dashboard-banner-card"
                     style="margin-bottom: 25px; overflow: hidden; border-radius: 8px; padding: 0;">
                     <div class="dashboard-banner-wrapper"
                         style="width: 100%; height: 180px; background: #e9ecef; position: relative; overflow: hidden;">
 
-                        <!-- Şəkil -->
                         <img src="NMRƏƏSMNBanner.jpeg" alt="Agentlik Banneri"
                             style="width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0; z-index: 1;">
 
-                        <!-- Banner Üzərindəki Yazı (Responsiv və heç vaxt itməyən) -->
                         <div
                             style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 20px; box-sizing: border-box; background: linear-gradient(90deg, rgba(43,82,86,0.75) 0%, rgba(43,82,86,0.2) 100%);">
 
-                            <!-- Başlıq: Ekran kiçildikcə avtomatik kiçilir (min 16px, ideal 2.2vw, max 24px) -->
                             <h2
                                 style="font-size: clamp(16px, 2.2vw, 24px); color: #ffffff; margin: 0 0 6px 0; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
                                 Naxçıvan Muxtar Respublikasının Əmək
@@ -258,7 +241,6 @@
                                 Nazirliyini
                             </h2>
 
-                            <!-- Alt mətn -->
                             <p
                                 style="font-size: clamp(11px, 1.3vw, 14px); color: #f1f5f9; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
                                 İdarəetmə Paneli və Analitik Hesabatlar
@@ -268,7 +250,6 @@
                     </div>
                 </div>
 
-                <!-- Sayt Haqqında Ümumi Məlumat Kartı -->
                 <div class="card about-site-card" style="margin-bottom: 25px;">
                     <div class="about-content">
                         <h2><i class="fa-solid fa-circle-info" style="color: #2b5256;"></i> Sayt Haqqında Ümumi Məlumat
@@ -283,7 +264,6 @@
                     </div>
                 </div>
 
-                <!-- Rəhbər Şəxslərin Qeydləri / Notes Bölməsi (İcraçı Şəxs Sahəsi İlə) -->
                 <div class="card notes-section-card">
                     <div class="notes-header">
                         <h3><i class="fa-solid fa-pen-to-square" style="color: #2b5256;"></i> Rəhbər Şəxsin Qeydləri və
@@ -292,13 +272,11 @@
                             yazılaraq yadda saxlanıla bilər.</p>
                     </div>
 
-                    <!-- Yeni Qeyd Əlavə Etmə Formu -->
                     <div class="add-note-box"
                         style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef;">
 
                         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;">
 
-                            <!-- 1. Qeydin Başlığı -->
                             <div style="flex: 2; min-width: 200px; display: flex; flex-direction: column;">
                                 <label for="noteTitleInput"
                                     style="font-size: 11px; color: #555; margin-bottom: 4px; font-weight: 600;">QEYDİN
@@ -308,7 +286,6 @@
                                     style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             </div>
 
-                            <!-- 2. İcraçı Şəxs (Combo Box) -->
                             <div style="flex: 1.5; min-width: 180px; display: flex; flex-direction: column;">
                                 <label for="noteAssigneeInput"
                                     style="font-size: 11px; color: #555; margin-bottom: 4px; font-weight: 600;">İCRAÇI
@@ -322,7 +299,6 @@
                                 </select>
                             </div>
 
-                            <!-- 3. Dedlayn Seçimi (Date Input) -->
                             <div style="flex: 1; min-width: 160px; display: flex; flex-direction: column;">
                                 <label for="noteDeadlineInput"
                                     style="font-size: 11px; color: #555; margin-bottom: 4px; font-weight: 600;">SON İCRA
@@ -333,7 +309,6 @@
 
                         </div>
 
-                        <!-- Qeydin Məzmunu -->
                         <div style="display: flex; flex-direction: column;">
                             <label for="noteDescInput"
                                 style="font-size: 11px; color: #555; margin-bottom: 4px; font-weight: 600;">QEYDİN
@@ -349,10 +324,7 @@
                         </button>
                     </div>
 
-                    <!-- Qeydlərin Siyahısı -->
                     <div class="notes-grid" id="notesContainer">
-
-                        <!-- Nümunə Qeyd 1 -->
                         <div class="note-card" data-note-id="1"
                             style="position: relative; border-left: 4px solid #2b5256; padding: 15px; margin-bottom: 15px; background: #fff; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #eee;">
                             <div class="note-card-header"
@@ -398,11 +370,8 @@
 
             </div>
 
-            <!-- ========================================================== -->
-            <!-- ÜMUMİ BAXIŞ BÖLMƏSİ (MÜKƏMMƏL RESPONSİV VƏ SƏLİQƏLİ DİZAYN) -->
-            <!-- ========================================================== -->
+            <!-- ÜMUMİ BAXIŞ BÖLMƏSİ-->
             <div id="umumi-baxis" class="content-section active">
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -414,11 +383,9 @@
                 </div>
 
 
-                <!-- Filtrlər (Backend üçün id və name atributları) -->
                 <div class="filter-bar"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; background: #fff; padding: 18px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 25px;">
 
-                    <!-- 1. İLLƏR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">İLLƏR</label>
@@ -462,7 +429,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. AYLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">AYLAR</label>
@@ -530,7 +496,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. RAYONLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">RAYONLAR
@@ -588,11 +553,9 @@
                     </div>
                 </div>
 
-                <!-- Statistik Kartlar Grid (Responsive & Mükəmməl Popover İdarəetməsi ilə) -->
                 <div class="stats-grid" id="statsContainer"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px;">
 
-                    <!-- Kart 1: İşlə təmin olunmuşdur -->
                     <div class="stat-card" data-id="isle-temin" onclick="navigateToSection('isle-temin')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -635,7 +598,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 2: Özünüməşğulluq -->
                     <div class="stat-card" data-id="ozunumesgulluq" onclick="navigateToSection('ozunumesgulluq')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -666,7 +628,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 3: Haqqı ödənilən ictimai işlər -->
                     <div class="stat-card" data-id="ictimai-isler" onclick="navigateToSection('ictimai-isler')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -697,7 +658,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 4: Peşə hazırlığı kursları -->
                     <div class="stat-card" data-id="pese-kurslari" onclick="navigateToSection('pese-kurslari')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -723,7 +683,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 5: Peşəyönümlü məsləhət xidməti -->
                     <div class="stat-card" data-id="peseyonumu-meslehet"
                         onclick="navigateToSection('peseyonumu-meslehet')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
@@ -743,7 +702,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 6: İşsizlikdən sığorta ödənişi -->
                     <div class="stat-card" data-id="sigorta" onclick="navigateToSection('sigorta')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -769,7 +727,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 7: Əməkhaqqının birgə maliyyələşdirilməsi -->
                     <div class="stat-card" data-id="maliyelesdirilme" onclick="navigateToSection('maliyelesdirilme')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -807,7 +764,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 8: Əmək yarmarkası -->
                     <div class="stat-card" data-id="yarmarka" onclick="navigateToSection('yarmarka')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -850,7 +806,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 9: Vakansiya bankı -->
                     <div class="stat-card" data-id="vakansiya" onclick="navigateToSection('vakansiya')"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; border-top: 4px solid #2b5256; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer; position: relative;">
                         <div style="display: flex; align-items: flex-start; gap: 15px;">
@@ -885,12 +840,9 @@
 
                 </div>
             </div>
-            <!-- ========================================================== -->
-            <!-- QEYDİYYAT BÖLMƏSİ (TAM VƏ KƏSİLMƏMİŞ HISSƏLƏRLƏ) -->
-            <!-- ========================================================== -->
+            <!-- QEYDİYYAT BÖLMƏSİ -->
             <div id="qeydiyyat" class="content-section">
 
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -900,11 +852,9 @@
                     </h4>
                 </div>
 
-                <!-- Filtrləmə paneli (Sadə və Vahid Select Combobox-lar) -->
                 <div class="filter-bar"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; align-items: flex-end; background: #ffffff; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 25px;">
 
-                    <!-- 1. İLLƏR -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">İLLƏR</label>
@@ -919,7 +869,6 @@
                         </select>
                     </div>
 
-                    <!-- 2. AYLAR -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">AYLAR</label>
@@ -941,7 +890,6 @@
                         </select>
                     </div>
 
-                    <!-- 3. RAYONLAR / ŞƏHƏR -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">RAYONLAR
@@ -963,7 +911,6 @@
 
                 </div>
 
-                <!-- Üst hissədə yerləşən iki əsas rəqəm kartı -->
                 <div class="reg-top-cards"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 25px;">
                     <div class="stat-card reg-main-card"
@@ -994,7 +941,6 @@
                     </div>
                 </div>
 
-                <!-- Cədvəl bölməsi -->
                 <div class="card reg-table-container"
                     style="background: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
                     <table class="reg-info-table"
@@ -1024,11 +970,9 @@
                     </table>
                 </div>
 
-                <!-- 2x2 Grid sistemində tam diaqramlar -->
                 <div class="reg-charts-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 20px;">
 
-                    <!-- 1. QEYDİYYAT RAYONU DİAQRAMI (BÜTÜN 8 RAYON VƏ FƏRDİ HOVER-LƏR) -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: visible;">
 
@@ -1134,7 +1078,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Şərur</span>
                                 </div>
 
-                                <!-- BABƏK -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1173,7 +1116,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Babək</span>
                                 </div>
 
-                                <!-- ORDUBAD -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1212,7 +1154,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Ordubad</span>
                                 </div>
 
-                                <!-- CULFA -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1251,7 +1192,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Culfa</span>
                                 </div>
 
-                                <!-- ŞAHBUZ -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1290,7 +1230,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Şahbuz</span>
                                 </div>
 
-                                <!-- KƏNGƏRLİ -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1329,7 +1268,6 @@
                                         style="font-size: 11px; margin-top: 5px; display: block; font-weight: 600; color: #1e293b;">Kəngərli</span>
                                 </div>
 
-                                <!-- SƏDƏRƏK -->
                                 <div class="bar-group-item" style="position: relative; text-align: center;">
                                     <div class="bars"
                                         style="display: flex; gap: 6px; align-items: flex-end; height: 130px;">
@@ -1372,7 +1310,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. MƏŞĞULLUQ STATUSU ÜZRƏ DAİRƏVİ DİAQRAM KARTI -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
                         <h3 class="chart-box-title"
@@ -1400,7 +1337,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. TƏHSİL SƏVİYYƏSİ ÜZRƏ DİAQRAM (BÜTÜN 3 TƏHSİL SƏVİYYƏSİ VƏ FƏRDİ HOVER-LƏR) -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: visible;">
                         <h3 class="chart-box-title"
@@ -1448,7 +1384,6 @@
                                 </div>
                             </div>
 
-                            <!-- Orta ixtisas təhsili -->
                             <div class="h-bar-row" style="position: relative;">
                                 <span class="h-label"
                                     style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #1e293b;">Orta
@@ -1486,7 +1421,6 @@
                                 </div>
                             </div>
 
-                            <!-- Orta təhsil -->
                             <div class="h-bar-row" style="position: relative;">
                                 <span class="h-label"
                                     style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #1e293b;">Ümumi
@@ -1527,7 +1461,6 @@
                         </div>
                     </div>
 
-                    <!-- 4. GENDER ÜZRƏ DİAQRAM KARTI -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
                         <h3 class="chart-box-title"
@@ -1554,12 +1487,9 @@
                 </div>
 
             </div>
-            <!-- ========================================================== -->
-            <!-- İŞLƏ TƏMİN OLUNMA BÖLMƏSİ (EXCEL FİLTRLƏRİ İLƏ) -->
-            <!-- ========================================================== -->
+            <!-- İŞLƏ TƏMİN OLUNMA BÖLMƏSİ -->
             <div id="isle-temin" class="content-section">
 
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -1569,11 +1499,9 @@
                     </h4>
                 </div>
 
-                <!-- Filtrləmə Paneli (Excel tipli çoxseçimli Combo Box) -->
                 <div class="filter-bar"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; align-items: flex-end; background: #ffffff; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 25px;">
 
-                    <!-- 1. İLLƏR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">İLLƏR</label>
@@ -1623,7 +1551,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. AYLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">AYLAR</label>
@@ -1691,7 +1618,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. RAYONLAR (EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">RAYONLAR
@@ -1750,10 +1676,8 @@
 
                 </div>
 
-                <!-- ƏSAS TAB KARTLARI (Aşağıdakı diaqramları idarə edən keçidlər) -->
                 <div class="emp-top-cards" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
 
-                    <!-- Tab 1: Ümumi İşlə Təmin Olunanlar -->
                     <div class="emp-card-group" style="flex: 1; min-width: 250px;">
                         <span class="emp-group-label"
                             style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 6px;">Dövr
@@ -1774,14 +1698,12 @@
                         </div>
                     </div>
 
-                    <!-- Tab 2, 3, 4: Alt Proqramlar -->
                     <div class="emp-card-group flex-3" style="flex: 3; min-width: 320px;">
                         <span class="emp-group-label"
                             style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 6px;">Onlardan,</span>
                         <div class="emp-sub-grid"
                             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;">
 
-                            <!-- HÖİİ -->
                             <div class="stat-card emp-card" data-tab="hoii" onclick="selectEmpTab(this, 'hoii')"
                                 style="background: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease;">
                                 <div class="stat-info">
@@ -1795,7 +1717,6 @@
                                 </div>
                             </div>
 
-                            <!-- Əmək yarmarkası -->
                             <div class="stat-card emp-card" data-tab="yarmarka" onclick="selectEmpTab(this, 'yarmarka')"
                                 style="background: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease;">
                                 <div class="stat-info">
@@ -1809,7 +1730,6 @@
                                 </div>
                             </div>
 
-                            <!-- ƏBM -->
                             <div class="stat-card emp-card" data-tab="ebm" onclick="selectEmpTab(this, 'ebm')"
                                 style="background: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease;">
                                 <div class="stat-info">
@@ -1828,11 +1748,9 @@
 
                 </div>
 
-                <!-- 1. HİSSƏ: QEYDİYYAT VƏ İŞ YERİNİN FAKTİKİ ÜNVANLARI QRAFİKLƏRİ -->
                 <div class="reg-charts-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; margin-bottom: 25px;">
 
-                    <!-- Şəxsin qeydiyyat ünvanı üzrə -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: visible;">
                         <h3 class="chart-box-title"
@@ -2130,11 +2048,9 @@
 
                 </div>
 
-                <!-- 2. HİSSƏ: TƏHSİL VƏ MƏŞĞULLUQ QRAFİKLƏRİ -->
                 <div class="reg-charts-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; margin-bottom: 25px;">
 
-                    <!-- Təhsil səviyyəsi -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: visible;">
                         <h3 class="chart-box-title"
@@ -2198,7 +2114,6 @@
                         </div>
                     </div>
 
-                    <!-- Məşğulluq statusu (Dairə daxilindəki mətnlər təmizləndi) -->
                     <div class="card reg-chart-card"
                         style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
                         <h3 class="chart-box-title"
@@ -2228,7 +2143,6 @@
 
                 </div>
 
-                <!-- 3. HİSSƏ: KATEQORİYALAR ÜZRƏ (DİAQRAM SÜTUNLARI GENİŞLƏNDİRİLDİ) -->
                 <div class="card reg-chart-card"
                     style="background: #ffffff; padding: 22px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: visible; margin-bottom: 25px;">
                     <h3 class="chart-box-title"
@@ -2238,7 +2152,6 @@
                     <div class="chart-bar-single-container category-bars" id="categoryBarChart"
                         style="display: flex; justify-content: space-around; align-items: flex-end; height: 210px; padding-top: 25px; overflow-x: auto; gap: 15px;">
 
-                        <!-- Şəhid ailəsi -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2256,7 +2169,6 @@
                             </div>
                         </div>
 
-                        <!-- Müharibə veteranı -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2274,7 +2186,6 @@
                             </div>
                         </div>
 
-                        <!-- Müharibə əlili -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2291,7 +2202,6 @@
                             </div>
                         </div>
 
-                        <!-- Əlilliyi olan -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2309,7 +2219,6 @@
                             </div>
                         </div>
 
-                        <!-- SİMU valideyn -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2326,7 +2235,6 @@
                             </div>
                         </div>
 
-                        <!-- Çoxuşaqlı valideyn -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2344,7 +2252,6 @@
                             </div>
                         </div>
 
-                        <!-- Pensiya yaşına az qalmış -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2362,7 +2269,6 @@
                             </div>
                         </div>
 
-                        <!-- 20 yaşadək gənc -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2379,7 +2285,6 @@
                             </div>
                         </div>
 
-                        <!-- Məcburi köçkün -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2396,7 +2301,6 @@
                             </div>
                         </div>
 
-                        <!-- Cəzaçəkmədən azad edilmiş -->
                         <div class="single-bar-wrapper"
                             style="position: relative; text-align: center; cursor: pointer; min-width: 65px;">
                             <span class="bar-val"
@@ -2418,12 +2322,9 @@
                 </div>
 
             </div>
-            <!-- ========================================================== -->
-            <!-- ÖZÜNÜMƏŞĞULLUQ PROQRAMI BÖLMƏSİ (DİZAYN BƏRPA OLUNMUŞ) -->
-            <!-- ========================================================== -->
+            <!-- ÖZÜNÜMƏŞĞULLUQ PROQRAMI BÖLMƏSİ -->
             <div id="ozunumesgulluq" class="content-section">
 
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -2433,7 +2334,6 @@
                     </h4>
                 </div>
 
-                <!-- 1. FİLTRLƏMƏ PANELİ (EXCEL FİLTRİ) -->
                 <div class="filter-bar">
                     <div class="filter-item">
                         <label>İLLƏR</label>
@@ -2556,7 +2456,6 @@
                     </div>
                 </div>
 
-                <!-- Üst 5 Əsas Statistik Kart (ORİJİNAL DİZAYN BƏRPA EDİLDİ) -->
                 <div class="ozun-top-cards">
                     <div class="stat-card" data-id="umumi-muraciet">
                         <div class="stat-info">
@@ -2595,7 +2494,6 @@
                     </div>
                 </div>
 
-                <!-- İllər Üzrə Cədvəl (Başlıqlar Eyni Qaldı, Alt Hüceyrələr Xüsusi Rənglərlə Fərqləndirildi) -->
                 <div class="card ozun-table-card">
                     <div class="table-responsive-wrapper">
                         <table class="ozun-data-table" id="ozunReportTable">
@@ -2675,7 +2573,6 @@
                     </div>
                 </div>
 
-                <!-- Təsərrüfat Zərfləri Qrafikləri -->
                 <div class="ozun-charts-grid">
                     <div class="card ozun-chart-card has-popover">
                         <h4 class="sub-chart-title">Maldarlıq təsərrüfatı</h4>
@@ -2757,7 +2654,6 @@
                     </div>
                 </div>
 
-                <!-- İkinci Səhifə Başlığı -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -2767,7 +2663,6 @@
                     </h4>
                 </div>
 
-                <!-- 2. FİLTRLƏMƏ PANELİ (EXCEL ÇO XSEÇİMLİ FİLTR - ID-LƏR FƏRQLƏNDİRİLDİ) -->
                 <div class="filter-bar">
                     <div class="filter-item">
                         <label>İLLƏR</label>
@@ -2888,7 +2783,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 4. ÖZÜNÜMƏŞĞULLUQ ZƏRFLƏRİ (YENİ ƏLAVƏ EDİLƏN EXCEL FİLTRİ) -->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">ÖZÜNÜMƏŞĞULLUQ
@@ -2941,7 +2835,6 @@
                     </div>
                 </div>
 
-                <!-- Sektorlar Üzrə Göstəricilər (Seçimli Düymələr) -->
                 <div class="ozun-sector-header-cards">
                     <div class="stat-card highlight ozun-tab-card active-tab" data-sector="all"
                         onclick="selectOzunSector(this, 'all')" style="cursor: pointer;">
@@ -2973,7 +2866,6 @@
                     </div>
                 </div>
 
-                <!-- Rayon Qrafiki -->
                 <div style="margin-bottom: 25px;">
                     <div class="card reg-chart-card" style="width: 100%;">
                         <h3 class="chart-box-title">Rayon üzrə</h3>
@@ -3086,13 +2978,10 @@
                     </div>
                 </div>
 
-                <!-- ========================================================== -->
-                <!-- KATEQORİYALAR VƏ LAYİHƏLƏR DİAQRAMLARI (YANAŞI BLOK) -->
-                <!-- ========================================================== -->
+                <!-- KATEQORİYALAR VƏ LAYİHƏLƏR DİAQRAMLARI -->
                 <div class="reg-charts-grid"
                     style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
 
-                    <!-- 1. BİRİNCİ DİAQRAM: KATEQORİYALAR ÜZRƏ (ORİJİNAL HALINDA) -->
                     <div class="card reg-chart-card"
                         style="background:#fff; padding:22px; border-radius:10px; border:1px solid #e2e8f0; overflow:visible;">
                         <h3 class="chart-box-title"
@@ -3102,7 +2991,6 @@
                         <div class="category-chart-with-circle"
                             style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
 
-                            <!-- Sütunlar Konteyneri -->
                             <div class="chart-bar-single-container category-bars-ozun"
                                 style="display:flex; justify-content:space-around; align-items:flex-end; height:210px; flex:1; min-width:350px; overflow-x:auto; gap:16px; padding-top:10px;">
 
@@ -3204,7 +3092,6 @@
 
                             </div>
 
-                            <!-- Sağ Tərəfdəki Dairəvi Faiz Nişanı -->
                             <div class="percent-circle-badge"
                                 style="width:130px; height:130px; border-radius:50%; background:#f8fafc; border:4px solid #2b5256; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; flex-shrink:0; margin:0 auto;">
                                 <div class="inner-circle">
@@ -3216,7 +3103,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. İKİNCİ DİAQRAM: YENİ "LAYİHƏLƏR" (NMR DMA, AR DMA, Dünya Bankı) -->
                     <div class="card reg-chart-card"
                         style="background:#fff; padding:22px; border-radius:10px; border:1px solid #e2e8f0; overflow:visible;">
                         <h3 class="chart-box-title"
@@ -3226,11 +3112,9 @@
                         <div
                             style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:20px;">
 
-                            <!-- Sütunlar Konteyneri -->
                             <div class="chart-bar-single-container"
                                 style="display:flex; justify-content:space-around; align-items:flex-end; height:210px; flex:1; min-width:250px; padding-top:10px;">
 
-                                <!-- 1. Sütun: NMR DMA -->
                                 <div class="single-bar-wrapper"
                                     style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
                                     <span class="bar-val"
@@ -3243,7 +3127,6 @@
                                         DMA</span>
                                 </div>
 
-                                <!-- 2. Sütun: AR DMA -->
                                 <div class="single-bar-wrapper"
                                     style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
                                     <span class="bar-val"
@@ -3256,7 +3139,6 @@
                                         DMA</span>
                                 </div>
 
-                                <!-- 3. Sütun: Dünya Bankı -->
                                 <div class="single-bar-wrapper"
                                     style="position:relative; text-align:center; min-width:70px; cursor:pointer;">
                                     <span class="bar-val"
@@ -3278,11 +3160,8 @@
 
             </div>
 
-            <!-- ========================================================== -->
-            <!-- HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (HTML) -->
-            <!-- ========================================================== -->
+            <!-- HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ -->
             <div id="ictimai-isler" class="content-section">
-                <!-- Səhifə Başlığı Blok Banneri -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -3292,9 +3171,7 @@
                     </h4>
                 </div>
 
-                <!-- 1. ÜST FİLTRLƏMƏ PANENİ -->
                 <div class="filter-bar" style="margin-bottom: 25px;">
-                    <!-- İLLƏR -->
                     <div class="filter-item">
                         <label>İLLƏR</label>
                         <div class="excel-combobox" id="pubComboYear">
@@ -3325,7 +3202,6 @@
                         </div>
                     </div>
 
-                    <!-- AYLAR -->
                     <div class="filter-item">
                         <label>AYLAR</label>
                         <div class="excel-combobox" id="pubComboMonth">
@@ -3373,7 +3249,6 @@
                         </div>
                     </div>
 
-                    <!-- RAYONLAR -->
                     <div class="filter-item">
                         <label>RAYONLAR / ŞƏHƏR</label>
                         <div class="excel-combobox" id="pubComboRegion">
@@ -3415,7 +3290,6 @@
                     </div>
                 </div>
 
-                <!-- 2. ÜST 5 ƏSAS STATİSTİK KART (KLİK EDİLDİKDƏ DİAQRAMLARI YENİLƏYİR) -->
                 <div class="ozun-top-cards" style="grid-template-columns: repeat(5, 1fr); margin-bottom: 30px;">
                     <div class="stat-card pub-stat-btn active" data-type="kvota" onclick="updatePublicCharts('kvota')">
                         <div class="stat-info">
@@ -3454,26 +3328,21 @@
                     </div>
                 </div>
 
-                <!-- 3. ORTA HİSSƏ: İCRAÇI QURUMLAR ÜZRƏ BÖLGÜ -->
                 <div class="reg-charts-grid" style="grid-template-columns: 1fr; margin-bottom: 35px;">
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title" id="institutionsTitle">İcraçı qurumlar üzrə bölgü (Kvota)</h3>
                         <div class="horizontal-bars-single" id="institutionsBarChart" style="padding: 10px 0;">
-                            <!-- Dinamik doldurulacaq -->
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. AKTİV İŞÇİLƏR ÜZRƏ BLOK -->
                 <h2 class="sub-section-title" id="sectionSubTitle"
                     style="font-size: 16px; margin-bottom: 15px; color: #333;">Kvota üzrə rayon bölgüsü</h2>
                 <div class="reg-charts-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 25px;">
 
-                    <!-- Rayonlar üzrə bar chart -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title" id="regionChartTitle">Şəxsin qeydiyyat ünvanı üzrə</h3>
                         <div class="chart-bar-single-container" id="pubActiveRegBarChart">
-                            <!-- Dinamik doldurulacaq -->
                         </div>
                     </div>
 
@@ -3492,14 +3361,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- ========================================================== -->
-                <!-- HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ (RAYON, KƏND VƏ 3 KART) -->
-                <!-- ========================================================== -->
+                <!-- HAQQI ÖDƏNİLƏN İCTİMAİ İŞLƏR BÖLMƏSİ-->
 
-                <!-- 1. FİLTRLƏMƏ PANENİ (RAYON VƏ KƏND) -->
                 <div class="filter-bar" style="margin-bottom: 25px; display: flex; gap: 20px;">
 
-                    <!-- RAYONLAR FİLTRİ -->
                     <div class="filter-item" style="flex: 1;">
                         <label
                             style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">RAYONLAR
@@ -3557,7 +3422,6 @@
                         </div>
                     </div>
 
-                    <!-- KƏNDLƏR FİLTRİ (DİNAMİK YÜKLƏNİR) -->
                     <div class="filter-item" style="flex: 1;">
                         <label
                             style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">KƏNDLƏR
@@ -3578,7 +3442,6 @@
                                 </div>
                                 <div class="combo-options-list" id="pubUniqueVillageOptionsList"
                                     style="max-height: 200px; overflow-y: auto; font-size: 12px; display: flex; flex-direction: column; gap: 5px;">
-                                    <!-- JavaScript ilə dinamik dolur -->
                                 </div>
                             </div>
                         </div>
@@ -3586,11 +3449,10 @@
 
                 </div>
 
-                <!-- 2. ÜST 3 ƏSAS STATİSTİK KART (HOVER İLƏ KİŞİ VƏ QADIN BİLGİSİ) -->
+                <!-- 2. ÜST 3 ƏSAS STATİSTİK KART  -->
                 <div class="ozun-top-cards"
                     style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
 
-                    <!-- Kart 1: ÜMUMİ CƏLB OLUNAN -->
                     <div class="stat-card pub-stat-btn active" data-type="celb" onclick="pubUpdateCharts('celb')"
                         onmouseenter="this.querySelector('.card-hover-popover').style.display='block'"
                         onmouseleave="this.querySelector('.card-hover-popover').style.display='none'"
@@ -3609,7 +3471,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 2: XİTAM VERİLƏN -->
                     <div class="stat-card pub-stat-btn" data-type="xitam" onclick="pubUpdateCharts('xitam')"
                         onmouseenter="this.querySelector('.card-hover-popover').style.display='block'"
                         onmouseleave="this.querySelector('.card-hover-popover').style.display='none'"
@@ -3627,7 +3488,6 @@
                         </div>
                     </div>
 
-                    <!-- Kart 3: AKTİV İŞÇİ -->
                     <div class="stat-card pub-stat-btn" data-type="aktiv" onclick="pubUpdateCharts('aktiv')"
                         onmouseenter="this.querySelector('.card-hover-popover').style.display='block'"
                         onmouseleave="this.querySelector('.card-hover-popover').style.display='none'"
@@ -3648,11 +3508,8 @@
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- PEŞƏ HAZIRLIĞI KURSLARI BÖLMƏSİ (YENİLƏNMİŞ) -->
-            <!-- ========================================================== -->
+            <!-- PEŞƏ HAZIRLIĞI KURSLARI BÖLMƏSİ -->
             <div id="pese-kurslari" class="content-section">
-                <!--səhifə başlığı-->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -3662,7 +3519,6 @@
                     </h4>
                 </div>
 
-                <!-- ÜST 5 ƏSAS STATİSTİK KART -->
                 <div class="pese-top-cards">
                     <div class="stat-card pese-card active-card" data-id="kurs-sayi">
                         <div class="stat-info">
@@ -3696,19 +3552,16 @@
                     </div>
                 </div>
 
-                <!-- QRAFİKLƏR VƏ FİLTR PANENİ (SOL / SAĞ QURULUŞU) -->
                 <div class="pese-main-grid">
 
-                    <!-- SOL HİSSƏ: Excel üslublu Combo Box Filtrləri və Gender Üzrə Diagram -->
+                
                     <div class="pese-left-col">
 
-                        <!-- Filtrlər Kartı (Tarix, Rayonlar, Peşələr) -->
                         <div class="card pese-filter-card" style="margin-bottom: 25px;">
                             <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
 
                             <div style="display: flex; flex-direction: column; gap: 12px;">
 
-                                <!-- 1. PEŞƏ KURSLARI TARİXİ (EXCEL FİLTRİ) -->
                                 <div class="filter-item" style="width: 100%;">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">
@@ -3762,7 +3615,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- AYLAR (PEŞƏ KURSLARI İÇİN EXCEL FİLTRİ) -->
                                 <div class="filter-item">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">AYLAR(Dövrün
@@ -3846,7 +3698,6 @@
                                 </div>
 
 
-                                <!-- 3. PEŞƏLƏR (EXCEL FİLTRİ) -->
                                 <div class="filter-item" style="width: 100%;">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">PEŞƏLƏR</label>
@@ -3908,14 +3759,13 @@
                             </div>
                         </div>
 
-                        <!-- Gender üzrə Dairəvi Diaqram (İçərisindəki rəqəmlər silindi) -->
                         <div class="card reg-chart-card">
                             <h3 class="chart-box-title">Gender üzrə</h3>
                             <div class="pie-chart-flex"
                                 style="display: flex; align-items: center; justify-content: space-around; padding: 15px 0;">
                                 <div class="pie-mockup gender-pie-pese"
                                     style="width: 110px; height: 110px; border-radius: 50%; background: conic-gradient(#2b5256 0deg 205deg, #f59e0b 205deg 360deg);">
-                                    <!-- İçərisindəki yazılar silindi -->
+                                  
                                 </div>
                                 <div class="chart-legend" style="display: flex; flex-direction: column; gap: 8px;">
                                     <div class="legend-item"
@@ -3934,7 +3784,6 @@
 
                     </div>
 
-                    <!-- SAĞ HİSSƏ: Rayon Üzrə Üfüqi Sütunlu Qrafik (Hover Effektli) -->
                     <div class="pese-right-col">
                         <div class="card reg-chart-card" style="height: 100%; overflow: visible;">
                             <h3 class="chart-box-title">Şəxsin qeydiyyat rayonu</h3>
@@ -4094,9 +3943,7 @@
 
             </div>
 
-            <!-- ==========================================================
-     PEŞƏYÖNÜMLÜ MƏSLƏHƏT XİDMƏTİ BÖLMƏSİ (YENİLƏNMİŞ VƏ UYUMLU)
-     ========================================================== -->
+            <!-- PEŞƏYÖNÜMLÜ MƏSLƏHƏT XİDMƏTİ BÖLMƏSİ -->
             <div id="peseyonumlu-meslehet" class="content-section">
                 <!--səhifə başlığı-->
                 <div class="report-header"
@@ -4107,10 +3954,10 @@
                         məsləhət xidmətlərinə dair göstəricilər
                     </h4>
                 </div>
-                <!-- 1. ÜST FİLTRLƏMƏ PANENİ (Excel üslublu Combo Box) -->
+                <!-- 1. ÜST FİLTRLƏMƏ PANENİ -->
                 <div class="filter-bar" style="margin-bottom: 25px;">
 
-                    <!-- İLLƏR (EXCEL FİLTRİ) -->
+                    <!-- İLLƏR  -->
                     <div class="filter-item">
                         <label>İLLƏR</label>
                         <div class="excel-combobox" id="orientComboYear">
@@ -4143,7 +3990,7 @@
                         </div>
                     </div>
 
-                    <!-- AYLAR (EXCEL FİLTRİ) -->
+                    <!-- AYLAR  -->
                     <div class="filter-item">
                         <label>AYLAR</label>
                         <div class="excel-combobox" id="orientComboMonth">
@@ -4196,10 +4043,8 @@
 
                 </div>
 
-                <!-- 2. ƏSAS MƏZMUN (ÜST İŞTİRAKÇI KARTI, LAYİHƏLƏR VƏ RAYONLAR ÜZRƏ QRAFİK) -->
                 <div style="display: flex; flex-direction: column; gap: 25px;">
 
-                    <!-- Üst İştirak Edən Şəxslər Kartı -->
                     <div class="stat-card orient-total-card" style="padding: 20px;">
                         <div class="stat-info">
                             <span class="stat-title-sm" style="font-weight: 700; color: #555;">İştirak edən</span>
@@ -4212,7 +4057,7 @@
                     </div>
 
 
-                    <!-- RAYONLAR ÜZRƏ SÜTUNLU QRAFİK KARTI (LAYİHƏLƏRDƏN SONRA) -->
+                    <!-- RAYONLAR ÜZRƏ SÜTUNLU QRAFİK KARTI-->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Rayon üzrə</h3>
 
@@ -4293,7 +4138,7 @@
 
                         </div>
                     </div>
-                    <!-- LAYİHƏLƏR BLOKU (RAYONLAR QRAFİKİNDƏN ƏVVƏL, ŞAQULİ / GRID DÜZƏNİNDƏ) -->
+                    <!-- LAYİHƏLƏR BLOKU -->
                     <div class="card" style="padding: 20px;">
                         <h2 class="sub-section-title"
                             style="font-size: 18px; color: #2b5256; margin-bottom: 15px; font-weight: 700;">LAYİHƏLƏR
@@ -4302,7 +4147,6 @@
                         <div class="projects-cards-list"
                             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
 
-                            <!-- Layihə 1 -->
                             <div class="stat-card project-card" data-project="pese-fest-naxcivan"
                                 style="border-left: 4px solid #2b5256;">
                                 <div class="stat-info">
@@ -4314,7 +4158,6 @@
                                 </div>
                             </div>
 
-                            <!-- Layihə 2 -->
                             <div class="stat-card project-card" data-project="pese-fest-ordubad"
                                 style="border-left: 4px solid #2b5256;">
                                 <div class="stat-info">
@@ -4326,7 +4169,6 @@
                                 </div>
                             </div>
 
-                            <!-- Layihə 3 -->
                             <div class="stat-card project-card" data-project="ixtisas-beledcisi"
                                 style="border-left: 4px solid #2b5256;">
                                 <div class="stat-info">
@@ -4338,7 +4180,6 @@
                                 </div>
                             </div>
 
-                            <!-- Layihə 4 -->
                             <div class="stat-card project-card" data-project="kendime-gel"
                                 style="border-left: 4px solid #2b5256;">
                                 <div class="stat-info">
@@ -4357,11 +4198,8 @@
 
             </div>
 
-            <!-- ========================================================== -->
-            <!-- İŞSİZLİKDƏN SIĞORTA BÖLMƏSİ (TAM VƏ YEKUN KOD) -->
-            <!-- ========================================================== -->
+            <!-- İŞSİZLİKDƏN SIĞORTA BÖLMƏSİ -->
             <div id="sigorta" class="content-section">
-                <!-- Səhifə başlığı -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -4371,7 +4209,7 @@
                     </h4>
                 </div>
 
-                <!-- ÜST 6 ƏSAS STATİSTİK KART -->
+               
                 <div class="sigorta-top-cards">
                     <div class="stat-card sigorta-card main-card" data-id="umumi-muraciet">
                         <div class="stat-info">
@@ -4411,19 +4249,17 @@
                     </div>
                 </div>
 
-                <!-- QRAFİKLƏR VƏ FİLTR PANENİ (SOL / SAĞ QURULUŞU) -->
                 <div class="pese-main-grid">
 
-                    <!-- SOL HİSSƏ: Excel Filtrləri və Gender Üzrə Diagram -->
+                  
                     <div class="pese-left-col">
 
-                        <!-- Filtrlər Kartı (Rayonlar, İllər, Status) -->
+                     
                         <div class="card pese-filter-card" style="margin-bottom: 25px;">
                             <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
 
                             <div style="display: flex; flex-direction: column; gap: 12px;">
 
-                                <!-- 1. RAYONLAR (EXCEL FİLTRİ) -->
                                 <div class="filter-item" style="width: 100%;">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">RAYONLAR</label>
@@ -4497,7 +4333,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 2. İLLƏR (EXCEL ÇOXSEÇİMLİ FİLTİR - DÖVR ƏVƏZİNƏ) -->
                                 <div class="filter-item" style="width: 100%;">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">İLLƏR</label>
@@ -4547,7 +4382,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 3. STATUS (EXCEL FİLTRİ) -->
                                 <div class="filter-item" style="width: 100%;">
                                     <label
                                         style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">STATUS</label>
@@ -4599,14 +4433,13 @@
                             </div>
                         </div>
 
-                        <!-- Gender üzrə Dairəvi Diaqram (İçərisindəki yazılar tamamilə silindi) -->
                         <div class="card reg-chart-card">
                             <h3 class="chart-box-title">Gender üzrə</h3>
                             <div class="pie-chart-flex"
                                 style="display: flex; align-items: center; justify-content: space-around; padding: 15px 0;">
                                 <div class="pie-mockup gender-pie-sigorta"
                                     style="width: 110px; height: 110px; border-radius: 50%; background: conic-gradient(#2b5256 0deg 194deg, #f59e0b 194deg 360deg);">
-                                    <!-- İçərisində mətn yoxdur -->
+                                   
                                 </div>
                                 <div class="chart-legend" style="display: flex; flex-direction: column; gap: 8px;">
                                     <div class="legend-item"
@@ -4625,7 +4458,6 @@
 
                     </div>
 
-                    <!-- SAĞ HİSSƏ: Rayonlar Üzrə Göstəricilər (Birbaşa işlək hover funksiyası ilə) -->
                     <div class="pese-right-col">
                         <div class="card reg-chart-card" style="height: 100%;">
                             <h3 class="chart-box-title">Rayonlar üzrə göstəricilər</h3>
@@ -4633,7 +4465,6 @@
                             <div class="horizontal-bars-single" id="sigortaRegionChart"
                                 style="display: flex; flex-direction: column; gap: 16px; padding: 15px 0;">
 
-                                <!-- Naxçıvan -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4655,7 +4486,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Şərur -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4677,7 +4507,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Babək -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4699,7 +4528,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Ordubad -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4721,7 +4549,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Culfa -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4743,7 +4570,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Şahbuz -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4765,7 +4591,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Kəngərli -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4787,7 +4612,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Sədərək -->
                                 <div class="h-bar-row-single"
                                     onmouseenter="this.querySelector('.hbar-popover').style.display='block'"
                                     onmouseleave="this.querySelector('.hbar-popover').style.display='none'"
@@ -4816,12 +4640,9 @@
                 </div>
 
             </div>
-            <!-- ========================================================== -->
-            <!-- ƏMƏKHAQQININ BİRGƏ MALİYYƏLƏŞDİRİLMƏSİ BÖLMƏSİ (DƏYƏRLƏR 203-Ə UYGUNLAŞDIRILDI) -->
-            <!-- ========================================================== -->
+            <!-- ƏMƏKHAQQININ BİRGƏ MALİYYƏLƏŞDİRİLMƏSİ BÖLMƏSİ  -->
             <div id="maliyelesdirilme" class="content-section">
 
-                <!-- Səhifə Başlığı -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -4830,11 +4651,9 @@
                         birgə maliyyələşdirilməsi proqramının icrasına dair göstəricilər
                     </h4>
                 </div>
-
-                <!-- Üst Filtrlər Və 4 Əsas Statistik Kart -->
                 <div class="maliye-top-layout" style="margin-bottom: 25px;">
 
-                    <!-- Sol Hissə: Filtrlər Paneli -->
+                   
                     <div class="card pese-filter-card" style="margin: 0;">
                         <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
                         <form id="maliyeFilterForm" onsubmit="return false;">
@@ -4935,7 +4754,7 @@
                         </form>
                     </div>
 
-                    <!-- Sağ Hissə: 4 Ədəd Göstərici Kartı -->
+                  
                     <div class="maliye-cards-grid">
                         <div class="stat-card maliye-card active-card" data-id="isle-temin">
                             <div class="stat-info">
@@ -4968,10 +4787,9 @@
 
                 </div>
 
-                <!-- 1-Cİ SIRA QRAFİKLƏR (CƏM: 203) -->
                 <div class="reg-charts-grid" style="margin-bottom: 25px;">
 
-                    <!-- Şəxsin qeydiyyat ünvanı üzrə (Cəm: 203) -->
+                  
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Şəxsin qeydiyyat ünvanı üzrə</h3>
                         <div class="chart-bar-single-container" id="malRegAddressBarChart">
@@ -5059,7 +4877,7 @@
                         </div>
                     </div>
 
-                    <!-- İş yerinin faktiki ünvanı üzrə (Cəm: 203) -->
+                 
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">İş yerinin faktiki ünvanı üzrə</h3>
                         <div class="chart-bar-single-container" id="malWorkAddressBarChart">
@@ -5149,10 +4967,10 @@
 
                 </div>
 
-                <!-- 2-Cİ SIRA QRAFİKLƏR (CƏM: 203) -->
+             
                 <div class="reg-charts-grid" style="margin-bottom: 25px;">
 
-                    <!-- Təhsil səviyyəsi (Cəm: 203 -> 115 + 48 + 40) -->
+
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
                         <div class="horizontal-bars-single" id="malEduChart">
@@ -5205,7 +5023,7 @@
                         </div>
                     </div>
 
-                    <!-- Məşğulluq statusu (Cəm: 203) -->
+                  
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Məşğulluq statusu</h3>
                         <div class="pie-chart-flex">
@@ -5224,10 +5042,10 @@
 
                 </div>
 
-                <!-- 3-CÜ SIRA QRAFİKLƏR (CƏM: 203) -->
+             
                 <div class="reg-charts-grid">
 
-                    <!-- İşəgötürənlər üzrə (Cəm: 203) -->
+                   
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">İşəgötürənlər üzrə</h3>
                         <div class="chart-bar-single-container" id="malEmployersBarChart">
@@ -5283,7 +5101,7 @@
                         </div>
                     </div>
 
-                    <!-- Gender üzrə (Cəm: 203) -->
+                   
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Gender üzrə</h3>
                         <div class="pie-chart-flex">
@@ -5303,11 +5121,8 @@
                 </div>
 
             </div>
-            <!-- ==========================================================
-     ƏMƏK YARMARKASI BÖLMƏSİ (RAYONLAR FİLTRİ İLƏ)
-     ========================================================== -->
+            <!--ƏMƏK YARMARKASI BÖLMƏSİ-->
             <div id="yarmarka" class="content-section">
-                <!-- Səhifə başlığı -->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -5316,17 +5131,11 @@
                         yarmarkalarına dair göstəricilər
                     </h4>
                 </div>
-
-                <!-- ÜST FİLTRLƏR VƏ 4 ƏSAS KART -->
                 <div class="maliye-top-layout" style="margin-bottom: 30px;">
-
-                    <!-- Sol Hissə: Excel üslublu Combo Box Filtrləri -->
                     <div class="card pese-filter-card" style="margin: 0; min-width: 280px;">
                         <h3 class="chart-box-title" style="margin-bottom: 15px;">Filtrlər</h3>
 
                         <div style="display: flex; flex-direction: column; gap: 15px;">
-
-                            <!-- 1. RAYONLAR (EXCEL FİLTRİ - DÖVR ƏVƏZİNƏ) -->
                             <div class="filter-item" style="width: 100%;">
                                 <label
                                     style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">RAYONLAR</label>
@@ -5396,8 +5205,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 2. YARMARKA (İLLƏRƏ GÖRƏ İYERARXİK SEÇİM) -->
                             <div class="filter-item" style="width: 100%;">
                                 <label
                                     style="font-size: 12px; font-weight: 600; color: #444; margin-bottom: 4px; display: block;">YARMARKA
@@ -5470,7 +5277,6 @@
                         </div>
                     </div>
 
-                    <!-- Sağ Hissə: 4 Ədəd Göstərici Kartı -->
                     <div class="maliye-cards-grid">
                         <div class="stat-card maliye-card active-card" data-id="istirak-eden">
                             <div class="stat-info">
@@ -5502,9 +5308,7 @@
                     </div>
 
                 </div>
-                <!-- ==========================================================
-         4. GÖNDƏRİŞ SAYI
-         ========================================================== -->
+             
                 <h2 class="sub-section-title"
                     style="font-size: 15px; font-weight: 700; color: #2b5256; margin-bottom: 15px;">GÖNDƏRİŞLƏR ÜZRƏ
                 </h2>
@@ -5513,7 +5317,7 @@
                     style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
 
-                        <!-- 1. Yarmarka Sayı -->
+                     
                         <div class="stat-card"
                             style="border-left: 4px solid #2b5256; padding: 16px; background: #fdfdfd; border-radius: 6px; border: 1px solid #e2e8f0; border-left-width: 4px;">
                             <div class="stat-info">
@@ -5529,7 +5333,6 @@
                             </div>
                         </div>
 
-                        <!-- 2. Ümumi Göndəriş Sayı -->
                         <div class="stat-card"
                             style="border-left: 4px solid #e67e22; padding: 16px; background: #fdfdfd; border-radius: 6px; border: 1px solid #e2e8f0; border-left-width: 4px;">
                             <div class="stat-info">
@@ -5545,7 +5348,6 @@
                             </div>
                         </div>
 
-                        <!-- 3. Göndəriş Alan Şəxs Sayı -->
                         <div class="stat-card"
                             style="border-left: 4px solid #00b894; padding: 16px; background: #fdfdfd; border-radius: 6px; border: 1px solid #e2e8f0; border-left-width: 4px;">
                             <div class="stat-info">
@@ -5560,7 +5362,6 @@
                             </div>
                         </div>
 
-                        <!-- 4. Müraciət Edilən Vakansiya Sayı -->
                         <div class="stat-card"
                             style="border-left: 4px solid #0984e3; padding: 16px; background: #fdfdfd; border-radius: 6px; border: 1px solid #e2e8f0; border-left-width: 4px;">
                             <div class="stat-info">
@@ -5578,9 +5379,7 @@
                     </div>
                 </div>
                 <br>
-                <!-- ==========================================================
-                1. İŞTİRAKÇILAR ÜZRƏ BLOK
-                ========================================================== -->
+
                 <h2 class="sub-section-title"
                     style="font-size: 15px; font-weight: 700; color: #2b5256; margin-bottom: 15px;">İŞTİRAKÇILAR ÜZRƏ
                 </h2>
@@ -5588,7 +5387,6 @@
                 <div class="reg-charts-grid"
                     style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 35px; ">
 
-                    <!-- Qeydiyyat ünvanı -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Qeydiyyat ünvanı</h3>
                         <div class="chart-bar-single-container" id="yarParticipantBarChart">
@@ -5703,17 +5501,12 @@
 
                 </div>
 
-                <!-- ==========================================================
-         2. İŞLƏ TƏMİN OLUNANLAR ÜZRƏ BLOK
-         ========================================================== -->
                 <h2 class="sub-section-title"
                     style="font-size: 15px; font-weight: 700; color: #2b5256; margin-bottom: 15px;">İŞLƏ TƏMİN OLUNANLAR
                     ÜZRƏ</h2>
 
                 <div class="reg-charts-grid yarmarka-three-col"
                     style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 35px;">
-
-                    <!-- Qeydiyyat ünvanı -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Qeydiyyat ünvanı</h3>
                         <div class="chart-bar-single-container" id="yarEmployedBarChart">
@@ -5791,7 +5584,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Faktiki ünvan -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">İş yerinin faktiki ünvanı</h3>
                         <div class="chart-bar-single-container" id="yarParticipantActualBarChart">
@@ -5869,7 +5661,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Gender üzrə -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Gender üzrə</h3>
                         <div class="pie-chart-flex">
@@ -5882,7 +5673,6 @@
                         </div>
                     </div>
 
-                    <!-- Təhsil səviyyəsi -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Təhsil səviyyəsi</h3>
                         <div class="pie-chart-flex">
@@ -5902,9 +5692,6 @@
 
                 </div>
 
-                <!-- ==========================================================
-         3. VAKANSİYALAR ÜZRƏ BLOK
-         ========================================================== -->
                 <h2 class="sub-section-title"
                     style="font-size: 15px; font-weight: 700; color: #2b5256; margin-bottom: 15px;">VAKANSİYALAR ÜZRƏ
                 </h2>
@@ -5912,7 +5699,6 @@
                 <div class="reg-charts-grid yarmarka-three-col"
                     style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 35px;">
 
-                    <!-- Müəssisə -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Müəssisə</h3>
                         <div class="pie-chart-flex">
@@ -5925,7 +5711,6 @@
                         </div>
                     </div>
 
-                    <!-- Vakansiya -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Vakansiya</h3>
                         <div class="pie-chart-flex">
@@ -5938,7 +5723,6 @@
                         </div>
                     </div>
 
-                    <!-- Vakansiya təhsil tələbi -->
                     <div class="card reg-chart-card">
                         <h3 class="chart-box-title">Vakansiya təhsil tələbi</h3>
                         <div class="pie-chart-flex">
@@ -5960,11 +5744,7 @@
 
 
             </div>
-            <!-- ==========================================================
-     VAKANSİYA BANKI BÖLMƏSİ (EXCEL ÇOXLU SEÇİMLİ FİLTRLƏR İLƏ)
-     ========================================================== -->
             <div id="vakansiya" class="content-section">
-                <!--səhifə başlığı-->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -6016,7 +5796,7 @@
                         </select>
                     </div>
 
-                    <!-- 3. RAYONLAR (Çoxlu Seçim - Excel Combobox) -->
+                    <!-- 3. RAYONLAR-->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">RAYONLAR
@@ -6072,7 +5852,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. TƏHSİL SƏVİYYƏSİ (Çoxlu Seçim - Excel Combobox) -->
+                    <!-- 4. TƏHSİL SƏVİYYƏSİ-->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">TƏHSİL
@@ -6113,7 +5893,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. CİNS TƏLƏBİ (Çoxlu Seçim - Excel Combobox) -->
+                    <!-- 5. CİNS TƏLƏBİ-->
                     <div class="filter-item">
                         <label
                             style="font-size: 11px; font-weight: 700; color: #495057; display: block; margin-bottom: 6px;">CİNS
@@ -6155,21 +5935,17 @@
                     </div>
 
                 </div>
-                <!-- ƏSAS MƏZMUN DÜZƏNİ (SOL KART VƏ SAĞ QRAFİK) -->
                 <div class="vac-main-grid"
                     style="display: grid; grid-template-columns: 280px 1fr; gap: 20px; margin-bottom: 25px;">
 
-                    <!-- SOL HİSSƏ: Dövrün Sonuna Ümumi Vakansiya Kartı -->
                     <div class="vac-left-col">
                         <div class="stat-card vac-total-card"
                             style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; background: #fff; padding: 20px 25px; border-radius: 8px; border-left: 5px solid #2b5256; box-shadow: 0 2px 6px rgba(0,0,0,0.05); box-sizing: border-box; position: relative;">
 
-                            <!-- Üst sol hissədə yerləşən başlığ -->
                             <span class="vac-card-subtitle"
                                 style="font-size: 13px; color: #2b5256; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: left;">Dövrün
                                 sonuna</span>
 
-                            <!-- Tam MƏRKƏZDƏ yerləşən hissə (Ümumi Vakansiya və Rəqəm) -->
                             <div class="stat-info" style="margin: auto 0; text-align: center;">
                                 <span class="stat-title-sm"
                                     style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #555; font-weight: 600; display: block;">ÜMUMİ
@@ -6183,7 +5959,6 @@
                         </div>
                     </div>
 
-                    <!-- SAĞ HİSSƏ: İş yerinin faktiki ünvanı üzrə Sütunlu Qrafik -->
                     <div class="vac-right-col">
                         <div class="card reg-chart-card"
                             style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
@@ -6194,7 +5969,6 @@
                             <div class="chart-bar-single-container" id="vacAddressBarChart"
                                 style="display: flex; justify-content: space-around; align-items: flex-end; height: 210px; padding-top: 25px; border-bottom: 1px solid #eee;">
 
-                                <!-- Naxçıvan -->
                                 <div class="single-bar-group" data-region="Naxçıvan"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-nax-val" class="bar-val"
@@ -6210,7 +5984,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Şərur -->
                                 <div class="single-bar-group" data-region="Şərur"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-serur-val" class="bar-val"
@@ -6226,7 +5999,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Babək -->
                                 <div class="single-bar-group" data-region="Babək"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-babek-val" class="bar-val"
@@ -6242,7 +6014,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Ordubad -->
                                 <div class="single-bar-group" data-region="Ordubad"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-ordubad-val" class="bar-val"
@@ -6258,7 +6029,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Culfa -->
                                 <div class="single-bar-group" data-region="Culfa"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-culfa-val" class="bar-val"
@@ -6274,7 +6044,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Şahbuz -->
                                 <div class="single-bar-group" data-region="Şahbuz"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-sahbuz-val" class="bar-val"
@@ -6290,7 +6059,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Kəngərli -->
                                 <div class="single-bar-group" data-region="Kəngərli"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-kengerli-val" class="bar-val"
@@ -6306,7 +6074,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Sədərək -->
                                 <div class="single-bar-group" data-region="Sədərək"
                                     style="position: relative; text-align: center;">
                                     <span id="vac-reg-sederek-val" class="bar-val"
@@ -6328,10 +6095,8 @@
 
                 </div>
 
-                <!-- ALT HİSSƏ: MÜLKİYYƏT NÖVÜ VƏ QULLUQÇU / FƏHLƏ DİAQRAMLARI -->
                 <div class="reg-charts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
-                    <!-- 1. Mülkiyyət növü -->
                     <div class="card reg-chart-card"
                         style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
                         <h3 class="chart-box-title"
@@ -6354,7 +6119,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. Qulluqçu / Fəhlə -->
                     <div class="card reg-chart-card"
                         style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
                         <h3 class="chart-box-title"
@@ -6380,11 +6144,7 @@
                 </div>
 
             </div>
-            <!-- ========================================================== -->
-            <!-- STRUKTUR BÖLMƏSİ - MÜASİR İYERARXİK DİZAYN (ŞÖBƏ - SEKTOR BAĞLANTISI İLƏ) -->
-            <!-- ========================================================== -->
             <div id="struktur" class="content-section">
-                <!--səhifə başlığı-->
                 <div class="report-header"
                     style="background: linear-gradient(135deg, #2b5256 0%, #1f3d40 100%); padding: 25px 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(43,82,86,0.15);">
                     <h4 class="page-title"
@@ -6394,14 +6154,11 @@
                     </h4>
                 </div>
 
-                <!-- Struktur Ağacının Əsas Konteyneri -->
                 <div class="org-tree-container">
 
-                    <!-- 1. İDARƏ HEYƏTİ SƏVİYYƏSİ -->
                     <div class="org-level">
                         <h3 class="org-section-title"><i class="fas fa-sitemap"></i> İdarə Heyəti</h3>
 
-                        <!-- Sədr -->
                         <div class="org-node chairman">
                             <div class="node-icon"><i class="fas fa-user-tie"></i></div>
                             <div class="node-content">
@@ -6410,7 +6167,6 @@
                             </div>
                         </div>
 
-                        <!-- Sədrin müavinləri -->
                         <div class="node-connector-vertical"></div>
                         <div class="org-row">
                             <div class="org-node">
@@ -6427,7 +6183,6 @@
                             </div>
                         </div>
 
-                        <!-- Köməkçi, Mətbuat, Referent -->
                         <div class="org-row small-gap">
                             <div class="org-node sm">İdarə Heyəti sədrinin köməkçisi</div>
                             <div class="org-node sm">Mütəxəssis - hüquqşünas</div>
@@ -6436,7 +6191,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. ŞÖBƏLƏR SƏVİYYƏSİ (TABLI VƏ BAĞLI SEKTORLARLA) -->
                     <div class="org-level">
                         <h3 class="org-section-title"><i class="fas fa-building"></i> Şöbələr
                         </h3>
@@ -6449,7 +6203,6 @@
                                 şöbəsi</div>
                             <div class="org-node dept">Müraciətlər və yerli bölmələrlə iş şöbəsi</div>
 
-                            <!-- 1. Maliyyə və təminat şöbəsi (Aşağısında öz sektorları ilə) -->
                             <div class="org-node-branch"
                                 style="background: #f8f9fa; border: 1px solid #d1d8d9; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; position: relative;">
                                 <div class="org-node dept"
@@ -6470,7 +6223,6 @@
                                 </div>
                             </div>
 
-                            <!-- 2. Daxili nəzarət və monitorinq şöbəsi (Aşağısında öz sektorları ilə) -->
                             <div class="org-node-branch"
                                 style="background: #f8f9fa; border: 1px solid #d1d8d9; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; position: relative;">
                                 <div class="org-node dept"
@@ -6494,7 +6246,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. MÜSTƏQİL SEKTORLAR VƏ RAYON SEKTORLARI -->
                     <div class="org-level">
                         <h3 class="org-section-title"><i class="fas fa-layer-group"></i> Sektorlar</h3>
                         <div class="org-grid-3">
@@ -6518,7 +6269,6 @@
                         </div>
                     </div>
 
-                    <!-- 4. TABE MÜƏSSİSƏLƏR -->
                     <div class="org-level">
                         <h3 class="org-section-title"><i class="fas fa-handshake"></i> Tabe Müəssisələr</h3>
                         <div class="org-row">
@@ -6532,7 +6282,6 @@
         </main>
     </div>
 
-    <!-- Xarici JS faylı -->
     <script src="script.js"></script>
 </body>
 
